@@ -1,0 +1,4 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="seoul_manual_updates_title">Seoul DS updates</string>
+    <string name="seoul_manual_updates_summary">Manual installation only. This fork never downloads or installs the upstream app as an update. Back up game saves before updating.</string>
+</resources>

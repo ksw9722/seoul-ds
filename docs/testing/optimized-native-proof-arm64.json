@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "abi": "arm64-v8a",
+  "scope": "Configured effective native flags + completed Ninja graph + PCAP exclusion evidence + GNU build-ID binding to APK; not runtime or performance proof",
+  "native_graph": "app/.cxx/Debug/5fs292i4/arm64-v8a",
+  "cmake_build_type": "RelWithDebInfo",
+  "optimized_native_cache": "ON",
+  "compile_commands_sha256": "a7072bf254abcb5ba8e60cc1c781c11bb2889e9ff951ae1308029a1b4abfcd8f",
+  "configured_compile_units": 400,
+  "configured_c_cpp_units_validated": 399,
+  "effective_optimization_counts": {
+    "-O2": 399,
+    "-O3": 0
+  },
+  "configured_not_built_count_note": "Compile database may include unused library variants; this count is not a claim that every configured unit was built",
+  "ninja_target_up_to_date": true,
+  "actual_dependency_lines": 166617,
+  "pcap_dependency_matches": 0,
+  "libraries": {
+    "libmelonDS-lib.so": {
+      "unstripped_elf_bytes": 59656640,
+      "graph_gnu_build_id": "259fa15643c0f6f010650150a276dff74cfeb163",
+      "apk_gnu_build_id": "259fa15643c0f6f010650150a276dff74cfeb163",
+      "build_ids_match": true,
+      "pcap_symbols": "NONE"
+    },
+    "libmelonDS-android-frontend.so": {
+      "unstripped_elf_bytes": 1335600,
+      "graph_gnu_build_id": "3d666eb21ca8de8a83c11284bd62f0196dcd31be",
+      "apk_gnu_build_id": "3d666eb21ca8de8a83c11284bd62f0196dcd31be",
+      "build_ids_match": true,
+      "pcap_symbols": "NONE"
+    }
+  }
+}

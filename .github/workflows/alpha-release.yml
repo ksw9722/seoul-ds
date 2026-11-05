@@ -1,0 +1,131 @@
+name: Seoul DS alpha APK prerelease
+
+on:
+  workflow_dispatch:
+    inputs:
+      accept_android_sdk_terms:
+        description: 'SDK/NDK terms already accepted: https://developer.android.com/studio/terms'
+        required: true
+        type: boolean
+        default: false
+  push:
+    tags: ['alpha-*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: alpha-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: (github.event_name == 'workflow_dispatch' && inputs.accept_android_sdk_terms == true && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)) || (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/alpha-') && vars.ANDROID_SDK_LICENSE_ACCEPTED == 'true')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    outputs:
+      commit: ${{ steps.identity.outputs.commit }}
+      tag: ${{ steps.identity.outputs.tag }}
+      artifact: ${{ steps.identity.outputs.artifact }}
+    env:
+      ANDROID_SDK_LICENSE_ACCEPTED: 'true'
+      ANDROID_USER_HOME: ${{ github.workspace }}/../android-user-home
+      GRADLE_USER_HOME: ${{ github.workspace }}/../gradle-user-home
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Record exact source and unique alpha identity
+        id: identity
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          REF_NAME: ${{ github.ref_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          COMMIT=$(git rev-parse HEAD)
+          if [ "$EVENT_NAME" = push ]; then
+            TAG="$REF_NAME"
+          else
+            TAG="alpha-${COMMIT:0:12}-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          fi
+          [[ "$TAG" =~ ^alpha-[A-Za-z0-9._-]+$ ]]
+          echo "commit=$COMMIT" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "artifact=alpha-bundle-$COMMIT-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT" >> "$GITHUB_OUTPUT"
+      - name: Offline source checks before SDK installation
+        run: python3 scripts/harness.py --mode static --output artifacts/harness/static
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        with:
+          java-version: '21'
+          distribution: temurin
+      - name: Install pinned SDK and NDK after explicit consent
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$ANDROID_SDK_LICENSE_ACCEPTED" = true
+          test -n "$ANDROID_HOME"
+          mkdir -p "$ANDROID_USER_HOME"
+          SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          test -x "$SDKMANAGER"
+          python3 -c 'print("y\n" * 40)' | "$SDKMANAGER" --install "platforms;android-36" "build-tools;36.0.0" "ndk;28.0.13004108" "cmake;3.22.1"
+      - name: Build and verify optimized ARM64 development APK
+        run: python3 scripts/harness.py --mode android --abi arm64-v8a --optimized-native --timeout 4200 --output artifacts/harness/android
+      - name: Package corresponding source and alpha evidence
+        env:
+          RELEASE_TAG: ${{ steps.identity.outputs.tag }}
+        run: python3 scripts/prepare_alpha_release.py --report artifacts/harness/android/report.json --output artifacts/alpha-release --tag "$RELEASE_TAG"
+      - name: Retain complete prerelease bundle
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: ${{ steps.identity.outputs.artifact }}
+          path: artifacts/alpha-release/
+          if-no-files-found: error
+          retention-days: 14
+      - name: Retain verification evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: alpha-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/harness/
+          if-no-files-found: warn
+          retention-days: 14
+
+  publish:
+    needs: build
+    if: needs.build.result == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      actions: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      RUN_ID: ${{ github.run_id }}
+      SOURCE_COMMIT: ${{ needs.build.outputs.commit }}
+      RELEASE_TAG: ${{ needs.build.outputs.tag }}
+      ARTIFACT_NAME: ${{ needs.build.outputs.artifact }}
+    steps:
+      - name: Download this run's verified bundle without checking out source
+        run: gh run download "$RUN_ID" --repo "$GH_REPO" --name "$ARTIFACT_NAME" --dir release-assets
+      - name: Verify bundle identity and checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$RELEASE_TAG" =~ ^alpha-[A-Za-z0-9._-]+$ ]]
+          [[ "$SOURCE_COMMIT" =~ ^[0-9a-f]{40}$ ]]
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          m = json.loads(Path('release-assets/release-metadata.json').read_text())
+          if m['source_commit'] != os.environ['SOURCE_COMMIT'] or m['tag'] != os.environ['RELEASE_TAG']:
+              raise SystemExit('Release identity mismatch')
+          PY
+          (cd release-assets && sha256sum --check SHA256SUMS.txt)
+      - name: Publish complete alpha prerelease (never overwrite an existing release)
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release create "$RELEASE_TAG" release-assets/* --repo "$GH_REPO" --target "$SOURCE_COMMIT" --draft --prerelease --title "Seoul DS $RELEASE_TAG (development APK)" --notes-file release-assets/RELEASE-NOTES.md
+          gh release edit "$RELEASE_TAG" --repo "$GH_REPO" --draft=false --prerelease --latest=false

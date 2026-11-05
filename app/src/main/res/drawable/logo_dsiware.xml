@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Original generic digital-title badge; no platform wordmark artwork. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="18dp"
+    android:viewportWidth="48"
+    android:viewportHeight="18">
+    <path android:fillColor="#0F766E" android:pathData="M4,0H44A4,4 0,0 1,48 4V14A4,4 0,0 1,44 18H4A4,4 0,0 1,0 14V4A4,4 0,0 1,4 0Z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M6,4H19V8H6ZM6,10H19V14H6ZM25,4H41V6H25ZM25,8H37V10H25ZM25,12H33V14H25Z" />
+</vector>

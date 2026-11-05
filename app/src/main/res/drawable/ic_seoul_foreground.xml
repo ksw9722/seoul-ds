@@ -1,0 +1,7 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="108dp" android:height="108dp" android:viewportWidth="108" android:viewportHeight="108">
+    <!-- Original Seoul DS mark: two display tiles and a coral status light. -->
+    <path android:fillColor="#F1F5F9" android:pathData="M31,25L77,25Q82,25 82,30L82,47Q82,52 77,52L31,52Q26,52 26,47L26,30Q26,25 31,25Z" />
+    <path android:fillColor="#2DD4BF" android:pathData="M31,57L77,57Q82,57 82,62L82,79Q82,84 77,84L31,84Q26,84 26,79L26,62Q26,57 31,57Z" />
+    <path android:fillColor="#0F172A" android:pathData="M35,34L73,34L73,43L35,43Z M35,66L73,66L73,75L35,75Z" />
+    <path android:fillColor="#FB7185" android:pathData="M78,17a5,5 0,1 0,0 10a5,5 0,1 0,0 -10" />
+</vector>

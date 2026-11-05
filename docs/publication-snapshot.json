@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "layout": "flat-vendored",
+  "original_source_commit": "981a07d7ffcb8efc3b666021f4fcc58017447488",
+  "original_source_archive_sha256": "d564b63d2a4cf4c0fb1529fb45473ab2001fbf71412b47e95b3535341628efd7",
+  "original_manifest_sha256": "90a5da0d003579256a6327160b025ccc6b00b7db2c01f87392f74415fcde3562",
+  "original_manifest": "docs/original-source-manifest.json"
+}

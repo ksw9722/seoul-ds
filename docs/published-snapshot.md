@@ -1,0 +1,11 @@
+# Published source snapshot
+
+This repository starts a new, flat Git history from the recovered full corresponding source. No upstream or private development Git history is included. The source commit identifier of the original development archive is `981a07d7ffcb8efc3b666021f4fcc58017447488`; it is provenance, not the initial commit ID of this public repository.
+
+The original source archive SHA-256 is `d564b63d2a4cf4c0fb1529fb45473ab2001fbf71412b47e95b3535341628efd7`. This checksum identifies the original archive, not a newly generated public source package. Its 3,103-file inventory is retained unchanged in `original-source-manifest.json`, with machine-readable identity in `publication-snapshot.json`.
+
+All recursively expanded submodules are tracked as ordinary files. Their original commit IDs and upstream identity remain in `upstream-lock.json`. Some reviewed development module commits are not available from upstream remotes, so a recursive submodule fetch would not reproduce this snapshot. The retained `.gitmodules` files document original URLs only; there are no Git gitlinks. A normal clone or GitHub source archive contains the vendored source. Do not run a submodule update to recover it.
+
+The source audit verifies the exact vendored inventory and hashes against the original manifest, alongside unchanged license, prohibited-asset, secret and build-policy checks. Changes for publication are limited to packaging/audit support, tests, workflow checkout configuration and publication documentation. GPL licenses, copyright notices and native source remain intact. Packaged archives get a fresh full-file inventory. New changes to vendored code require an explicit, reviewed provenance update; changing or deleting vendored files will fail the audit.
+
+The restored original source had earlier recorded Android build and unit-test evidence, described in `testing/verification-status.md`. Those records are historical evidence for the original development source, not a claim that this new public Git commit has already run Android CI. Publication validation reruns the offline static harness and packaging checks. Android CI remains gated by explicit SDK/NDK license consent. Galaxy S24 runtime, commercial-game compatibility and device save stability have **not** been tested. No APK release or device-test success is implied by publishing source.

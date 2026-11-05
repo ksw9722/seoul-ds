@@ -1,0 +1,23 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.cxx
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.kotlin
+# Local toolchains, build evidence and signing material must never be published.
+**/build/
+/artifacts/
+*.jks
+*.keystore
+*.p12
+*.pem
+.env
+.env.*
+
+# Python harness caches
+__pycache__/
+*.py[cod]

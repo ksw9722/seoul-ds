@@ -1,0 +1,6 @@
+collection: Seoul DS
+extension: nds, zip, 7z, dsi
+launch: am start
+  -n io.github.seoulds.emulator/me.magnum.melonds.ui.emulator.EmulatorActivity
+  -d {file.uri}
+  --grant-read-uri-permission

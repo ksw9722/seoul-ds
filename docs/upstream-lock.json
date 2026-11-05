@@ -1,0 +1,24 @@
+{
+  "format": 1,
+  "upstream": {
+    "repository": "https://github.com/rafaelvcaetano/melonDS-android.git",
+    "tag": "2.0.1",
+    "commit": "5ec3648d68382dea9c17d6fbf02544e5c2c0afed",
+    "license": "GPL-3.0"
+  },
+  "submodules": {
+    "melonDS-android-lib": "654270ec019d7311366c5efc09bb1359e8c6223e",
+    "melonDS-android-lib/src/android/faad2": "2653c918d788c5dc83826c97aaa4de4dd8931a8b",
+    "melonDS-android-lib/src/android/oboe": "a81bb9f87d4105b84b682685d3bfbb5beca371d1"
+  },
+  "build": {
+    "jdk": 21,
+    "gradle": "9.1.0",
+    "compileSdk": 36,
+    "targetSdk": 36,
+    "minSdk": 24,
+    "ndk": "28.0.13004108",
+    "cmake": "3.22.1",
+    "primaryAbi": "arm64-v8a"
+  }
+}

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="ok">확인</string>
+    <string name="yes">예</string>
+    <string name="no">아니요</string>
+    <string name="on">켜짐</string>
+    <string name="off">꺼짐</string>
+    <string name="cancel">취소</string>
+    <!-- The upstream app already owns this name; keep its Korean preference summary intentional. -->
+    <string name="not_set" tools:override="true">설정 안 됨</string>
+    <string name="delete">삭제</string>
+    <string name="edit">편집</string>
+    <string name="clear">지우기</string>
+    <string name="none">없음</string>
+    <string name="options">옵션</string>
+    <string name="preview">미리 보기</string>
+    <string name="undo">실행 취소</string>
+    <string name="update">업데이트</string>
+    <string name="close">닫기</string>
+    <string name="play">실행</string>
+    <string name="save">저장</string>
+    <string name="navigate_back">뒤로</string>
+    <string name="error_rom_not_found">게임 파일을 찾을 수 없습니다</string>
+    <string name="error_rom_not_found_info">선택한 게임 파일에 접근할 수 없습니다. ROM 검색 폴더와 접근 권한을 확인해 주세요.\n%1$s</string>
+    <string name="error_load_rom">게임을 불러올 수 없습니다</string>
+    <string name="error_load_rom_message">게임 파일을 불러오는 중 문제가 발생했습니다. 합법적으로 보유한 파일이 손상되지 않았는지 확인해 주세요.</string>
+    <string name="action_search_roms">게임 검색</string>
+    <string name="action_sort_roms">정렬</string>
+    <string name="action_boot_firmware">펌웨어 시작</string>
+    <string name="action_refresh_rom_list">게임 목록 새로고침</string>
+    <string name="hint_search_roms">게임 검색…</string>
+    <string name="title_emulator_running">에뮬레이터 실행 중</string>
+    <string name="message_stop_emulation">현재 게임을 종료하고 다른 게임을 불러올까요?</string>
+    <string name="info_fps">FPS: %1$d</string>
+    <string name="info_play_time_hours_minutes">플레이 시간: %1$d시간 %2$d분</string>
+    <string name="info_play_time_minutes">플레이 시간: %1$d분</string>
+    <string name="info_loading">불러오는 중…</string>
+    <string name="failed_save_state">상태 저장에 실패했습니다. 저장 폴더 권한과 여유 공간을 확인해 주세요.</string>
+    <string name="failed_load_state">상태 불러오기에 실패했습니다.</string>
+    <string name="cant_load_empty_slot">비어 있는 슬롯은 불러올 수 없습니다.</string>
+    <string name="failed_reset_emulation">에뮬레이터 초기화에 실패했습니다.</string>
+    <string name="seoul_manual_updates_title">Seoul DS 업데이트</string>
+    <string name="seoul_manual_updates_summary">수동 설치만 지원합니다. 이 앱은 원본 melonDS 앱을 업데이트로 다운로드하거나 설치하지 않습니다. 업데이트 전 게임 세이브를 백업해 주세요.</string>
+</resources>

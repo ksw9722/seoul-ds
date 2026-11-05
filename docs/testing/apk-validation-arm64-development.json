@@ -1,0 +1,107 @@
+{
+  "status": "PASS",
+  "apk": "app-gitHub-prod-debug.apk",
+  "abi": "arm64-v8a",
+  "scope": "Package validation only; no installation or emulation performed",
+  "native_libraries": [
+    "lib/arm64-v8a/libandroidx.graphics.path.so",
+    "lib/arm64-v8a/libimage_processing_util_jni.so",
+    "lib/arm64-v8a/libmelonDS-android-frontend.so",
+    "lib/arm64-v8a/libmelonDS-lib.so",
+    "lib/arm64-v8a/libsurface_util_jni.so"
+  ],
+  "elf_load_alignment": {
+    "lib/arm64-v8a/libandroidx.graphics.path.so": [
+      {
+        "index": 1,
+        "alignment": 16384,
+        "required": 16384
+      },
+      {
+        "index": 2,
+        "alignment": 16384,
+        "required": 16384
+      },
+      {
+        "index": 3,
+        "alignment": 16384,
+        "required": 16384
+      }
+    ],
+    "lib/arm64-v8a/libimage_processing_util_jni.so": [
+      {
+        "index": 1,
+        "alignment": 16384,
+        "required": 16384
+      },
+      {
+        "index": 2,
+        "alignment": 16384,
+        "required": 16384
+      },
+      {
+        "index": 3,
+        "alignment": 16384,
+        "required": 16384
+      }
+    ],
+    "lib/arm64-v8a/libmelonDS-android-frontend.so": [
+      {
+        "index": 1,
+        "alignment": 16384,
+        "required": 16384
+      },
+      {
+        "index": 2,
+        "alignment": 16384,
+        "required": 16384
+      },
+      {
+        "index": 3,
+        "alignment": 16384,
+        "required": 16384
+      }
+    ],
+    "lib/arm64-v8a/libmelonDS-lib.so": [
+      {
+        "index": 1,
+        "alignment": 16384,
+        "required": 16384
+      },
+      {
+        "index": 2,
+        "alignment": 16384,
+        "required": 16384
+      },
+      {
+        "index": 3,
+        "alignment": 16384,
+        "required": 16384
+      }
+    ],
+    "lib/arm64-v8a/libsurface_util_jni.so": [
+      {
+        "index": 1,
+        "alignment": 16384,
+        "required": 16384
+      },
+      {
+        "index": 2,
+        "alignment": 16384,
+        "required": 16384
+      }
+    ]
+  },
+  "zip_crc": "PASS",
+  "license_assets": "byte-identical to source",
+  "application_id": "io.github.seoulds.emulator.dev",
+  "min_sdk": "24",
+  "target_sdk": "36",
+  "zip_alignment": "PASS: zipalign -c -P 16 4 (16 KiB native-library page alignment)",
+  "signature": "VERIFIED (development build, not a production signing policy)",
+  "signer_certificate_sha256": [
+    "6251577841479a66dab59841b7ef9b72b69aab9146cdf9cb026d7a4ad52714f3"
+  ],
+  "bytes": 37771807,
+  "sha256": "237613509dd38b6beba752bb8661208faf297f491380ffce444808f2a01448b9"
+}

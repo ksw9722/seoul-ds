@@ -1,0 +1,90 @@
+{
+  "scope": "Automated ARM64 verification only; no Android device, emulator, game or homebrew is launched by this harness",
+  "started_at": "2026-11-01T16:49:28.255114+00:00",
+  "finished_at": "2026-11-01T16:57:14.797527+00:00",
+  "status": "PASS",
+  "upstream_checkout_commit": "5ec3648d68382dea9c17d6fbf02544e5c2c0afed",
+  "worktree_dirty_at_run": true,
+  "source_binding_note": "Implementation passed before final source publication commit; publisher must link final commit and rerun final static checks. This is not a claim that the unchanged upstream commit produced the fork APK.",
+  "counts": {
+    "harness_self_tests": 38,
+    "source_audit_gates": 12,
+    "native_host_cases": 5,
+    "android_jvm_tests": 45,
+    "jvm_failures": 0,
+    "lint_baseline_missing_translation": 372,
+    "lint_warnings": 159
+  },
+  "checks": [
+    {
+      "name": "harness-self-tests",
+      "started_at": "2026-11-01T16:49:28.533392+00:00",
+      "log": "harness-self-tests.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 1.427
+    },
+    {
+      "name": "source-audit",
+      "started_at": "2026-11-01T16:49:29.960913+00:00",
+      "log": "source-audit.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 1.52
+    },
+    {
+      "name": "native-host-tests",
+      "started_at": "2026-11-01T16:49:31.481622+00:00",
+      "log": "native-host-tests.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 2.087
+    },
+    {
+      "name": "jvm-unit-tests",
+      "started_at": "2026-11-01T16:49:33.895769+00:00",
+      "log": "jvm-unit-tests.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 220.332
+    },
+    {
+      "name": "android-lint",
+      "started_at": "2026-11-01T16:53:14.236535+00:00",
+      "log": "android-lint.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 199.655
+    },
+    {
+      "name": "debug-apk",
+      "started_at": "2026-11-01T16:56:33.899472+00:00",
+      "log": "debug-apk.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 39.629
+    },
+    {
+      "name": "apk-validation",
+      "started_at": "2026-11-01T16:57:13.579576+00:00",
+      "log": "apk-validation.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 1.218
+    },
+    {
+      "name": "s24-and-game-runtime",
+      "status": "NOT RUN",
+      "reason": "Requires authorized physical device and lawfully supplied test content; see manual checklist"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "app/build/outputs/apk/gitHubProd/debug/app-gitHub-prod-debug.apk",
+      "bytes": 37771807,
+      "sha256": "237613509dd38b6beba752bb8661208faf297f491380ffce444808f2a01448b9",
+      "kind": "debug-apk",
+      "signing": "development debug key; not production release identity"
+    }
+  ]
+}

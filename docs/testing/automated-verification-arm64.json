@@ -1,0 +1,107 @@
+{
+  "scope": "Automated optimized ARM64 verification only; no Android device, emulator, game or homebrew is launched by this harness",
+  "started_at": "2026-11-01T17:15:02.890395+00:00",
+  "finished_at": "2026-11-01T17:18:57.985558+00:00",
+  "status": "PASS",
+  "upstream_checkout_commit": "5ec3648d68382dea9c17d6fbf02544e5c2c0afed",
+  "worktree_dirty_at_run": true,
+  "source_binding_note": "Implementation passed before final source publication commit; publisher must link final commit and rerun final static checks. This is not a claim that the unchanged upstream commit produced the fork APK.",
+  "optimized_native_requested": true,
+  "counts": {
+    "harness_self_tests": 47,
+    "source_audit_gates": 12,
+    "native_host_distinct_cases": 5,
+    "native_host_profiles": [
+      "-O0",
+      "-O2 -DNDEBUG"
+    ],
+    "android_jvm_tests": 45,
+    "jvm_failures": 0,
+    "lint_baseline_missing_translation": 372,
+    "lint_warnings": 164
+  },
+  "jvm_evidence_note": "The same 45-test JUnit suite passed in the earlier full run; Gradle validated the unchanged test task as UP-TO-DATE in this optimized run. Native optimization does not change JVM test inputs.",
+  "checks": [
+    {
+      "name": "harness-self-tests",
+      "started_at": "2026-11-01T17:15:03.247430+00:00",
+      "log": "harness-self-tests.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 1.48
+    },
+    {
+      "name": "source-audit",
+      "started_at": "2026-11-01T17:15:04.728226+00:00",
+      "log": "source-audit.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 3.499
+    },
+    {
+      "name": "native-host-tests",
+      "started_at": "2026-11-01T17:15:08.228932+00:00",
+      "log": "native-host-tests.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 6.333
+    },
+    {
+      "name": "jvm-unit-tests",
+      "started_at": "2026-11-01T17:15:14.828009+00:00",
+      "log": "jvm-unit-tests.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 27.295
+    },
+    {
+      "name": "android-lint",
+      "started_at": "2026-11-01T17:15:42.124038+00:00",
+      "log": "android-lint.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 157.848
+    },
+    {
+      "name": "debug-apk",
+      "started_at": "2026-11-01T17:18:19.974532+00:00",
+      "log": "debug-apk.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 35.345
+    },
+    {
+      "name": "optimized-native-proof",
+      "started_at": "2026-11-01T17:18:55.397212+00:00",
+      "log": "optimized-native-proof.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 1.419
+    },
+    {
+      "name": "apk-validation",
+      "started_at": "2026-11-01T17:18:56.816825+00:00",
+      "log": "apk-validation.log",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 1.169
+    },
+    {
+      "name": "s24-and-game-runtime",
+      "status": "NOT RUN",
+      "reason": "Requires authorized physical device and lawfully supplied test content; see manual checklist"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "app/build/outputs/apk/gitHubProd/debug/app-gitHub-prod-debug.apk",
+      "bytes": 34137972,
+      "sha256": "7c84fcd709fec40b8a00ccb3115095a49261f46dfcbfa0ee7ca98965c17b57ed",
+      "kind": "debug-apk",
+      "signing": "development debug key; not production release identity"
+    }
+  ],
+  "retained_primary_apk": "artifacts/delivery/seoul-ds-0.1.0-alpha01-arm64-optimized-debug.apk",
+  "provenance": "optimized-native-proof-arm64.json",
+  "package_validation": "apk-validation-arm64.json"
+}

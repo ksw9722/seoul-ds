@@ -1,0 +1,49 @@
+{
+  "recorded_utc_date": "2026-11-01",
+  "scope": "Actual local optimized ARM64 build tooling, not a required identical host or proof of byte-for-byte APK reproducibility",
+  "portable_requirement": {
+    "jdk_major": 21,
+    "ci_jdk_selection": "Temurin 21; patch may resolve differently on a later CI run"
+  },
+  "local_host": {
+    "os": "Linux",
+    "architecture": "x86_64"
+  },
+  "jdk": {
+    "vendor": "Eclipse Adoptium",
+    "distribution": "Temurin",
+    "version": "21.0.13+9-LTS",
+    "java_version_date": "2026-10-20",
+    "image_type": "JDK",
+    "archive": "OpenJDK21U-jdk_x64_linux_hotspot_21.0.13_9.tar.gz",
+    "official_download": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/OpenJDK21U-jdk_x64_linux_hotspot_21.0.13_9.tar.gz",
+    "sha256": "d7f5d5cf865a2902b70ff549b97586a7d3f234e016f041ab447ea740c7d66d1c",
+    "verification": "Installed release file and downloaded archive SHA-256; hash matched official release metadata"
+  },
+  "android_command_line_tools": {
+    "version": "22.0",
+    "archive": "commandlinetools-linux-15859902_latest.zip",
+    "official_download": "https://dl.google.com/android/repository/commandlinetools-linux-15859902_latest.zip",
+    "sha256": "4e4c464f145a7512b57d088ac6c278c03c9eea610886b35a5e0804e74eedf583",
+    "verification": "Installed source.properties and downloaded archive SHA-256"
+  },
+  "android_platform": {
+    "api": 36,
+    "revision": 2,
+    "extension_level": 17,
+    "is_base_sdk": true
+  },
+  "android_build_tools": "36.0.0",
+  "android_ndk": {
+    "revision": "28.0.13004108",
+    "release_name": "r28"
+  },
+  "cmake": "3.22.1",
+  "gradle": {
+    "version": "9.1.0",
+    "official_download": "https://services.gradle.org/distributions/gradle-9.1.0-bin.zip",
+    "sha256": "a17ddd85a26b6a7f5ddb71ff8b05fc5104c0202c6e64782429790c933686c806",
+    "verification": "Pinned Gradle Wrapper distributionSha256Sum"
+  },
+  "privacy_note": "No tool archives, private signing keys, machine-specific home paths, or network credentials are included"
+}

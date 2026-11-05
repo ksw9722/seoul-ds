@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "result": "BLOCKED_BEFORE_APP_INSTALL",
+  "recorded_at_utc": "2026-11-01T17:53:00Z",
+  "scope": "Optional disposable AOSP x86_64 UI/homebrew runtime QA only. This is not a Seoul DS application failure or a Galaxy S24/commercial-game compatibility result.",
+  "environment": {
+    "emulator_version": "37.2.13.0",
+    "emulator_build_id": "16740729",
+    "android_api": 36,
+    "system_image": "system-images;android-36;default;x86_64",
+    "system_image_revision": 2,
+    "abi": "x86_64",
+    "avd": "seoul-api36",
+    "display": "720x1280, density 320",
+    "memory_mib": 3072,
+    "cpu_cores": 2,
+    "acceleration": "software TCG; no /dev/kvm; -no-accel",
+    "gpu": "swiftshader_indirect",
+    "snapshots": "disabled"
+  },
+  "apk": {
+    "path": "artifacts/runtime/seoul-ds-x86_64-optimized-debug.apk",
+    "bytes": 34367349,
+    "sha256": "5931d5aef98df5c087a4f07b8fab99e343963c57da530356010b754916b43f78",
+    "installed": false,
+    "launched": false
+  },
+  "attempts": [
+    {
+      "name": "first",
+      "path": "artifacts/android-ui/20261101T173135Z",
+      "started_at_utc": "2026-11-01T17:31:35Z",
+      "interrupted_at_utc": "2026-11-01T17:40:55Z",
+      "result": "HOST_TOOL_SESSION_INTERRUPTED",
+      "details": "Ctrl-C intended for a foreground boot observation loop terminated the entire interactive exec session. No app was installed/launched. No terminal guest failure was established by this attempt."
+    },
+    {
+      "name": "one_recovery",
+      "path": "artifacts/android-ui/20261101T174221Z-recovery",
+      "shell_created_at_utc": "2026-11-01T17:42:21Z",
+      "emulator_started_at_utc_approx": "2026-11-01T17:43:06Z",
+      "observation_budget_seconds": 900,
+      "stopped_at_utc": "2026-11-01T17:52:16Z",
+      "result": "GUEST_SYSTEM_SERVER_WATCHDOG_BEFORE_BOOT_COMPLETED",
+      "details": "Stopped before the budget after a concrete guest platform fatal failure and restart; no further attempt.",
+      "diagnosis": {
+        "watchdog_reason": "Blocked in handler on main thread (main) for 79s",
+        "stack": "android.net.connectivity.com.android.server.ConnectivityService.systemReadyInternal(ConnectivityService.java:4190)",
+        "event": "WATCHDOG KILLING SYSTEM PROCESS; *** GOODBYE!",
+        "subsequent_failures": [
+          "com.android.permissioncontroller: DeadSystemException",
+          "com.android.systemui: DeadSystemException"
+        ],
+        "zygote_restart_guest_uptime_seconds": 459,
+        "sys_boot_completed": "never observed as 1"
+      },
+      "evidence": [
+        "diagnostic-0488-logcat.txt:163-212",
+        "guest-crash-buffer.txt",
+        "guest-event-buffer.txt",
+        "emulator-boot.log",
+        "boot-observer.log",
+        "boot-screen.png"
+      ],
+      "cleanup": {
+        "adb_emu_kill_exit": 0,
+        "emulator_wait_exit": 139,
+        "note": "Requested shutdown acknowledged, but emulator wait status was nonzero (139); both owned processes were absent afterward and adb had no devices. No claim of clean emulator shutdown.",
+        "owned_processes_absent": true,
+        "adb_devices_empty": true,
+        "adb_server_stopped": true,
+        "interactive_shell_exited": true,
+        "evidence": [
+          "emulator-stop.txt",
+          "owned-processes-after-stop.txt",
+          "adb-after-stop.txt"
+        ]
+      }
+    }
+  ],
+  "checks": {
+    "android_ui_smoke": "NOT RUN",
+    "first_run_back_cancel_rotation": "NOT RUN",
+    "offline_license_ui_load": "NOT RUN",
+    "SAF_folder_grant": "NOT RUN",
+    "original_homebrew_render_AB_save_state": "NOT RUN",
+    "physical_Galaxy_S24": "NOT RUN",
+    "commercial_game_compatibility": "NOT RUN",
+    "original_homebrew_build_header_crc_source_hash_mutation_tests": "PASS (independent format/build checks only)"
+  },
+  "homebrew": {
+    "path": "artifacts/homebrew/seoul-ds-test.nds",
+    "bytes": 131072,
+    "sha256": "19dba2f22ef982c36dc8a6e1a71c7ec10ce4d884865778fef8b0bfb242284d26",
+    "runtime": "NOT RUN"
+  },
+  "source_changes_during_runtime_qa": [],
+  "source_report": {
+    "path": "artifacts/android-ui/runtime-qa-report.json",
+    "sha256": "f12730c761396f933f86bd121f464ba5b8502e1a945bce49dd44e45eeb94ad59"
+  },
+  "raw_evidence_hash_manifest": {
+    "path": "artifacts/android-ui/SHA256SUMS",
+    "sha256": "46153e4f5b2175fb7198d3ded202c283cd36927f2cf4d5809e3064ff6fe7c06a",
+    "files": 30
+  },
+  "test_only_build_validation": {
+    "package": "apk-validation-x86_64-test-only.json",
+    "optimized_native": "optimized-native-proof-x86_64-test-only.json",
+    "status": "PASS",
+    "runtime_status": "NOT RUN",
+    "distribution_note": "QA-only x86_64 artifact, not the recommended ARM64 download"
+  },
+  "root_cause_limit": "The platform watchdog and blocked ConnectivityService stack were observed. Deeper platform root cause was not established; no Seoul DS process was running."
+}

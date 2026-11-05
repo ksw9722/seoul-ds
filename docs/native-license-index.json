@@ -1,0 +1,593 @@
+{
+  "scope": "Verbatim named native license files and distinct inline bundled-component notices",
+  "entries": [
+    {
+      "title": "melonDS Android / Seoul DS",
+      "sources": [
+        "LICENSE"
+      ],
+      "sha256": "1a36b44b54f4fef4b39ea095bb72ef3351e370ba0d732b39c758e39d64b0aaff"
+    },
+    {
+      "title": "melonDS native core (GPL-3.0-or-later in source headers)",
+      "sources": [
+        "melonDS-android-lib/LICENSE"
+      ],
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "title": "FreeBIOS replacement by Gilead Kutnick; not Nintendo BIOS",
+      "sources": [
+        "melonDS-android-lib/freebios/drastic_bios_readme.txt"
+      ],
+      "sha256": "ae30cfa598415a01657dcc7c49d639eb76ab1cf175f2de85457e49d26d25865a"
+    },
+    {
+      "title": "FAAD2 — Code from FAAD2 is copyright (c) Nero AG, www.nero.com; source headers allow GPL-2.0-or-later",
+      "sources": [
+        "melonDS-android-lib/src/android/faad2/COPYING"
+      ],
+      "sha256": "d3baf3a54943cf12a994c85867a18dec84f810901b2f2878ddfd77efcc3c150f"
+    },
+    {
+      "title": "Oboe",
+      "sources": [
+        "melonDS-android-lib/src/android/oboe/LICENSE"
+      ],
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "title": "RetroAchievements rcheevos",
+      "sources": [
+        "melonDS-android-lib/src/android/rcheevos/LICENSE"
+      ],
+      "sha256": "bf820c034966a3b6be050bb85f94ec841a0b972bd5d477e362337d0574b5c219"
+    },
+    {
+      "title": "Teakra",
+      "sources": [
+        "melonDS-android-lib/src/teakra/LICENSE"
+      ],
+      "sha256": "84ac887a2ae105eacfb5aeb1921502ef91e0bd230bb2e6de3e8507f79177adf5"
+    },
+    {
+      "title": "Dolphin-derived code",
+      "sources": [
+        "melonDS-android-lib/src/dolphin/license_dolphin.txt"
+      ],
+      "sha256": "ab15fd526bd8dd18a9e77ebc139656bf4d33e97fc7238cd11bf60e2b9b8666c6"
+    },
+    {
+      "title": "blip_buf",
+      "sources": [
+        "melonDS-android-lib/src/blip-buf/license.txt"
+      ],
+      "sha256": "319daefe38ebeead3df178e5937898a52d67c0c795f54f1c0bb10ac3b9cffb63"
+    },
+    {
+      "title": "FatFs",
+      "sources": [
+        "melonDS-android-lib/src/fatfs/LICENSE.txt"
+      ],
+      "sha256": "b896e32fb2cdb3fc8b3b6fd854706fca4ac55619fbb6d5eb2429cb05ee338966"
+    },
+    {
+      "title": "tiny-AES-c",
+      "sources": [
+        "melonDS-android-lib/src/tiny-AES-c/unlicense.txt"
+      ],
+      "sha256": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c"
+    },
+    {
+      "title": "libslirp",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/COPYRIGHT"
+      ],
+      "sha256": "b28aecf4796a6a22054167f0a976de13d9db335669d37afd2dc7ea4c335e1e13"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/arp_table.c",
+        "melonDS-android-lib/src/net/libslirp/src/bootp.c",
+        "melonDS-android-lib/src/net/libslirp/src/dnssearch.c",
+        "melonDS-android-lib/src/net/libslirp/src/slirp.c",
+        "melonDS-android-lib/src/net/libslirp/src/state.c",
+        "melonDS-android-lib/src/net/libslirp/src/stream.c",
+        "melonDS-android-lib/src/net/libslirp/src/tftp.c",
+        "melonDS-android-lib/src/net/libslirp/src/util.c",
+        "melonDS-android-lib/src/net/libslirp/src/util.h"
+      ],
+      "sha256": "f73e293daa12abe52dd73882816fe4002b4f6e69065892abd57881180fb26bf2"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/arp_table.c"
+      ],
+      "sha256": "d33cb4d3529dca7b3862b087ac765090976206bb5f26c4e4471c75fdfab214b5"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/bootp.c"
+      ],
+      "sha256": "9f91fc9f6b3f862cdc3db510ab0d4ed5cf4ff4eca6ba39a8c5a9d86f054bba61"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/bootp.h",
+        "melonDS-android-lib/src/net/libslirp/src/cksum.c",
+        "melonDS-android-lib/src/net/libslirp/src/debug.h",
+        "melonDS-android-lib/src/net/libslirp/src/dhcpv6.c",
+        "melonDS-android-lib/src/net/libslirp/src/dhcpv6.h",
+        "melonDS-android-lib/src/net/libslirp/src/if.c",
+        "melonDS-android-lib/src/net/libslirp/src/if.h",
+        "melonDS-android-lib/src/net/libslirp/src/ip.h",
+        "melonDS-android-lib/src/net/libslirp/src/ip6.h",
+        "melonDS-android-lib/src/net/libslirp/src/ip6_icmp.c",
+        "melonDS-android-lib/src/net/libslirp/src/ip6_icmp.h",
+        "melonDS-android-lib/src/net/libslirp/src/ip6_input.c",
+        "melonDS-android-lib/src/net/libslirp/src/ip6_output.c",
+        "melonDS-android-lib/src/net/libslirp/src/ip_icmp.c",
+        "melonDS-android-lib/src/net/libslirp/src/ip_icmp.h",
+        "melonDS-android-lib/src/net/libslirp/src/ip_input.c",
+        "melonDS-android-lib/src/net/libslirp/src/ip_output.c",
+        "melonDS-android-lib/src/net/libslirp/src/libslirp.h",
+        "melonDS-android-lib/src/net/libslirp/src/main.h",
+        "melonDS-android-lib/src/net/libslirp/src/mbuf.c",
+        "melonDS-android-lib/src/net/libslirp/src/mbuf.h",
+        "melonDS-android-lib/src/net/libslirp/src/misc.c",
+        "melonDS-android-lib/src/net/libslirp/src/misc.h",
+        "melonDS-android-lib/src/net/libslirp/src/ncsi-pkt.h",
+        "melonDS-android-lib/src/net/libslirp/src/ncsi.c",
+        "melonDS-android-lib/src/net/libslirp/src/ndp_table.c",
+        "melonDS-android-lib/src/net/libslirp/src/sbuf.c",
+        "melonDS-android-lib/src/net/libslirp/src/sbuf.h",
+        "melonDS-android-lib/src/net/libslirp/src/slirp.h",
+        "melonDS-android-lib/src/net/libslirp/src/socket.c",
+        "melonDS-android-lib/src/net/libslirp/src/socket.h",
+        "melonDS-android-lib/src/net/libslirp/src/stream.h",
+        "melonDS-android-lib/src/net/libslirp/src/tcp.h",
+        "melonDS-android-lib/src/net/libslirp/src/tcp_input.c",
+        "melonDS-android-lib/src/net/libslirp/src/tcp_output.c",
+        "melonDS-android-lib/src/net/libslirp/src/tcp_subr.c",
+        "melonDS-android-lib/src/net/libslirp/src/tcp_timer.c",
+        "melonDS-android-lib/src/net/libslirp/src/tcp_timer.h",
+        "melonDS-android-lib/src/net/libslirp/src/tcp_var.h",
+        "melonDS-android-lib/src/net/libslirp/src/tcpip.h",
+        "melonDS-android-lib/src/net/libslirp/src/tftp.h",
+        "melonDS-android-lib/src/net/libslirp/src/udp.c",
+        "melonDS-android-lib/src/net/libslirp/src/udp.h",
+        "melonDS-android-lib/src/net/libslirp/src/udp6.c",
+        "melonDS-android-lib/src/net/libslirp/src/version.c",
+        "melonDS-android-lib/src/net/libslirp/src/vmstate.c",
+        "melonDS-android-lib/src/net/libslirp/src/vmstate.h"
+      ],
+      "sha256": "0fcb32859c23b06988b5bb110e5d26efe7f5547344d71305fbaf282403f7ab3b"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/cksum.c"
+      ],
+      "sha256": "b836bf2a7b516000e2fe57af352aa78bf8f78a42d57bdac328c32a7795ca402c"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/debug.h",
+        "melonDS-android-lib/src/net/libslirp/src/if.c",
+        "melonDS-android-lib/src/net/libslirp/src/if.h",
+        "melonDS-android-lib/src/net/libslirp/src/main.h",
+        "melonDS-android-lib/src/net/libslirp/src/misc.c",
+        "melonDS-android-lib/src/net/libslirp/src/misc.h",
+        "melonDS-android-lib/src/net/libslirp/src/sbuf.c",
+        "melonDS-android-lib/src/net/libslirp/src/sbuf.h",
+        "melonDS-android-lib/src/net/libslirp/src/socket.c",
+        "melonDS-android-lib/src/net/libslirp/src/socket.h"
+      ],
+      "sha256": "be3c1d83df0ab39ace4dec0731e4afa1c837079a62b94cb7eaeee85429da8ff6"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/dhcpv6.c"
+      ],
+      "sha256": "467a29b30c0bc3b78389d7b631057b1945200099c9aa7eb3369ac9053ed55109"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/dhcpv6.h"
+      ],
+      "sha256": "f7582e235067616d06916a7f310a365b91ba11c02b9be8f2607ced83ecd64091"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/dnssearch.c"
+      ],
+      "sha256": "b9af015c5477924aafcc624ef8b265182db0aab829dbd46d871286de93b27de1"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/ip.h"
+      ],
+      "sha256": "ecc6b43924a817c5b1a99a52e90e953b91a297d720b186fe765ef3a7dcac292b"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/ip6.h",
+        "melonDS-android-lib/src/net/libslirp/src/ip6_icmp.c",
+        "melonDS-android-lib/src/net/libslirp/src/ip6_icmp.h",
+        "melonDS-android-lib/src/net/libslirp/src/ip6_input.c",
+        "melonDS-android-lib/src/net/libslirp/src/ip6_output.c",
+        "melonDS-android-lib/src/net/libslirp/src/ndp_table.c"
+      ],
+      "sha256": "7493c9bf838b22231e7c7f0e7705b20e31bcb127fbdae7b6427d71c4634553a4"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/ip_icmp.c"
+      ],
+      "sha256": "8bfc7a86841b223e170a242895dbfbac32fee8b1cee78ddd69f197c5ce90ec4b"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/ip_icmp.h"
+      ],
+      "sha256": "ce4a78cc65f5b3d0313971c85af446a70e5b1855f3acdd60b927095860499b21"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/ip_input.c"
+      ],
+      "sha256": "8e732ce38350a60adb7911b5f0c9db70adc56e71228116b43fd175c312304dd4"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/ip_input.c",
+        "melonDS-android-lib/src/net/libslirp/src/ip_output.c"
+      ],
+      "sha256": "4e844df6d0619751c53566977fb10d90fb78d6771b4bc2b417c483ac51496c1b"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/ip_output.c"
+      ],
+      "sha256": "52dd4bd021f39c84a5e596a8e1eb81876902162c9bf480b665c361cdf1699da3"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/mbuf.c"
+      ],
+      "sha256": "2f11fedd2e8a1aa7bafe0fd80b210438c5069699a95c5838d4256dda03192347"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/mbuf.h"
+      ],
+      "sha256": "5c21734d5d2036c030c87b926e581a57f5b228a0eb57e7bbd6cefdb48a909d64"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/ncsi-pkt.h"
+      ],
+      "sha256": "757b3a3e36e70036f38a0bcf3596b89fc934327dc69a53e3ef0a343d7d35daa5"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/ncsi.c"
+      ],
+      "sha256": "a8b368048d63e8815cf40c83caafe1cb8171ec19be034209d2d0465c7b214af1"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/slirp.c"
+      ],
+      "sha256": "49230afc01fd23cb0a21f5b699efadea7d5fae54406f6fc6423e170e01dbe243"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/state.c"
+      ],
+      "sha256": "d2ff95a843e92bd3ca9007f8ca7b78ce74bf3cbe707d860b24149b763f962cfc"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/stream.c"
+      ],
+      "sha256": "eb6812af50709f895560ec193443ad5dff43a2ea88527809aceb163ffe44b96d"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/tcp.h"
+      ],
+      "sha256": "7d370e0b99ee927a002806443741ac0401541e4dfde36c881d86adb8ffb8914a"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/tcp_input.c"
+      ],
+      "sha256": "3d150fe5db629f34c795b20398bc5810917f0e6bb9dfac88b60479e63587bcf6"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/tcp_input.c",
+        "melonDS-android-lib/src/net/libslirp/src/tcp_output.c",
+        "melonDS-android-lib/src/net/libslirp/src/tcp_subr.c"
+      ],
+      "sha256": "d05a91552ac634d19f8c203cb03b7ed8fb0a9dd2927bd385979fe297bbb4adde"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/tcp_output.c"
+      ],
+      "sha256": "c18beae75ea7a3e58491a77b1fded6778094ae743dffe6851af97fbb40493fd5"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/tcp_subr.c"
+      ],
+      "sha256": "331ee656c94267122b46025260e4f3aaca65315a8ecceae6eb287e47e5ed5a4c"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/tcp_timer.c"
+      ],
+      "sha256": "473a4ef6cb8fab8b0b3505d61061ac7d72f4d0fd6ae295392a543f64f8bd3eb1"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/tcp_timer.h"
+      ],
+      "sha256": "74b384c447016242ed9f46c0fa118b1ea5cff78e771726853808c0d97380c742"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/tcp_var.h"
+      ],
+      "sha256": "a79500343ff2272a781667ea4aa53ec79b8e37607e90f534482ea5a97a942be7"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/tcpip.h"
+      ],
+      "sha256": "2e8020df15e86719009b6d0ed66cb0268619e5127d84f9df706f5cf95149cde1"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/tftp.c"
+      ],
+      "sha256": "7266e122579ecc03e9352411adf5c21a9fb08a67df76e5957ffe3562afe23964"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/udp.c"
+      ],
+      "sha256": "fc04c6b5d37ca16e8c8be6bcb47121168ec2e5a75344e9aff25cc7a7a4d26433"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/udp.c"
+      ],
+      "sha256": "fe97578b2d5dac20f2be656cf4618ba88f9df0d179d7c80aa5b15f34e43ab726"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/udp.h"
+      ],
+      "sha256": "54131bfe0d302f7c71921b33eb8368e9ec5a98df86255883f4b6a6be26a1bd25"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/udp6.c"
+      ],
+      "sha256": "64c5838f17c4cf467f970cc957e50eb2f412bc51ff121a38f1138c505a7b707f"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/util.c"
+      ],
+      "sha256": "62a03d01e3d2c1cb2004c7ef6a4baef28cabd5d47e589e8a9fe83955362814ea"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/util.h"
+      ],
+      "sha256": "ab4ddc7d6a38b407921c20a065f49016b51275757ac331c7be09184032c18866"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/vmstate.c"
+      ],
+      "sha256": "b66466d855bea2c4b475dc0c10c2604fd9a28ad1f14fb658856844d4abf787de"
+    },
+    {
+      "title": "libslirp individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/libslirp/src/vmstate.h"
+      ],
+      "sha256": "c477dfba868f1296cc65ea80071335e93644efff31bde6df6f84042adc96125f"
+    },
+    {
+      "title": "xxHash individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/xxhash/xxh3.h"
+      ],
+      "sha256": "18a679851d1665149b4aa073311a9ed765ba6494d36f568bab6e3a21323de56a"
+    },
+    {
+      "title": "xxHash individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/xxhash/xxhash.c"
+      ],
+      "sha256": "7f76b7373aee6defa107e0c892555455e9fd2b7e5b8b7f5c9b69d6ec1ee34ad5"
+    },
+    {
+      "title": "xxHash individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/xxhash/xxhash.h"
+      ],
+      "sha256": "64ff347a61e8f111098afc7d01b15b09ec1029bbe180953e538f9f18854f145c"
+    },
+    {
+      "title": "SHA-1 by Steve Reid individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/sha1/sha1.c"
+      ],
+      "sha256": "46fc0c6d8b1e82892861b8093beb214f1531d5367d6d6ebbee0b16a9ecc37daa"
+    },
+    {
+      "title": "SHA-1 by Steve Reid individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/sha1/sha1.h"
+      ],
+      "sha256": "ac028f51d92b79b629da0445bf1fedb133c53729e8d261a7641453a0c2c80cbf"
+    },
+    {
+      "title": "Included libpcap headers (dynamic library itself not bundled) individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/pcap/bluetooth.h"
+      ],
+      "sha256": "b8cfdaa30d578d0f8de86211e769cee0c62afa66d78b336842eb0cf971c29a4d"
+    },
+    {
+      "title": "Included libpcap headers (dynamic library itself not bundled) individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/pcap/bpf.h",
+        "melonDS-android-lib/src/net/pcap/dlt.h"
+      ],
+      "sha256": "acd47492cbfdcecb0f8ee0a58a9d94208c9a9332d1bcb4c3dac205323cc0362e"
+    },
+    {
+      "title": "Included libpcap headers (dynamic library itself not bundled) individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/pcap/can_socketcan.h",
+        "melonDS-android-lib/src/net/pcap/ipnet.h",
+        "melonDS-android-lib/src/net/pcap/sll.h"
+      ],
+      "sha256": "2b676d3c3f5c626f0b9951f0d7bd32b9dbac2010dd2e638cd9c2751a09593945"
+    },
+    {
+      "title": "Included libpcap headers (dynamic library itself not bundled) individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/pcap/compiler-tests.h",
+        "melonDS-android-lib/src/net/pcap/funcattrs.h",
+        "melonDS-android-lib/src/net/pcap/pcap.h"
+      ],
+      "sha256": "b45c74f450f99fa23bbb2d3f71c0ca437e15ddf24a016cd0905a0270932759b7"
+    },
+    {
+      "title": "Included libpcap headers (dynamic library itself not bundled) individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/pcap/namedb.h"
+      ],
+      "sha256": "9b663fd860b23a6c0afed42038b5774c8d628d1fc1322c5d2d2f34ab788eec0a"
+    },
+    {
+      "title": "Included libpcap headers (dynamic library itself not bundled) individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/pcap/nflog.h"
+      ],
+      "sha256": "70d7de0568a1bb8cbc239b4c0303e3fd8594878c3dbcdedc15eb464fcc1a9b96"
+    },
+    {
+      "title": "Included libpcap headers (dynamic library itself not bundled) individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/pcap/pcap-inttypes.h"
+      ],
+      "sha256": "ba642279b3f4042c07dbb509e0b88b8cd7e1d1d82519fdbc523b0755635c79ad"
+    },
+    {
+      "title": "Included libpcap headers (dynamic library itself not bundled) individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/pcap/pcap.h"
+      ],
+      "sha256": "b5ee0bd3d6f0dda1c58f00974a29778082ef4ac8b18dd3942a24024bc8bc2907"
+    },
+    {
+      "title": "Included libpcap headers (dynamic library itself not bundled) individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/pcap/usb.h"
+      ],
+      "sha256": "712b2d69ee73bd474e97d9997bb45a1f7a17775ccbf42e33baa7a4ea538ab802"
+    },
+    {
+      "title": "Included libpcap headers (dynamic library itself not bundled) individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/net/pcap/vlan.h"
+      ],
+      "sha256": "555d1fe9a90ecc28976dcb1c944e1a72200af58fb3fb47245e7ef0563ea37008"
+    },
+    {
+      "title": "rcheevos bundled hash implementation individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/android/rcheevos/src/rhash/aes.c",
+        "melonDS-android-lib/src/android/rcheevos/src/rhash/aes.h"
+      ],
+      "sha256": "8245fa7dc15c20b28472f24d8cfe6a0aac6af16680be6abe3bbe108c890407c9"
+    },
+    {
+      "title": "rcheevos bundled hash implementation individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/android/rcheevos/src/rhash/md5.c"
+      ],
+      "sha256": "6e7b87ee66e6232781cba51b420194dbb72dbcd4594957722947da2945f78a6d"
+    },
+    {
+      "title": "rcheevos bundled hash implementation individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/android/rcheevos/src/rhash/md5.c"
+      ],
+      "sha256": "0840867631ea1516c8a6f813d0e518d5420da9c9457358406ed9b6e5e047ae52"
+    },
+    {
+      "title": "rcheevos bundled hash implementation individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/android/rcheevos/src/rhash/md5.h"
+      ],
+      "sha256": "b6b077e7fe551c1af0dab303db0e5ad3486a23888a838a01d24f0370f42470e1"
+    },
+    {
+      "title": "rcheevos bundled hash implementation individual source notice",
+      "sources": [
+        "melonDS-android-lib/src/android/rcheevos/src/rhash/md5.h"
+      ],
+      "sha256": "9758b9911fa2073fcccafac8aa1c47bd866712969a6ddfd6d68c193b622a49ae"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+name: Seoul DS verification
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Offline source and harness checks
+        run: python3 scripts/harness.py --mode static
+      - name: Retain evidence (including failures)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: source-evidence-${{ github.sha }}
+          path: artifacts/harness/
+          retention-days: 14
+          if-no-files-found: warn
+
+  android:
+    needs: source
+    # Repository maintainer must explicitly record agreement to SDK/NDK terms.
+    # This also keeps untrusted fork PRs from performing SDK installation.
+    if: vars.ANDROID_SDK_LICENSE_ACCEPTED == 'true' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    env:
+      ANDROID_SDK_LICENSE_ACCEPTED: 'true'
+      ANDROID_USER_HOME: ${{ github.workspace }}/../android-user-home
+      GRADLE_USER_HOME: ${{ github.workspace }}/../gradle-user-home
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        with:
+          java-version: '21'
+          distribution: temurin
+      - name: Install pinned Android components after recorded consent
+        shell: bash
+        run: |
+          test "$ANDROID_SDK_LICENSE_ACCEPTED" = true
+          test -n "$ANDROID_HOME"
+          mkdir -p "$ANDROID_USER_HOME"
+          SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          test -x "$SDKMANAGER"
+          # Explicit repository-variable consent above authorizes these terms.
+          # Bounded input avoids an infinite yes process under pipefail.
+          python3 -c 'print("y\n" * 40)' | "$SDKMANAGER" --install "platforms;android-36" "build-tools;36.0.0" "ndk;28.0.13004108" "cmake;3.22.1"
+      - name: Unit tests, lint and ARM64 debug APK
+        run: python3 scripts/harness.py --mode android --abi arm64-v8a --optimized-native --timeout 3000
+      - name: Retain development APK and verification evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: android-development-${{ github.sha }}
+          path: |
+            artifacts/harness/
+            app/build/outputs/apk/gitHubProd/debug/*.apk
+            app/build/reports/tests/
+            app/build/reports/lint-results-*.html
+            app/build/reports/lint-results-*.xml
+          retention-days: 14
+          if-no-files-found: warn

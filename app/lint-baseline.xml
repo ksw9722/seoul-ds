@@ -1,0 +1,1120 @@
+<?xml version='1.0' encoding='utf-8'?>
+<issues format="6" by="lint 9.0.0" type="baseline" client="gradle" dependencies="false" name="AGP (9.0.0)" variant="all" version="9.0.0">
+    <!--Reviewed translation debt only: 195 Korean-only, 170 Korean + existing locales, 7 existing locales only. See docs/testing/lint-debt.md.-->
+    <issue id="MissingTranslation" message="&quot;clear&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;clear&quot;&gt;Clear&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="13" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;play&quot; is not translated in &quot;pt&quot; (Portuguese)" errorLine1="    &lt;string name=&quot;play&quot;&gt;Play&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="20" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;save&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;save&quot;&gt;Save&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="21" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;ellipsis&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;ellipsis&quot;&gt;…&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="22" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;navigate_back&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;navigate_back&quot;&gt;Back&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="23" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;version_alpha&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;version_alpha&quot;&gt;Alpha&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="25" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;version_beta&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;version_beta&quot;&gt;Beta&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="26" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;version_nightly&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;version_nightly&quot;&gt;Nightly&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="27" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;console_ds&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;console_ds&quot;&gt;DS&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="29" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;console_dsi&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;console_dsi&quot;&gt;DSi (Experimental)&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="30" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;console_ds_full&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;console_ds_full&quot;&gt;Nintendo DS&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="32" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;console_dsi_full&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;console_dsi_full&quot;&gt;Nintendo DSi&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="33" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;size_bytes&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;size_bytes&quot;&gt;B&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="35" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;size_kb&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;size_kb&quot;&gt;KB&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="36" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;size_mb&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;size_mb&quot;&gt;MB&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="37" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;size_gb&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;size_gb&quot;&gt;GB&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="38" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;error_load_rom_message&quot; is not translated in &quot;pt&quot; (Portuguese)" errorLine1="    &lt;string name=&quot;error_load_rom_message&quot;&gt;There was a problem loading the ROM. Make sure it\'s not corrupted and try again.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="43" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;error_load_firmware&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;error_load_firmware&quot;&gt;Could not load the firmware&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="44" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;error_load_firmware_message&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;error_load_firmware_message&quot;&gt;There was a problem loading the firmware (%1$s). Make sure the BIOS and firmware dump is not corrupted, that the firmware is bootable and try again.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="45" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;error_load_rom_report_issue&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;error_load_rom_report_issue&quot;&gt;An error log was generated that can help fix this problem. Do you want to open an issue on GitHub with this log? You will need a GitHub account.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="46" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;error_load_gba_rom&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;error_load_gba_rom&quot;&gt;Could not load GBA ROM&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="49" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;update_available&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;update_available&quot;&gt;Update available: %1$s&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="55" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;nightly_update_available&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;nightly_update_available&quot;&gt;Nightly update available&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="56" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;nightly_update_available_message&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;nightly_update_available_message&quot;&gt;Do you want to download it now?&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="57" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;skip_update&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;skip_update&quot;&gt;Skip&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="58" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;remind_later_update&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;remind_later_update&quot;&gt;Later&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="59" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;downloading_update&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;downloading_update&quot;&gt;Downloading update…&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="60" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;starting_download&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;starting_download&quot;&gt;Starting download…&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="61" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;download_progress_sizes&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;download_progress_sizes&quot;&gt;%1$.1fMB/%2$.1fMB&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="62" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;update_download_failed&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;update_download_failed&quot;&gt;Failed to download update&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="63" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_manager&quot;&gt;DSiWare Manager&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="65" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;no_dsiware_titles_installed&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;no_dsiware_titles_installed&quot;&gt;You don\'t have any DSiWare title installed&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="66" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_no_dsi_setup&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_manager_no_dsi_setup&quot;&gt;You haven\'t setup the DSi system&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="67" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_invalid_dsi_setup&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_manager_invalid_dsi_setup&quot;&gt;Your DSi system setup is invalid&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="68" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;import_dsiware_title&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;import_dsiware_title&quot;&gt;Import DSiWare title&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="69" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_setup&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_manager_setup&quot;&gt;Setup&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="70" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_fix_setup&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_manager_fix_setup&quot;&gt;Fix setup&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="71" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_load_error&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_manager_load_error&quot;&gt;There was a problem listing your DSiWare titles. Please check your DSi setup&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="72" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_import_title_error_open_nand_failed&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_manager_import_title_error_open_nand_failed&quot;&gt;The NAND could not be opened&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="73" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_import_title_error_open_file_failed&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_manager_import_title_error_open_file_failed&quot;&gt;Error opening selected file&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="74" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_import_title_error_not_dsiware_title&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_manager_import_title_error_not_dsiware_title&quot;&gt;Not a DSiWare title&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="75" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_import_title_error_title_already_imported&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_manager_import_title_error_title_already_imported&quot;&gt;DSiWare title already imported&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="76" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_import_title_error_insatll_failed&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_manager_import_title_error_insatll_failed&quot;&gt;Failed to install title&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="77" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_import_title_error_metadat_fetch_failed&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_manager_import_title_error_metadat_fetch_failed&quot;&gt;Failed to download title metadata. Check your internet connection&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="78" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_import_title_error_unknown&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_manager_import_title_error_unknown&quot;&gt;An unknown error occurred&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="79" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_import_data&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;dsiware_manager_import_data&quot;&gt;Import data…&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="80" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_export_data&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;dsiware_manager_export_data&quot;&gt;Export data…&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="81" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_import_file_success&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;dsiware_manager_import_file_success&quot;&gt;%1$s imported successfully&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="82" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_import_file_error&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;dsiware_manager_import_file_error&quot;&gt;Failed to import file&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="83" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_export_file_success&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;dsiware_manager_export_file_success&quot;&gt;%1$s exported successfully&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="84" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_manager_export_file_error&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;dsiware_manager_export_file_error&quot;&gt;Failed to export file&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="85" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_import_from_file&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_import_from_file&quot;&gt;From file&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="86" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsiware_import_from_rom_list&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsiware_import_from_rom_list&quot;&gt;From ROM list&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="87" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;select_dsiware_title&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;select_dsiware_title&quot;&gt;Select DSiWare title&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="89" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;no_dsiware_roms_found&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;no_dsiware_roms_found&quot;&gt;No DSiWare ROMs found&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="90" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;info_play_time_hours_minutes&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;info_play_time_hours_minutes&quot;&gt;Play time: %1$dh %2$dm&lt;/string&gt; &lt;!-- Ex: 4h 28m --&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="93" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;info_play_time_minutes&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;info_play_time_minutes&quot;&gt;Play time: %1$dm&lt;/string&gt; &lt;!-- Ex: 28m --&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="94" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;save_state_slot&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;save_state_slot&quot;&gt;%1$s.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="96" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;save_states_not_supported&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;save_states_not_supported&quot;&gt;Save states are not supported while running the firmware&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="101" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;save_states_unavailable_ra_hardcore_enabled&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;save_states_unavailable_ra_hardcore_enabled&quot;&gt;Save states are unavailable while Hardcore mode is enabled&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="102" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rewind_time_seconds&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rewind_time_seconds&quot;&gt;%1$ss&lt;/string&gt; &lt;!-- Ex: 43.56s --&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="103" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rewind_time_minutes_seconds&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rewind_time_minutes_seconds&quot;&gt;%1$dm%2$ss&lt;/string&gt; &lt;!-- Ex: 2m37.93s --&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="104" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rewind_not_enabled&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rewind_not_enabled&quot;&gt;Rewind is not enabled&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="105" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rewind_unavailable_ra_hardcore_enabled&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rewind_unavailable_ra_hardcore_enabled&quot;&gt;Rewind is unavailable while Hardcore mode is enabled&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="106" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;no_image_selected&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;no_image_selected&quot;&gt;No image selected&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="107" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;failed_to_load_image&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;failed_to_load_image&quot;&gt;Failed to load image&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="108" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;emulator_stop_gba_mode_unsupported&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;emulator_stop_gba_mode_unsupported&quot;&gt;GBA mode is not supported&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="109" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;emulator_stop_internal_error&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;emulator_stop_internal_error&quot;&gt;An error was encountered during the ROM\'s execution&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="110" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;action_sort_alphabetically&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;action_sort_alphabetically&quot;&gt;Alphabetically&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="112" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;action_sort_recently_played&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;action_sort_recently_played&quot;&gt;Recently played&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="113" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;ds_bios_dir_not_set&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;ds_bios_dir_not_set&quot;&gt;DS BIOS directory not set&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="115" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;ds_bios_dir_not_set_info&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;ds_bios_dir_not_set_info&quot;&gt;DS BIOS directory is not set. Select the directory that contains the following files:\n&amp;#8226; bios7.bin\n&amp;#8226; bios9.bin\n&amp;#8226; firmware.bin&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="116" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsi_bios_dir_not_set&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsi_bios_dir_not_set&quot;&gt;DSi BIOS directory not set&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="117" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsi_bios_dir_not_set_info&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsi_bios_dir_not_set_info&quot;&gt;DSi BIOS directory is not set. Select the directory that contains the following files:\n&amp;#8226; bios7.bin\n&amp;#8226; bios9.bin\n&amp;#8226; firmware.bin\n&amp;#8226; nand.bin&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="118" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;incorrect_bios_dir&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;incorrect_bios_dir&quot;&gt;Incorrect BIOS directory&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="119" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;ds_incorrect_bios_dir_info&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;ds_incorrect_bios_dir_info&quot;&gt;The BIOS directory for the DS system is not correct. Make sure that the selected directory contains the following files:\n&amp;#8226; bios7.bin\n&amp;#8226; bios9.bin\n&amp;#8226; firmware.bin&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="120" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsi_incorrect_bios_dir_info&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsi_incorrect_bios_dir_info&quot;&gt;The BIOS directory for the DSi system is not correct. Make sure that the selected directory that contains the following files:\n&amp;#8226; bios7.bin\n&amp;#8226; bios9.bin\n&amp;#8226; firmware.bin\n&amp;#8226; nand.bin&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="121" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;storage_permission_required&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;storage_permission_required&quot;&gt;Storage permission required&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="122" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;storage_permission_required_info&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;storage_permission_required_info&quot;&gt;Storage permission is required to load ROMs from your device. Please grant access to storage on the next dialog.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="123" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;microphone_permission_required&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;microphone_permission_required&quot;&gt;Audio recording permission required&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="124" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;microphone_permission_required_info&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;microphone_permission_required_info&quot;&gt;Audio recording permission is required to send microphone data to the emulator. Please grant microphone access permission on the next dialog.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="125" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;system_file_picker_not_found&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;system_file_picker_not_found&quot;&gt;Your device does not have a file picker. Without one, this emulator will not work&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="126" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;system_file_picker_not_enabled&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;system_file_picker_not_enabled&quot;&gt;Your device\'s file picker is disabled. Please enable it&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="127" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;file_picker_settings&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;file_picker_settings&quot;&gt;File picker settings&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="128" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;no_rom_search_directory_specified&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;no_rom_search_directory_specified&quot;&gt;No ROM search directory specified&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="129" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;set_rom_directory&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;set_rom_directory&quot;&gt;Set ROM directory&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="130" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;error_invalid_directory&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;error_invalid_directory&quot;&gt;Invalid directory&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="131" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;error_invalid_directory_description&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;error_invalid_directory_description&quot;&gt;It\'s not possible to write to the selected directory. Please select a different one. If you are selecting a compressed file, try extracting its contents.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="132" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;no_roms_found&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;no_roms_found&quot;&gt;No ROMs found&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="133" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rom_launch_failed&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;rom_launch_failed&quot;&gt;Failed to launch ROM&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="134" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rom_launch_custom_bios_firmware_bad_setup&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;rom_launch_custom_bios_firmware_bad_setup&quot;&gt;This ROM is set to run using a custom BIOS and firmware, but it\'s not properly configured.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="135" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;firmware_launch_failed&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;firmware_launch_failed&quot;&gt;Failed to launch the firmware&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="136" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;firmware_launch_bad_setup&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;firmware_launch_bad_setup&quot;&gt;To launch this firmware, a custom BIOS and firmware is required, but it\'s not properly configured.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="137" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;failed_launch_dsiware_title&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;failed_launch_dsiware_title&quot;&gt;Failed to launch DSiWare title&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="138" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;failed_launch_dsiware_title_check_failed&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;failed_launch_dsiware_title_check_failed&quot;&gt;Could not verify if the DSiWare title is installed. Check the DSiWare Manager for more information.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="139" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;failed_launch_dsiware_title_rom_failed&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;failed_launch_dsiware_title_rom_failed&quot;&gt;Could not parse the ROM file. Check if the ROM file is valid and it\'s not corrupted.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="140" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;failed_launch_dsiware_title_not_installed&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;failed_launch_dsiware_title_not_installed&quot;&gt;To launch a DSiWare title, it must first be installed to the NAND. You can install it in the DSiWare Manager.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="141" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;press_any_button&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;press_any_button&quot;&gt;Press any button…&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="143" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;waiting_for_input&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;waiting_for_input&quot;&gt;Waiting for input…&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="144" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;choose_component&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;choose_component&quot;&gt;Choose component&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="146" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;pause&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;pause&quot;&gt;Pause&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="148" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;achievements&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;achievements&quot;&gt;Achievements&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="149" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;reset&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;reset&quot;&gt;Reset&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="150" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;exit&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;exit&quot;&gt;Exit&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="151" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;settings&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;settings&quot;&gt;Settings&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="153" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;save_state&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;save_state&quot;&gt;Save state&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="154" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;load_state&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;load_state&quot;&gt;Load state&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="155" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rewind&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rewind&quot;&gt;Rewind&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="156" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;save_slot&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;save_slot&quot;&gt;Save slot&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="157" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;empty_slot&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;empty_slot&quot;&gt;%1$s. &amp;lt;Empty&amp;gt;&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="158" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;quick_slot&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;quick_slot&quot;&gt;Quick Slot&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="159" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;saved&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;saved&quot;&gt;Saved&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="160" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;loaded&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;loaded&quot;&gt;Loaded&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="161" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;title_activity_settings&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;title_activity_settings&quot;&gt;Settings&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="162" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;category_general&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;category_general&quot;&gt;General&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="163" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;category_general_summary&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;category_general_summary&quot;&gt;Theme, generic settings&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="164" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;theme&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;theme&quot;&gt;Theme&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="169" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;fast_forward_max_speed&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;fast_forward_max_speed&quot;&gt;Fast-forward max speed&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="170" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rewind_description&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rewind_description&quot;&gt;When enabled, a save-state is periodically saved automatically. Whenever you want to go back on your progress by a short amount of time, just open the rewind screen and select the state that you want to resume from.\n\nBe aware that by enabling this feature, you may experience occasional stutters if your device is not powerful enough. A considerable amount of memory is also used depending on how often you want the state to be captured and for how long it should be kept.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="171" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rewind_save_period&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rewind_save_period&quot;&gt;Save period&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="172" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rewind_length&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rewind_length&quot;&gt;Rewind length&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="173" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rewind_max_memory_usage&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rewind_max_memory_usage&quot;&gt;Max. memory usage: %1$s&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="174" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rewind_memory_usage_above_recommended_limit&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rewind_memory_usage_above_recommended_limit&quot;&gt;Memory usage above recommended limit&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="175" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;sustained_performance_mode&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;sustained_performance_mode&quot;&gt;Sustained performance mode&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="176" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;sustained_performance_mode_summary&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;sustained_performance_mode_summary&quot;&gt;When enabled, peak performance will be lower but thermal throttling will be less pronounced.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="177" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;check_for_updates&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;check_for_updates&quot;&gt;Check for updates&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="178" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;check_for_updates_summary&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;check_for_updates_summary&quot;&gt;When enabled, the app will periodically check for available updates&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="179" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;mac_address&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;mac_address&quot;&gt;MAC address&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="195" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;generate_new_mac_address&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;generate_new_mac_address&quot;&gt;Generate new&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="198" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;generate_new_mac_address_description&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;generate_new_mac_address_description&quot;&gt;Generating a new MAC address will make games think they are running on a different system.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="199" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;jit_not_supported&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;jit_not_supported&quot;&gt;JIT is only supported in 64 bit devices.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="202" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;backup_settings&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;backup_settings&quot;&gt;Backup settings&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="203" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;restore_settings&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;restore_settings&quot;&gt;Restore settings&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="204" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;settings_backup_success&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;settings_backup_success&quot;&gt;Settings backup created.\n\nThe following were skipped:\n&amp;#8226; RetroAchievements session\n&amp;#8226; ROM/save directories\n&amp;#8226; DS BIOS directory\n&amp;#8226; DSi BIOS directory&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="205" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;settings_backup_error&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;settings_backup_error&quot;&gt;Failed to backup settings&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="206" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;settings_restore_success&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;settings_restore_success&quot;&gt;Settings restored.\n\nThe following were unchanged:\n&amp;#8226; RetroAchievements session\n&amp;#8226; ROM/save directories\n&amp;#8226; DS BIOS directory\n&amp;#8226; DSi BIOS directory&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="207" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;settings_restore_error&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;settings_restore_error&quot;&gt;Failed to restore settings&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="208" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;backup_internal_layout&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;backup_internal_layout&quot;&gt;Backup internal layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="209" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;backup_external_layout&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;backup_external_layout&quot;&gt;Backup external layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="210" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;restore_internal_layout&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;restore_internal_layout&quot;&gt;Restore internal layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="211" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;restore_external_layout&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;restore_external_layout&quot;&gt;Restore external layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="212" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;internal_layout_backup_success&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;internal_layout_backup_success&quot;&gt;Internal layout backup created.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="213" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;internal_layout_backup_error&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;internal_layout_backup_error&quot;&gt;Failed to backup internal layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="214" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;external_layout_backup_success&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;external_layout_backup_success&quot;&gt;External layout backup created.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="215" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;external_layout_backup_error&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;external_layout_backup_error&quot;&gt;Failed to backup external layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="216" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;internal_layout_restore_success&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;internal_layout_restore_success&quot;&gt;Internal layout restored.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="217" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;internal_layout_restore_error&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;internal_layout_restore_error&quot;&gt;Failed to restore internal layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="218" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;external_layout_restore_success&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;external_layout_restore_success&quot;&gt;External layout restored.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="219" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;external_layout_restore_error&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;external_layout_restore_error&quot;&gt;Failed to restore external layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="220" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;threaded_rendering&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;threaded_rendering&quot;&gt;Threaded rendering&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="221" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;fps_counter_position&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;fps_counter_position&quot;&gt;FPS counter position&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="222" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;threaded_rendering_summary&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;threaded_rendering_summary&quot;&gt;Improves performance on 3D games when enabled but may cause graphical glitches.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="223" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;category_video&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;category_video&quot;&gt;Video&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="224" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;category_video_summary&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;category_video_summary&quot;&gt;Filter, threaded rendering, FPS counter&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="225" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;filter&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;filter&quot;&gt;Filter&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="226" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;internal_resolution&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;internal_resolution&quot;&gt;Internal resolution&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="227" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;renderer&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;renderer&quot;&gt;Renderer&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="228" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsi_camera_source&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsi_camera_source&quot;&gt;DSi camera source&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="229" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;external_screen_layout&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;external_screen_layout&quot;&gt;External screen layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="230" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;external_display_screen&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;external_display_screen&quot;&gt;External display screen&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="231" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;external_display_rotate_left&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;external_display_rotate_left&quot;&gt;Rotate external screen content left&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="232" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;refresh_external_screen&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;refresh_external_screen&quot;&gt;Refresh external screen&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="233" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;dsi_camera_image&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;dsi_camera_image&quot;&gt;DSi camera image&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="234" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;internal_screen_layout&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;internal_screen_layout&quot;&gt;Internal screen layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="235" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_refresh_external_screen&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;input_refresh_external_screen&quot;&gt;Refresh external screen&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="236" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;quick_settings&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;quick_settings&quot;&gt;Quick settings&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="237" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;category_audio&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;category_audio&quot;&gt;Audio&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="238" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;category_audio_summary&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;category_audio_summary&quot;&gt;Volume, latency, microphone source&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="239" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;enable_sound&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;enable_sound&quot;&gt;Enable sound&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="240" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;interpolation&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;interpolation&quot;&gt;Interpolation&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="241" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;bitrate&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;bitrate&quot;&gt;Bitrate&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="242" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;volume&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;volume&quot;&gt;Volume&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="243" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;volume_percentage&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;volume_percentage&quot;&gt;%1$d%%&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="244" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;audio_latency&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;audio_latency&quot;&gt;Audio latency&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="245" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;microphone_source&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;microphone_source&quot;&gt;Microphone source&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="246" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;controller_layout&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;controller_layout&quot;&gt;Controller layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="247" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input&quot;&gt;Input&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="253" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_summary&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_summary&quot;&gt;Key mapping, layouts, haptic feedback&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="254" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;key_mapping&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;key_mapping&quot;&gt;Key mapping&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="255" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;key_mapping_summary&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;key_mapping_summary&quot;&gt;Assign keys to controller inputs&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="256" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;show_soft_input&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;show_soft_input&quot;&gt;Show soft input&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="257" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;soft_input_behaviour&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;soft_input_behaviour&quot;&gt;Soft input behaviour&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="258" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;vibrate_on_touch&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;vibrate_on_touch&quot;&gt;Vibrate on touch&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="259" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;vibration_strength&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;vibration_strength&quot;&gt;Vibration strength&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="260" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;soft_input_opacity&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;soft_input_opacity&quot;&gt;Soft input opacity&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="261" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retroachievements&quot;&gt;RetroAchievements&lt;/string&gt; &lt;!-- Keep words together because this is the official name --&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="262" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements_summary&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retroachievements_summary&quot;&gt;Login &amp;amp; manage RetroAchievements integration&lt;/string&gt; &lt;!-- Keep words together because this is the official name --&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="263" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;enable_rich_presence&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;enable_rich_presence&quot;&gt;Enable rich presence&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="264" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rich_presence_summary&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rich_presence_summary&quot;&gt;Allows other RetroAchievement users to see what you are playing&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="265" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;hardcore_mode&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;hardcore_mode&quot;&gt;Hardcore mode&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="266" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;hardcore_mode_summary&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;hardcore_mode_summary&quot;&gt;Allows hardcore achievements to be earned. Cheats, save states, slow-motion, and rewind are disabled&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="267" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;show_active_challenge_indicators&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;show_active_challenge_indicators&quot;&gt;Show active challenge indicators&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="268" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;show_active_challenge_indicators_summary&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;show_active_challenge_indicators_summary&quot;&gt;Shows on-screen indicators while certain achievements can be earned&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="269" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;show_progress_indicators&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;show_progress_indicators&quot;&gt;Show progress indicators&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="270" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;show_progress_indicators_summary&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;show_progress_indicators_summary&quot;&gt;Shows on-screen indicators when progress is made towards an achievement&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="271" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;show_leaderboard_indicators&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;show_leaderboard_indicators&quot;&gt;Show leaderboard indicators&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="272" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;show_leaderboard_indicators_summary&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;show_leaderboard_indicators_summary&quot;&gt;Shows on-screen indicators when a leaderboard attempt is in progress&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="273" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;cheats&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;cheats&quot;&gt;Cheats&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="275" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;cheats_summary&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;cheats_summary&quot;&gt;Enable &amp;amp; import cheat codes&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="276" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;enable_cheats&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;enable_cheats&quot;&gt;Enable cheats&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="277" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;cheats_database&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;cheats_database&quot;&gt;Cheats database (XML format)&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="278" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;import_cheats&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;import_cheats&quot;&gt;Import cheats&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="279" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;import_cheats_summary&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;import_cheats_summary&quot;&gt;Import cheats from database files to make them available. Only XML databases are supported for now. Any previously imported cheat will be deleted.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="280" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rom_shortcut&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rom_shortcut&quot;&gt;ROM shortcut&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="281" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;firmware_nickname&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;firmware_nickname&quot;&gt;Nickname&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="283" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;firmware_message&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;firmware_message&quot;&gt;Message&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="284" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;firmware_language&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;firmware_language&quot;&gt;Language&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="285" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;firmware_favourite_colour&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;firmware_favourite_colour&quot;&gt;Favourite colour&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="286" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;firmware_birthday&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;firmware_birthday&quot;&gt;Birthday&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="287" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;error_clear_rom_cache&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;error_clear_rom_cache&quot;&gt;Failed to clear ROM cache&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="289" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;importing_cheats&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;importing_cheats&quot;&gt;Importing cheats…&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="290" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;starting&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;starting&quot;&gt;Starting…&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="291" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;move_to_background&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;move_to_background&quot;&gt;Move to background&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="292" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;failed_save_cheat_changes&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;failed_save_cheat_changes&quot;&gt;Could not save cheat changes&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="293" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;no_cheats_found&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;no_cheats_found&quot;&gt;Could not find cheats for the current ROM. Try importing a different cheat database.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="294" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;enabled_cheats&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;enabled_cheats&quot;&gt;Enabled cheats&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="295" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;no_enabled_cheats_for_rom&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;no_enabled_cheats_for_rom&quot;&gt;You haven\'t enabled any cheat for this ROM&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="296" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;folder_is_empty&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;folder_is_empty&quot;&gt;This folder is empty. Try adding your own cheat code&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="297" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;add_cheat_folder&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;add_cheat_folder&quot;&gt;Add cheat folder&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="298" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;new_cheat&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;new_cheat&quot;&gt;New cheat&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="299" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;edit_cheat&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;edit_cheat&quot;&gt;Edit cheat&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="300" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;cheat_name&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;cheat_name&quot;&gt;Cheat name&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="301" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;description&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;description&quot;&gt;Description&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="302" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;cheat_code&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;cheat_code&quot;&gt;Code&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="303" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;error_name_cannot_be_empty&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;error_name_cannot_be_empty&quot;&gt;Cheat name cannot be empty&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="304" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;error_code_cannot_be_empty&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;error_code_cannot_be_empty&quot;&gt;Code cannot be empty&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="305" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;error_code_invalid_format&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;error_code_invalid_format&quot;&gt;Code format is invalid&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="306" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;cheat_deleted&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;cheat_deleted&quot;&gt;Cheat \&quot;%1$s\&quot; deleted&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="307" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;cheat_folder_default_name&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;cheat_folder_default_name&quot;&gt;My cheats&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="308" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;day&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;day&quot;&gt;Day&lt;/string&gt;" errorLine2="            ~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="310" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;month&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;month&quot;&gt;Month&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="311" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;symbol_increase&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;symbol_increase&quot;&gt;+&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="312" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;symbol_decrease&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;symbol_decrease&quot;&gt;-&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="313" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rom_settings&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rom_settings&quot;&gt;Rom settings&lt;/string&gt; &lt;!-- Accessibility string. Should not use acronyms --&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="315" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;label_rom_config_console&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;label_rom_config_console&quot;&gt;Boot system&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="316" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;label_rom_config_custom_name&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;label_rom_config_custom_name&quot;&gt;ROM display name&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="317" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;label_rom_config_gba_slot&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;label_rom_config_gba_slot&quot;&gt;GBA slot&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="318" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;label_rom_config_gba_rom_path&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;label_rom_config_gba_rom_path&quot;&gt;GBA ROM path&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="319" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;label_rom_config_gba_save_path&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;label_rom_config_gba_save_path&quot;&gt;GBA save path&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="320" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;rom_details_configuration_tab&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;rom_details_configuration_tab&quot;&gt;Configuration&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="321" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retro_achievements_tab&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retro_achievements_tab&quot;&gt;Retro&amp;#8203;Achievements&lt;/string&gt; &lt;!-- Keep zero-width space to allow line breaks in the middle of the word --&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="322" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;theme_option_light&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;theme_option_light&quot;&gt;Light&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="324" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;theme_option_dark&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;theme_option_dark&quot;&gt;Dark&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="325" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;theme_option_system_default&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;theme_option_system_default&quot;&gt;System default&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="326" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;notification_channel_background_tasks&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;notification_channel_background_tasks&quot;&gt;Background tasks&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="328" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;top_screen&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;top_screen&quot;&gt;Top Screen&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="330" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;bottom_screen&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;bottom_screen&quot;&gt;Bottom Screen&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="331" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;custom_layout&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;custom_layout&quot;&gt;Custom layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="332" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_a&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_a&quot;&gt;A&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="333" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_b&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_b&quot;&gt;B&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="334" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_x&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_x&quot;&gt;X&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="335" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_y&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_y&quot;&gt;Y&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="336" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_left&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_left&quot;&gt;Left&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="337" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_right&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_right&quot;&gt;Right&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="338" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_up&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_up&quot;&gt;Up&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="339" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_down&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_down&quot;&gt;Down&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="340" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_left_joy&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;input_left_joy&quot;&gt;Left Joy&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="341" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_right_joy&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;input_right_joy&quot;&gt;Right Joy&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="342" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_up_joy&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;input_up_joy&quot;&gt;Up Joy&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="343" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_down_joy&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;input_down_joy&quot;&gt;Down Joy&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="344" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_l&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_l&quot;&gt;L&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="345" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_r&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_r&quot;&gt;R&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="346" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_start&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_start&quot;&gt;Start&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="347" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_select&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_select&quot;&gt;Select&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="348" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_lid&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_lid&quot;&gt;Toggle Lid&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="349" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_pause&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_pause&quot;&gt;Pause&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="350" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_fast_forward&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_fast_forward&quot;&gt;Fast Forward (Toggle)&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="351" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_microphone&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;input_microphone&quot;&gt;Toggle Microphone&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="352" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_toggle_soft_input&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_toggle_soft_input&quot;&gt;Toggle Soft Input&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="353" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_reset&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_reset&quot;&gt;@string/reset&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="354" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_dpad&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_dpad&quot;&gt;DPAD&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="355" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_abxy_buttons&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_abxy_buttons&quot;&gt;ABXY Buttons&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="356" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_swap_screens&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_swap_screens&quot;&gt;Swap Screens&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="357" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_quick_save&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_quick_save&quot;&gt;Quick Save&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="358" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;input_quick_load&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;input_quick_load&quot;&gt;Quick Load&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="359" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;layouts&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;layouts&quot;&gt;Layouts&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="361" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;layouts_summary&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;layouts_summary&quot;&gt;Manage custom layout configurations&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="362" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;action_layouts_new&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;action_layouts_new&quot;&gt;New layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="363" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;default_layout_name&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;default_layout_name&quot;&gt;Default&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="364" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;custom_layout_default_name&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;custom_layout_default_name&quot;&gt;My Layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="365" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;use_global_layout&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;use_global_layout&quot;&gt;Use global layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="366" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;use_global_preference&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French)" errorLine1="    &lt;string name=&quot;use_global_preference&quot;&gt;Use global setting&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="367" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;layout_deleted&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;layout_deleted&quot;&gt;Layout deleted&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="368" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;named_layout_deleted&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;named_layout_deleted&quot;&gt;Layout \&quot;%1$s\&quot; deleted&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="369" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;layout_editor&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;layout_editor&quot;&gt;Layout editor&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="371" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;add_component&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;add_component&quot;&gt;Add component&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="372" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;no_more_components&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;no_more_components&quot;&gt;No more components to add&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="373" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;label_size&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;label_size&quot;&gt;Size&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="374" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;label_width&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;label_width&quot;&gt;Width&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="375" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;label_height&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;label_height&quot;&gt;Height&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="376" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;label_alpha&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;label_alpha&quot;&gt;Alpha&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="377" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;label_aspect_ratio&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;label_aspect_ratio&quot;&gt;Aspect ratio:&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="378" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;aspect_ratio_4_3&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;aspect_ratio_4_3&quot;&gt;4:3 (Original)&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="379" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;aspect_ratio_16_9&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;aspect_ratio_16_9&quot;&gt;16:9 (Widescreen)&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="380" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;aspect_ratio_unrestricted&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;aspect_ratio_unrestricted&quot;&gt;Unrestricted&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="381" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;keep_ds_ratio&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;keep_ds_ratio&quot;&gt;Keep DS aspect ratio&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="382" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;above_other_screen&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;above_other_screen&quot;&gt;Above other screen&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="383" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;center_horizontal&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;center_horizontal&quot;&gt;Center horizontally&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="384" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;center_vertical&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;center_vertical&quot;&gt;Center vertically&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="385" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;editing_internal_layout&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;editing_internal_layout&quot;&gt;Editing internal layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="386" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;editing_external_layout&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;editing_external_layout&quot;&gt;Editing external layout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="387" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;menu&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;menu&quot;&gt;Menu&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="388" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;properties&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;properties&quot;&gt;Properties&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="389" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;revert_changes&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;revert_changes&quot;&gt;Revert changes&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="390" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;reset_default&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;reset_default&quot;&gt;Reset to default&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="391" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;exit_without_saving&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;exit_without_saving&quot;&gt;Exit without saving&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="392" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;save_and_exit&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;save_and_exit&quot;&gt;Save and exit&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="393" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;layout_name&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;layout_name&quot;&gt;Layout name&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="394" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;layout_orientation&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;layout_orientation&quot;&gt;Layout orientation&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="395" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;layout_use_default_opacity&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;layout_use_default_opacity&quot;&gt;Use default opacity&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="396" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;layout_opacity&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;layout_opacity&quot;&gt;Layout opacity&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="397" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;layout_background_load_failed&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;layout_background_load_failed&quot;&gt;Failed to load the background&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="398" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;layout_background_title&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;layout_background_title&quot;&gt;Layout Background&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="400" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;background&quot; is not translated in &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;background&quot;&gt;Background&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="401" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;backgrounds&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;backgrounds&quot;&gt;Backgrounds&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="402" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;background_mode&quot; is not translated in &quot;ko&quot; (Korean), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;background_mode&quot;&gt;Background mode&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="403" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;action_backgrounds_new&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;action_backgrounds_new&quot;&gt;New background&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="404" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;background_name&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;background_name&quot;&gt;Background name&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="405" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;background_deleted&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;background_deleted&quot;&gt;Background deleted&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="406" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;background_add_processing_failed&quot; is not translated in &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;background_add_processing_failed&quot;&gt;Failed to process the selected background image. Make sure it\'s not corrupted.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="407" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retro_achievements_login_description&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retro_achievements_login_description&quot;&gt;Login with RetroAchievements to view achievements that you can unlock while playing this game!&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="409" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;login_with_retro_achievements&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;login_with_retro_achievements&quot;&gt;Login with RetroAchievements&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="410" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;login&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;login&quot;&gt;Login&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="411" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements_login_summary&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retroachievements_login_summary&quot;&gt;Login with RetroAchievements to unlock achievements while playing!&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="412" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements_login_status&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retroachievements_login_status&quot;&gt;Logged in as %1$s&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="413" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements_logout&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retroachievements_logout&quot;&gt;Logout&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="414" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements_logout_confirmation&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retroachievements_logout_confirmation&quot;&gt;Are you sure you want to logout from RetroAchievements? You won\'t be able to unlock achievements while playing.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="415" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retro_achievements_login_error&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retro_achievements_login_error&quot;&gt;There was a problem when trying to login. Make sure that your username and password are correct, and that you are connected to the internet&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="416" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retro_achievements_login_error_short&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retro_achievements_login_error_short&quot;&gt;There was a problem when trying to login&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="417" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retro_achievements_load_error&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retro_achievements_load_error&quot;&gt;There was a problem when trying to load the achievements for this game. Make sure you are connected to the internet and try again later&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="418" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retro_achievements_no_achievements&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retro_achievements_no_achievements&quot;&gt;No RetroAchievements were found for this game&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="419" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retro_achievements_relaunch_to_apply_settings&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retro_achievements_relaunch_to_apply_settings&quot;&gt;Relaunch the ROM to apply the new RetroAchievements settings&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="420" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retro_achievements_pending_unlocks&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;retro_achievements_pending_unlocks&quot;&gt;Pending Unlocks&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="421" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retro_achievements_active_challenges&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;retro_achievements_active_challenges&quot;&gt;Active Challenges&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="422" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retro_achievements_recently_unlokced&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;retro_achievements_recently_unlokced&quot;&gt;Recently Unlocked&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="423" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retro_achievements_almost_there&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;retro_achievements_almost_there&quot;&gt;Almost There&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="424" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retro_achievements_locked&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;retro_achievements_locked&quot;&gt;Locked&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="425" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retro_achievements_unlocked&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;retro_achievements_unlocked&quot;&gt;Unlocked&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="426" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;username&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;username&quot;&gt;Username&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="427" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;password&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;password&quot;&gt;Password&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="428" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retry&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;retry&quot;&gt;Retry&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="429" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;points_abbreviated&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;points_abbreviated&quot;&gt;PTS&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="430" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;points&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;points&quot;&gt;Points&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="431" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;completed&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;completed&quot;&gt;Completed&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="432" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;ra_mode_hardcore&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;ra_mode_hardcore&quot;&gt;Hardcore&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="433" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;ra_mode_softcore&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;ra_mode_softcore&quot;&gt;Softcore&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="434" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;ra_base_set&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;ra_base_set&quot;&gt;Base Set&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="435" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;view_achievement&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;view_achievement&quot;&gt;View achievement&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="436" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;completed_achievements&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;completed_achievements&quot;&gt;&lt;b&gt;%1$d&lt;/b&gt; of &lt;b&gt;%2$d&lt;/b&gt; (%3$d%%)&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="437" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;submitting_achievements&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;submitting_achievements&quot;&gt;Submitting RetroAchievements…&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="438" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;achievements_loaded&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;achievements_loaded&quot;&gt;Achievements loaded&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="439" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;achievements_unlocked_compact&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;achievements_unlocked_compact&quot;&gt;Unlocked: %1$d/%2$d&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="440" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;game_has_no_achievements&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;game_has_no_achievements&quot;&gt;This game has no achievements&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="441" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;achievements_failed_load&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;achievements_failed_load&quot;&gt;Failed to load achievements!&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="442" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;achievements_failed_load_tip&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;achievements_failed_load_tip&quot;&gt;Make sure you are Online&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="443" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;achievement_unlocked&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;achievement_unlocked&quot;&gt;Achievement unlocked!&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="444" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;achievement_missable&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;achievement_missable&quot;&gt;Missable&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="445" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;achievement_missable_description&quot; is not translated in &quot;pt&quot; (Portuguese) or &quot;ko&quot; (Korean)" errorLine1="    &lt;string name=&quot;achievement_missable_description&quot;&gt;This achievement can be missed during a playthrough&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="446" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;achievement_progress&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;achievement_progress&quot;&gt;%1$d/%2$d&lt;/string&gt; &lt;!-- Eg.: 12/38 --&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="447" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;challenge_started&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;challenge_started&quot;&gt;Challenge started&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="448" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;leaderboard_attempt_started&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;leaderboard_attempt_started&quot;&gt;Leaderboard attempt started!&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="449" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;leaderboard_submission_info&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;leaderboard_submission_info&quot;&gt;%1$s • Rank %2$d of %3$d&lt;/string&gt; &lt;!-- Eg.: 01:42.95 • Rank 73 of 145 --&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="450" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;game_completed&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;game_completed&quot;&gt;Completed %1$s&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="451" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;game_mastered&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;game_mastered&quot;&gt;Mastered %1$s&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="452" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements_unsynchronized_data&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;retroachievements_unsynchronized_data&quot;&gt;Un-synchronized RetroAchievements data&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="453" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements_unsynchronized_data_info&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;retroachievements_unsynchronized_data_info&quot;&gt;There is un-synchronized RetroAchievements data. The following operations are pending:&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="454" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements_pending_achievement_unlocks&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;plurals name=&quot;retroachievements_pending_achievement_unlocks&quot;&gt;" errorLine2="             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="455" column="14" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements_pending_leaderboard_entries&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;plurals name=&quot;retroachievements_pending_leaderboard_entries&quot;&gt;" errorLine2="             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="459" column="14" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements_unsynchronized_data_connect_internet&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;retroachievements_unsynchronized_data_connect_internet&quot;&gt;Connect to the internet to synchronize the data.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="463" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements_unsynchronized_data_loss_info&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;retroachievements_unsynchronized_data_loss_info&quot;&gt;If you exit now, this data will be lost!&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="464" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements_unsynchronized_data_synchronized&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;retroachievements_unsynchronized_data_synchronized&quot;&gt;All data has been synchronized!&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="465" column="13" />
+    </issue>
+    <issue id="MissingTranslation" message="&quot;retroachievements_unsynchronized_data_exiting&quot; is not translated in &quot;pt&quot; (Portuguese), &quot;ko&quot; (Korean), &quot;it&quot; (Italian), &quot;fr&quot; (French), &quot;es&quot; (Spanish)" errorLine1="    &lt;string name=&quot;retroachievements_unsynchronized_data_exiting&quot;&gt;The emulator will now exit.&lt;/string&gt;" errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location file="src/main/res/values/strings.xml" line="466" column="13" />
+    </issue>
+</issues>

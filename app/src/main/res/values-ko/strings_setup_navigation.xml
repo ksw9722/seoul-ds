@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="category_roms">게임 ROM</string>
+    <string name="category_roms_summary">검색 폴더, 아이콘 필터, 캐시 설정</string>
+    <string name="rom_search_directory">ROM 검색 디렉터리</string>
+    <string name="rom_icon_filtering">아이콘 필터</string>
+    <string name="max_rom_cache_size">최대 ROM 캐시 크기</string>
+    <string name="clear_extracted_rom_cache">압축 해제된 ROM 캐시 삭제</string>
+    <string name="cache_size_calculating">캐시 크기: 계산 중…</string>
+    <string name="cache_size">캐시 크기: %s</string>
+    <string name="category_save_files">저장 파일</string>
+    <string name="category_save_files_summary">게임 저장 파일과 상태 저장 위치</string>
+    <string name="save_next_rom">ROM 파일 옆에 저장</string>
+    <string name="save_file_directory">게임 저장 파일 폴더</string>
+    <string name="save_state_location">상태 저장 위치</string>
+    <string name="category_system">시스템</string>
+    <string name="category_system_summary">펌웨어 설정, 사용자 BIOS, JIT</string>
+    <string name="internal_firmware_settings">내부 펌웨어 설정</string>
+    <string name="internal_firmware_settings_summary">생성된 내부 펌웨어의 설정을 변경합니다.</string>
+    <string name="custom_bios_firmware">사용자 BIOS · 펌웨어</string>
+    <string name="use_custom_bios">사용자 BIOS · 펌웨어 사용</string>
+    <string name="custom_bios_firmware_description">정당하게 확보한 사용자 BIOS·펌웨어를 사용하면 실제 기기처럼 ROM을 열지 않고 DS 펌웨어 메뉴를 실행할 수 있습니다.</string>
+    <string name="show_boot_screen">부팅 화면 표시</string>
+    <string name="console_type">기본 콘솔 유형</string>
+    <string name="bios_directory">DS BIOS 폴더</string>
+    <string name="dsi_bios_directory">DSi BIOS 폴더</string>
+    <string name="enable_jit">JIT 사용</string>
+    <string name="enable_jit_summary">성능을 높이지만 일부 게임에서 멈춤이나 종료가 발생할 수 있습니다.</string>
+    <string name="randomize_mac_address">MAC 주소 무작위 생성</string>
+    <string name="randomize_mac_address_summary">부팅할 때마다 무작위 MAC 주소를 사용합니다. 일부 게임이 다른 기기로 인식하여 시간 기반 이벤트에 영향을 줄 수 있습니다.</string>
+</resources>
