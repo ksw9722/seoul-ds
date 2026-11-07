@@ -61,3 +61,7 @@ Window context에는 [Android가 문서화한 공개 Window 타입](https://deve
 
 기준선 사용 방식은 [Android 공식 Lint 문서](https://developer.android.com/studio/write/lint#baseline)를
 참고합니다. 이 문서는 정적 검사 범위에 관한 설명이며, 실기기나 특정 게임 호환성 증거가 아닙니다.
+
+## 2026-11-07 실험 기능의 언어 범위
+
+새 속도/2P 문자열은 영어와 한국어를 제공합니다. 다른 언어는 영어 fallback을 사용하며 `values/strings_emulation_speed.xml`과 `values/strings_twoplayer.xml`에만 `MissingTranslation`을 한정합니다. 기존 372개 기준선과 다른 오류 검사는 변경하지 않습니다.

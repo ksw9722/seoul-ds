@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<!-- This experimental feature is localized in English/Korean; other locales use English fallback. -->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <string name="two_player_menu">Same-phone 2P (experimental)</string>
     <string name="two_player_switch">Switch player 1 / 2</string>
     <string name="two_player_current">2P · Player %1$d · 1×</string>
