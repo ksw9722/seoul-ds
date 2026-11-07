@@ -47,28 +47,54 @@ class EmulationSpeedWiringTests(unittest.TestCase):
         self.assertNotIn("var fastForwardEnabled", activity)
         self.assertIn("val multiplier = MelonEmulator.cycleEmulationSpeed()", activity)
         self.assertRegex(activity, r"emulatorState\.collectLatest\s*\{\s*updateEmulationSpeedFeedback\(\)")
+        self.assertIn("val multiplier = MelonEmulator.getEmulationSpeed()", activity)
+        for target in ("binding.viewLayoutControls", "presentation?.layoutView?"):
+            self.assertIn(f"{target}.setLayoutComponentToggleState(LayoutComponent.BUTTON_FAST_FORWARD_TOGGLE, multiplier > 1)", activity)
+
+    def test_short_toast_remains_without_custom_top_placement(self):
+        activity = source("app/src/main/java/me/magnum/melonds/ui/emulator/EmulatorActivity.kt")
         self.assertIn("speedToast?.cancel()", activity)
-        self.assertIn("presentation?.showEmulationSpeed(multiplier, running)", activity)
-        self.assertIn("binding.textEmulationSpeed.showSpeed(multiplier, running)", activity)
+        self.assertIn("Toast.makeText(this@EmulatorActivity, getString(R.string.emulation_speed_status, multiplier), Toast.LENGTH_SHORT)", activity)
+        self.assertIn("speedToast?.show()", activity)
+        self.assertNotIn("setGravity", activity)
 
     def test_holding_controller_key_does_not_cycle_repeatedly(self):
         processor = source("app/src/main/java/me/magnum/melonds/ui/emulator/input/InputProcessor.kt")
         self.assertRegex(processor, r"if \(input == Input.FAST_FORWARD && keyEvent.repeatCount > 0\) return true")
 
-    def test_badge_is_independent_of_optional_fps_counter(self):
-        layout = ET.parse(ROOT / "app/src/main/res/layout/activity_emulator.xml").getroot()
-        indicators = [item for item in layout if item.attrib.get(ANDROID + "id") == "@+id/textEmulationSpeed"]
-        self.assertEqual(1, len(indicators))
-        self.assertTrue(indicators[0].tag.endswith("EmulationSpeedIndicator"))
-        scene = ET.parse(ROOT / "app/src/main/res/xml/scene_activity_emulator.xml").getroot()
-        self.assertTrue(any(item.attrib.get(ANDROID + "id") == "@+id/textEmulationSpeed" for item in scene.iter("Constraint")))
+    def test_no_speed_badge_on_main_or_external_display(self):
+        for path in (
+            "app/src/main/res/layout/activity_emulator.xml",
+            "app/src/main/res/xml/scene_activity_emulator.xml",
+            "app/src/main/java/me/magnum/melonds/ui/emulator/EmulatorActivity.kt",
+            "app/src/main/java/me/magnum/melonds/ui/emulator/render/ExternalPresentation.kt",
+        ):
+            text = source(path)
+            for obsolete in ("EmulationSpeedIndicator", "textEmulationSpeed", "speedIndicator", "showEmulationSpeed"):
+                self.assertNotIn(obsolete, text, path)
+        self.assertFalse((ROOT / "app/src/main/java/me/magnum/melonds/ui/emulator/speed/EmulationSpeedIndicator.kt").exists())
+
+    def test_unrelated_fps_and_two_player_indicators_remain(self):
+        for path in ("layout/activity_emulator.xml", "xml/scene_activity_emulator.xml"):
+            layout = ET.parse(ROOT / "app/src/main/res" / path).getroot()
+            ids = {item.attrib.get(ANDROID + "id") for item in layout.iter()}
+            self.assertIn("@+id/textFps", ids)
+            self.assertIn("@+id/text_two_player", ids)
 
     def test_english_and_korean_feedback_have_matching_format(self):
-        for locale in ("values", "values-ko"):
+        for locale, suffix in (("values", "×"), ("values-ko", "배")):
             strings = ET.parse(ROOT / f"app/src/main/res/{locale}/strings_emulation_speed.xml").getroot()
             values = {item.attrib["name"]: item.text for item in strings}
             self.assertIn("%1$d", values["emulation_speed_status"])
-            self.assertIn("5", values["emulation_speed_cycle_summary"])
+            expected_cycle = " → ".join(f"{speed}{suffix}" for speed in (1, 5, 10, 1))
+            self.assertIn(expected_cycle, values["emulation_speed_cycle_summary"])
+            self.assertIn(f"1{suffix} / 5{suffix} / 10{suffix}", values["emulation_speed_cycle_input"])
+
+    def test_new_session_and_stop_reset_native_speed(self):
+        native = source("app/src/main/cpp/MelonDSAndroidJNI.cpp")
+        for method in ("startEmulation", "stopEmulation"):
+            body = native.split(f"Java_me_magnum_melonds_MelonEmulator_{method}", 1)[1].split("JNIEXPORT", 1)[0]
+            self.assertIn("emulationSpeed.reset();", body)
 
     def test_two_player_activation_and_cycle_are_serialized(self):
         native = source("app/src/main/cpp/MelonDSAndroidJNI.cpp")

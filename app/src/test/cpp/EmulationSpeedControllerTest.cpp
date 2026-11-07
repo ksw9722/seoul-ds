@@ -1,5 +1,6 @@
 // Host-only speed-control tests. No Android device, ROM or BIOS is used.
 #include "../../main/cpp/EmulationSpeedController.h"
+#include <array>
 #include <atomic>
 #include <cstdlib>
 #include <iostream>
@@ -14,6 +15,12 @@
     } \
 } while (false)
 
+constexpr std::array<int, 3> EXPECTED_SPEEDS{1, 5, 10};
+
+bool isSupportedSpeed(int speed) {
+    return speed == 1 || speed == 5 || speed == 10;
+}
+
 void startsAtNormalSpeed() {
     EmulationSpeedController speed;
     CHECK(speed.current() == 1);
@@ -21,10 +28,10 @@ void startsAtNormalSpeed() {
     CHECK(speed.timing().targetWorkDurationNs == 16666666);
 }
 
-void cyclesAllFiveSpeedsAndWrapsRepeatedly() {
+void cyclesRequestedSpeedsAndWrapsRepeatedly() {
     EmulationSpeedController speed;
     for (int i = 0; i < 100; ++i) {
-        for (int expected : {2, 3, 4, 5, 1}) {
+        for (int expected : {5, 10, 1}) {
             CHECK(speed.cycle() == expected);
             CHECK(speed.current() == expected);
         }
@@ -33,7 +40,7 @@ void cyclesAllFiveSpeedsAndWrapsRepeatedly() {
 
 void oneSnapshotKeepsFpsAndHintConsistent() {
     EmulationSpeedController speed;
-    for (int expected = 1; expected <= 5; ++expected) {
+    for (int expected : EXPECTED_SPEEDS) {
         const auto timing = speed.timing();
         CHECK(timing.multiplier == expected);
         CHECK(timing.targetFps == 60 * expected);
@@ -45,13 +52,13 @@ void oneSnapshotKeepsFpsAndHintConsistent() {
 
 void resettingSessionsReturnsToNormal() {
     EmulationSpeedController speed;
-    for (int target = 1; target <= 5; ++target) {
+    for (size_t index = 0; index < EXPECTED_SPEEDS.size(); ++index) {
         speed.reset();
-        for (int i = 1; i < target; ++i) speed.cycle();
-        CHECK(speed.current() == target);
+        for (size_t i = 0; i < index; ++i) speed.cycle();
+        CHECK(speed.current() == EXPECTED_SPEEDS[index]);
         speed.reset();
         CHECK(speed.current() == 1);
-        CHECK(speed.cycle() == 2);
+        CHECK(speed.cycle() == 5);
     }
 }
 
@@ -66,9 +73,9 @@ void concurrentRequestsDoNotLoseSteps() {
             while (!start.load()) std::this_thread::yield();
             for (int step = 0; step < steps; ++step) {
                 const auto current = speed.cycle();
-                CHECK(current >= 1 && current <= 5);
+                CHECK(isSupportedSpeed(current));
                 const auto timing = speed.timing();
-                CHECK(timing.multiplier >= 1 && timing.multiplier <= 5);
+                CHECK(isSupportedSpeed(timing.multiplier));
                 CHECK(timing.targetFps == timing.multiplier * 60);
                 CHECK(timing.targetWorkDurationNs == 16666666 / timing.multiplier);
             }
@@ -76,17 +83,17 @@ void concurrentRequestsDoNotLoseSteps() {
     }
     start.store(true);
     for (auto& writer : writers) writer.join();
-    CHECK(speed.current() == 1 + (threads * steps) % 5);
+    CHECK(speed.current() == EXPECTED_SPEEDS[(threads * steps) % EXPECTED_SPEEDS.size()]);
 }
 
-void concurrentResetsRemainInRange() {
+void concurrentResetsKeepSupportedSpeeds() {
     EmulationSpeedController speed;
     std::thread resetter([&] {
         for (int i = 0; i < 100000; ++i) speed.reset();
     });
     for (int i = 0; i < 100000; ++i) {
         const auto current = speed.cycle();
-        CHECK(current >= 1 && current <= 5);
+        CHECK(isSupportedSpeed(current));
     }
     resetter.join();
     speed.reset();
@@ -95,10 +102,10 @@ void concurrentResetsRemainInRange() {
 
 int main() {
     startsAtNormalSpeed();
-    cyclesAllFiveSpeedsAndWrapsRepeatedly();
+    cyclesRequestedSpeedsAndWrapsRepeatedly();
     oneSnapshotKeepsFpsAndHintConsistent();
     resettingSessionsReturnsToNormal();
     concurrentRequestsDoNotLoseSteps();
-    concurrentResetsRemainInRange();
+    concurrentResetsKeepSupportedSpeeds();
     std::cout << "PASS: 6 emulation speed cases\n";
 }

@@ -723,7 +723,6 @@ class EmulatorActivity : AppCompatActivity() {
                     setConnectedControllersState(connectedControllerManager.controllersState.value)
                 }
 
-                showEmulationSpeed(MelonEmulator.getEmulationSpeed(), viewModel.emulatorState.value.isRunning())
                 updateRendererConfiguration(viewModel.runtimeRendererConfiguration.value)
                 updateBackground(viewModel.secondaryScreenBackground.value)
                 if (binding.viewLayoutControls.areScreensSwapped()) {
@@ -840,11 +839,8 @@ class EmulatorActivity : AppCompatActivity() {
 
     private fun updateEmulationSpeedFeedback() {
         val multiplier = MelonEmulator.getEmulationSpeed()
-        val running = viewModel.emulatorState.value.isRunning()
         binding.viewLayoutControls.setLayoutComponentToggleState(LayoutComponent.BUTTON_FAST_FORWARD_TOGGLE, multiplier > 1)
         presentation?.layoutView?.setLayoutComponentToggleState(LayoutComponent.BUTTON_FAST_FORWARD_TOGGLE, multiplier > 1)
-        binding.textEmulationSpeed.showSpeed(multiplier, running)
-        presentation?.showEmulationSpeed(multiplier, running)
     }
 
     private fun setupSoftInput(layoutConfiguration: RuntimeInputLayoutConfiguration?) {

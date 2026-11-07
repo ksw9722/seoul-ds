@@ -4,7 +4,6 @@ import android.app.Presentation
 import android.content.Context
 import android.graphics.Color
 import android.view.Display
-import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
 import android.widget.FrameLayout
@@ -20,7 +19,6 @@ import me.magnum.melonds.domain.model.layout.LayoutComponent
 import me.magnum.melonds.ui.emulator.DSRenderer
 import me.magnum.melonds.ui.emulator.EmulatorSurfaceView
 import me.magnum.melonds.ui.emulator.RuntimeLayoutView
-import me.magnum.melonds.ui.emulator.speed.EmulationSpeedIndicator
 import me.magnum.melonds.ui.emulator.model.RuntimeInputLayoutConfiguration
 import me.magnum.melonds.ui.emulator.model.RuntimeRendererConfiguration
 import me.magnum.melonds.ui.layouteditor.model.LayoutTarget
@@ -34,7 +32,6 @@ class ExternalPresentation(
     val layoutView = RuntimeLayoutView(context)
     private val container = FrameLayout(context)
     private val pauseOverlay = View(context)
-    private val speedIndicator = EmulationSpeedIndicator(context)
     private val emulatorRenderer: DSRenderer
     private val surfaceView: EmulatorSurfaceView
     private var currentBackground: RuntimeBackground? = null
@@ -58,13 +55,6 @@ class ExternalPresentation(
 
         container.addView(surfaceView)
         container.addView(layoutView)
-        container.addView(speedIndicator, FrameLayout.LayoutParams(
-            FrameLayout.LayoutParams.WRAP_CONTENT,
-            FrameLayout.LayoutParams.WRAP_CONTENT,
-            Gravity.TOP or Gravity.CENTER_HORIZONTAL,
-        ).apply {
-            topMargin = (40 * context.resources.displayMetrics.density).toInt()
-        })
         container.addView(pauseOverlay)
 
         pauseOverlay.apply {
@@ -112,10 +102,6 @@ class ExternalPresentation(
             topOnTop = topView?.onTop ?: false,
             bottomOnTop = bottomView?.onTop ?: false,
         )
-    }
-
-    fun showEmulationSpeed(multiplier: Int, sessionRunning: Boolean = true) {
-        speedIndicator.showSpeed(multiplier, sessionRunning)
     }
 
     fun setPauseOverlayVisibility(visible: Boolean) {

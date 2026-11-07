@@ -34,15 +34,6 @@
             android:textColor="@android:color/white"
             tools:text="FPS: 60"/>
 
-    <me.magnum.melonds.ui.emulator.speed.EmulationSpeedIndicator
-            android:id="@+id/textEmulationSpeed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
             android:id="@+id/text_two_player"
             android:layout_width="wrap_content"

@@ -9,7 +9,8 @@
 class EmulationSpeedController {
 public:
     static constexpr int NORMAL_SPEED = 1;
-    static constexpr int MAX_SPEED = 5;
+    static constexpr int FAST_SPEED = 5;
+    static constexpr int MAX_SPEED = 10;
     static constexpr int BASE_FPS = 60;
     static constexpr int64_t BASE_FRAME_DURATION_NS = 16666666;
 
@@ -27,7 +28,11 @@ public:
         int previous = current();
         int next;
         do {
-            next = previous == MAX_SPEED ? NORMAL_SPEED : previous + 1;
+            switch (previous) {
+                case NORMAL_SPEED: next = FAST_SPEED; break;
+                case FAST_SPEED: next = MAX_SPEED; break;
+                default: next = NORMAL_SPEED; break;
+            }
         } while (!multiplier.compare_exchange_weak(previous, next, std::memory_order_relaxed));
         return next;
     }

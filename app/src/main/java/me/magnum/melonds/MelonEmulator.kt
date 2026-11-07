@@ -145,7 +145,7 @@ object MelonEmulator {
 
     external fun takeScreenshot(): Boolean
 
-    /** Advance through 1x, 2x, 3x, 4x, 5x, then 1x; returns the requested speed. */
+    /** Advance through 1x, 5x, 10x, then 1x; returns the requested speed. */
     external fun cycleEmulationSpeed(): Int
 
     external fun getEmulationSpeed(): Int
