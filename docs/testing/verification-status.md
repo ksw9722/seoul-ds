@@ -4,11 +4,11 @@
 
 ## 2026-11-07 개발 변경의 검증 범위
 
-1–5배속과 한 기기 2P는 공개 소스 `2718ef277f36`을 기준으로 한 **미배포 작업 트리 변경**입니다. 아래 2026-11-01 빌드/검증 기록을 이번 변경의 결과로 해석하지 마세요.
+1–5배속과 한 기기 2P의 공개 소스는 `bfb96934041b3f0474e9930dafe934a2b5d51ba7`입니다. [실험적 APK·대응 소스·검증 보고서](https://github.com/ksw9722/seoul-ds/releases/tag/alpha-bfb96934041b-42380502512-1)와 [정확한 커밋의 CI 실행](https://github.com/ksw9722/seoul-ds/actions/runs/42380502512)을 확인하세요. 아래 2026-11-01 기록과 구분합니다.
 
-현재 작업 환경에는 Android SDK/NDK와 Gradle 의존성이 없어 **새 Android 네이티브 런타임 컴파일, JVM 테스트, Lint, APK 빌드가 미실행**입니다. 호스트 테스트는 속도 제어, 일시정지 가드, 실제 LocalMP 전송, 실제 Android pthread 세마포어 함수, 실제 SaveManager의 합성 오류 처리까지 검사합니다. Kotlin/리소스 연결 검사는 정적 검사이며 Android 컴파일을 대신하지 않습니다. P2 저장 파일의 새 JUnit 테스트도 실행 대기입니다.
+초기 로컬 환경에는 Android SDK/NDK가 없어 Android 단계가 차단됐으나, 공개 GitHub Actions에서 **JVM 테스트, Android Lint, 최적화 ARM64 APK 빌드, 네이티브 최적화 증거 및 APK 검증을 모두 통과**했습니다. 호스트 테스트는 속도 제어, 일시정지 가드, 실제 LocalMP 전송, 실제 Android pthread 세마포어 함수, 실제 SaveManager의 합성 오류 처리까지 검사합니다. Kotlin/리소스 연결 검사는 정적 검사이며 Android 컴파일을 대신하지 않습니다. P2 저장 파일의 새 JUnit 테스트도 CI의 JVM 테스트 단계에 포함됩니다.
 
-실제 2P 게임 부팅, 화면 전환, 포켓몬 교환 완료와 양쪽 세이브 재부팅 보존은 **미검증**입니다. 수정 소스 공개 후 별도의 Android CI와 실기기 검증이 필요합니다.
+실제 2P 게임 부팅, 화면 전환, 포켓몬 교환 완료와 양쪽 세이브 재부팅 보존은 **미검증**입니다. Android CI 성공을 실제 기기 또는 게임 내 통신 성공으로 해석하지 마세요. APK SHA-256은 `3beb6fffa8d118d49ba5db4aa511fb71b2fe24596546fa5446ce305ae82dedfb`입니다. 첫 실행은 번역 누락 Lint로 중단됐으며, 영어·한국어 제공과 다른 언어의 영어 fallback 범위를 파일 단위로 명시한 수정 후 전체 재빌드와 공개가 완료됐습니다.
 
 ## 이전 빌드의 기록
 
