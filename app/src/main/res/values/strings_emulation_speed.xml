@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="emulation_speed">Emulation speed</string>
+    <string name="emulation_speed_cycle_input">Increase speed (1–5×)</string>
+    <string name="emulation_speed_status">Speed: %1$d×</string>
+    <string name="emulation_speed_cycle_summary">Press the speed button or assigned controller key to cycle 1× → 2× → 3× → 4× → 5× → 1×. Actual speed depends on your device and game.</string>
+</resources>

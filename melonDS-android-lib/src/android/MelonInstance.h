@@ -2,6 +2,7 @@
 #define MELONINSTANCE_H
 
 #include <string>
+#include <mutex>
 #include "Args.h"
 #include "Configuration.h"
 #include "NDS.h"
@@ -27,6 +28,7 @@ public:
     ~MelonInstance();
 
     int getInstanceId() { return instanceId; };
+    int getConsoleType() const { return consoleType; }
 
     bool loadRom(std::string romPath, std::string sramPath);
     bool loadGbaRom(std::string romPath, std::string sramPath);
@@ -42,6 +44,9 @@ public:
     void releaseScreen();
     void pressKey(u32 key);
     void releaseKey(u32 key);
+    void releaseAllInputs();
+    bool flushSaveFiles();
+    void disableRewind();
     int readAudioOutput(s16* buffer, int length);
     void setAudioOutputSkew(double skew);
     bool takeScreenshot();
@@ -70,6 +75,7 @@ public:
 
 private:
     void updateRenderer();
+    void applyPendingInputs();
     void setBatteryLevels();
     void setDateTime();
     void saveRewindState(RewindSaveState* rewindSaveState);
@@ -84,7 +90,13 @@ private:
     std::unique_ptr<SaveManager> ndsSave;
     std::unique_ptr<SaveManager> gbaSave;
     std::unique_ptr<SaveManager> firmwareSave;
+    std::mutex inputMutex;
     u32 inputMask;
+    bool inputLidClosed = false;
+    bool inputTouching = false;
+    bool inputTouchDirty = false;
+    u16 inputTouchX = 0;
+    u16 inputTouchY = 0;
 
     std::shared_ptr<EmulatorConfiguration> currentConfiguration;
     FrameQueue frameQueue;

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="emulation_speed">에뮬레이션 속도</string>
+    <string name="emulation_speed_cycle_input">속도 증가 (1~5배)</string>
+    <string name="emulation_speed_status">속도: %1$d배</string>
+    <string name="emulation_speed_cycle_summary">속도 버튼이나 지정한 컨트롤러 키를 누를 때마다 1배 → 2배 → 3배 → 4배 → 5배 → 1배로 바뀝니다. 실제 속도는 기기와 게임에 따라 달라집니다.</string>
+</resources>

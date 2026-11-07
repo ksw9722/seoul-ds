@@ -114,9 +114,9 @@ void FrameQueue::clear()
 
     EGLDisplay currentDisplay = eglGetCurrentDisplay();
     for (auto& frame : frames) {
-        glDeleteTextures(1, &frame.frameTexture);
-        eglDestroySyncKHR(currentDisplay, frame.renderFence);
-        eglDestroySyncKHR(currentDisplay, frame.presentFence);
+        if (frame.frameTexture) glDeleteTextures(1, &frame.frameTexture);
+        if (frame.renderFence) eglDestroySyncKHR(currentDisplay, frame.renderFence);
+        if (frame.presentFence) eglDestroySyncKHR(currentDisplay, frame.presentFence);
         frame.frameTexture = 0;
         frame.width = 0;
         frame.height = 0;

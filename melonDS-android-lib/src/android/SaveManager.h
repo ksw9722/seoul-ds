@@ -20,6 +20,8 @@
 #define SAVEMANAGER_H
 
 #include <string>
+#include <atomic>
+#include <memory>
 #include <unistd.h>
 #include <time.h>
 
@@ -42,7 +44,7 @@ public:
     void CheckFlush();
 
     bool NeedsFlush();
-    void FlushSecondaryBuffer(u8* dst = nullptr, u32 dstLength = 0);
+    bool FlushSecondaryBuffer(u8* dst = nullptr, u32 dstLength = 0);
 
 private:
 
@@ -56,7 +58,7 @@ private:
     u32 Length;
     bool FlushRequested;
 
-    Platform::Thread* Thread;
+    Platform::Thread* Thread = nullptr;
     Platform::Mutex* SecondaryBufferLock;
     std::unique_ptr<u8[]> SecondaryBuffer;
     u32 SecondaryBufferLength;

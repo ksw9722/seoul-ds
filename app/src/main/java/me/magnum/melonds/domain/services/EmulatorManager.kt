@@ -10,6 +10,8 @@ import me.magnum.melonds.domain.model.emulator.RomLaunchResult
 import me.magnum.melonds.domain.model.retroachievements.GameAchievementData
 import me.magnum.melonds.domain.model.retroachievements.RAEvent
 import me.magnum.melonds.domain.model.rom.Rom
+import me.magnum.melonds.domain.model.twoplayer.TwoPlayerSaveInfo
+import me.magnum.melonds.domain.model.twoplayer.TwoPlayerStartResult
 import me.magnum.melonds.ui.emulator.rewind.model.RewindSaveState
 import me.magnum.melonds.ui.emulator.rewind.model.RewindWindow
 
@@ -18,6 +20,14 @@ interface EmulatorManager {
     val emulatorEvents: Flow<EmulatorEvent>
 
     suspend fun loadRom(rom: Rom, cheats: List<Cheat>): RomLaunchResult
+
+    suspend fun getTwoPlayerSaveInfo(rom: Rom): TwoPlayerSaveInfo
+
+    suspend fun startSecondPlayer(rom: Rom, importedSave: Uri?, createNew: Boolean): TwoPlayerStartResult
+
+    suspend fun selectPlayer(index: Int): Boolean
+
+    suspend fun exportTwoPlayerSave(rom: Rom, destination: Uri, primaryBackup: Boolean): Boolean
 
     suspend fun loadFirmware(consoleType: ConsoleType): FirmwareLaunchResult
 
@@ -37,7 +47,7 @@ interface EmulatorManager {
 
     suspend fun updateCheats(cheats: List<Cheat>)
     suspend fun setupRetroAchievements(achievementData: GameAchievementData)
-    fun unloadRetroAchievementsData()
+    suspend fun unloadRetroAchievementsData()
 
     suspend fun loadRewindState(rewindSaveState: RewindSaveState): Boolean
 

@@ -55,7 +55,13 @@ MelonInstance::MelonInstance(int instanceId, std::shared_ptr<EmulatorConfigurati
         nds = new NDS(std::move(*args), this);
     }
 
-    if (configuration->userInternalFirmwareAndBios)
+    // The second DS reads firmware settings but never writes the primary firmware.
+    // DS local wireless needs only its independently derived MAC and SRAM.
+    if (instanceId != 0)
+    {
+        firmwareSave = nullptr;
+    }
+    else if (configuration->userInternalFirmwareAndBios)
     {
         std::filesystem::path firmwarePath = MelonDSAndroid::internalFilesDir;
         firmwarePath /= "wfcsettings.bin";
@@ -124,15 +130,22 @@ bool MelonInstance::loadRom(std::string romPath, std::string sramPath)
     }
     else if (!Platform::CheckFileWritable(sramPath))
     {
+        CloseFile(sramFile);
         return false;
     }
 
-    sramFileLength = (u32) Platform::FileLength(sramFile);
-
+    const u64 saveLength = Platform::FileLength(sramFile);
+    if (saveLength > UINT32_MAX) {
+        CloseFile(sramFile);
+        return false;
+    }
+    sramFileLength = static_cast<u32>(saveLength);
     FileRewind(sramFile);
     sramData = std::make_unique<u8[]>(sramFileLength);
-    FileRead(sramData.get(), sramFileLength, 1, sramFile);
-    CloseFile(sramFile);
+    const bool saveRead = sramFileLength == 0 ||
+        FileRead(sramData.get(), sramFileLength, 1, sramFile) == 1;
+    const bool saveClosed = CloseFile(sramFile);
+    if (!saveRead || !saveClosed) return false;
 
     NDSCart::NDSCartArgs cartargs{
         // Don't load the SD card itself yet, because we don't know if
@@ -344,6 +357,7 @@ u32 MelonInstance::runFrame()
         nds->GPU.GetRenderer3D().SetOutputTexture(backBuffer, renderFrame->frameTexture);
     }
 
+    applyPendingInputs();
     u32 nLines = nds->RunFrame();
     retroAchievementsManager->FrameUpdate();
 
@@ -402,46 +416,87 @@ u32 MelonInstance::runFrame()
 
 void MelonInstance::stop()
 {
+    flushSaveFiles();
     retroAchievementsManager = nullptr;
     screenshotRenderer->cleanup();
+    // Delete textures and fences while this instance's EGL context is current.
+    frameQueue.clear();
 }
 
 void MelonInstance::touchScreen(u16 x, u16 y)
 {
-    nds->TouchScreen(x, y);
+    std::lock_guard lock(inputMutex);
+    inputTouching = true;
+    inputTouchDirty = true;
+    inputTouchX = x;
+    inputTouchY = y;
 }
 
 void MelonInstance::releaseScreen()
 {
-    nds->ReleaseScreen();
+    std::lock_guard lock(inputMutex);
+    inputTouching = false;
+    inputTouchDirty = true;
 }
 
 void MelonInstance::pressKey(u32 key)
 {
-    // Special handling for Lid input
+    std::lock_guard lock(inputMutex);
     if (key == 16 + 7)
-    {
-        nds->SetLidClosed(true);
-    }
-    else
-    {
-        inputMask &= ~(1 << key);
-        nds->SetKeyMask(inputMask);
-    }
+        inputLidClosed = true;
+    else if (key < 32)
+        inputMask &= ~(1u << key);
 }
 
 void MelonInstance::releaseKey(u32 key)
 {
-    // Special handling for Lid input
+    std::lock_guard lock(inputMutex);
     if (key == 16 + 7)
-    {
-        nds->SetLidClosed(false);
+        inputLidClosed = false;
+    else if (key < 32)
+        inputMask |= (1u << key);
+}
+
+void MelonInstance::releaseAllInputs()
+{
+    std::lock_guard lock(inputMutex);
+    inputMask = 0xFFF;
+    inputLidClosed = false;
+    inputTouching = false;
+    inputTouchDirty = true;
+}
+
+void MelonInstance::applyPendingInputs()
+{
+    std::lock_guard lock(inputMutex);
+    nds->SetKeyMask(inputMask);
+    if (nds->IsLidClosed() != inputLidClosed)
+        nds->SetLidClosed(inputLidClosed);
+    if (inputTouchDirty) {
+        if (inputTouching)
+            nds->TouchScreen(inputTouchX, inputTouchY);
+        else
+            nds->ReleaseScreen();
+        inputTouchDirty = false;
     }
-    else
-    {
-        inputMask |= (1 << key);
-        nds->SetKeyMask(inputMask);
+}
+
+bool MelonInstance::flushSaveFiles()
+{
+    bool success = true;
+    for (SaveManager* save : {ndsSave.get(), gbaSave.get(), firmwareSave.get()}) {
+        if (!save) continue;
+        save->CheckFlush();
+        success = save->FlushSecondaryBuffer() && success;
     }
+    return success;
+}
+
+void MelonInstance::disableRewind()
+{
+    rewindManager.UpdateRewindSettings(false, currentConfiguration->rewindLengthSeconds,
+                                      currentConfiguration->rewindCaptureSpacingSeconds);
+    rewindManager.Reset();
 }
 
 int MelonInstance::readAudioOutput(s16* buffer, int length)

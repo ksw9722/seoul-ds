@@ -12,14 +12,12 @@
             android:entryValues="@array/theme_values"
             android:defaultValue="light" />
 
-    <ListPreference
-            android:key="fast_forward_speed_multiplier"
-            android:title="@string/fast_forward_max_speed"
-            android:summary="%s"
-            app:iconSpaceReserved="false"
-            android:entries="@array/fast_forward_speed_multiplier_options"
-            android:entryValues="@array/fast_forward_speed_multiplier_values"
-            android:defaultValue="-1" />
+    <Preference
+            android:key="emulation_speed_info"
+            android:title="@string/emulation_speed"
+            android:summary="@string/emulation_speed_cycle_summary"
+            android:selectable="false"
+            app:iconSpaceReserved="false" />
 
     <com.smp.masterswitchpreference.MasterSwitchPreference
             android:key="enable_rewind"

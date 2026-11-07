@@ -152,45 +152,57 @@ void SaveManager::run()
         if (!Running) return;
 
         // We debounce for two seconds after last flush request to ensure that writing has finished.
-        if (TimeAtLastFlushRequest == 0 || difftime(time(nullptr), TimeAtLastFlushRequest) < 2)
-        {
-            continue;
-        }
-
-        FlushSecondaryBuffer();
+        Platform::Mutex_Lock(SecondaryBufferLock);
+        const bool ready = TimeAtLastFlushRequest != 0 &&
+            difftime(time(nullptr), TimeAtLastFlushRequest) >= 2;
+        Platform::Mutex_Unlock(SecondaryBufferLock);
+        if (ready)
+            FlushSecondaryBuffer();
     }
 }
 
-void SaveManager::FlushSecondaryBuffer(u8* dst, u32 dstLength)
+bool SaveManager::FlushSecondaryBuffer(u8* dst, u32 dstLength)
 {
-    if (!SecondaryBuffer) return;
-
-    // When flushing to a file, there's no point in re-writing the exact same data.
-    if (!dst && !NeedsFlush()) return;
-    // When flushing to memory, we don't know if dst already has any data so we only check that we CAN flush.
-    if (dst && dstLength < SecondaryBufferLength) return;
-
     Platform::Mutex_Lock(SecondaryBufferLock);
-    if (dst)
-    {
+    if (!SecondaryBuffer || (!dst && FlushVersion == PreviousFlushVersion)) {
+        Platform::Mutex_Unlock(SecondaryBufferLock);
+        return true;
+    }
+    if (dst && dstLength < SecondaryBufferLength) {
+        Platform::Mutex_Unlock(SecondaryBufferLock);
+        return false;
+    }
+
+    bool success = true;
+    if (dst) {
         memcpy(dst, SecondaryBuffer.get(), SecondaryBufferLength);
-    }
-    else
-    {
+    } else {
         FileHandle* f = Platform::OpenFile(Path, FileMode::Write);
-        if (f)
-        {
-            FileWrite(SecondaryBuffer.get(), SecondaryBufferLength, 1, f);
-            Log(LogLevel::Info, "SaveManager: Wrote %u bytes to %s\n", SecondaryBufferLength, Path.c_str());
-            CloseFile(f);
+        if (!f) {
+            success = false;
+        } else {
+            success = FileWrite(SecondaryBuffer.get(), 1, SecondaryBufferLength, f) == SecondaryBufferLength;
+            success = FileFlush(f) && success;
+            success = CloseFile(f) && success;
         }
+        if (success)
+            Log(LogLevel::Info, "SaveManager: Wrote %u bytes to %s\n", SecondaryBufferLength, Path.c_str());
+        else
+            Log(LogLevel::Error, "SaveManager: Failed to write %s\n", Path.c_str());
     }
-    PreviousFlushVersion = FlushVersion;
-    TimeAtLastFlushRequest = 0;
+    // A failed write remains pending for retry and must block save export.
+    if (success && !dst) {
+        PreviousFlushVersion = FlushVersion;
+        TimeAtLastFlushRequest = 0;
+    }
     Platform::Mutex_Unlock(SecondaryBufferLock);
+    return success;
 }
 
 bool SaveManager::NeedsFlush()
 {
-    return FlushVersion != PreviousFlushVersion;
+    Platform::Mutex_Lock(SecondaryBufferLock);
+    const bool pending = FlushVersion != PreviousFlushVersion;
+    Platform::Mutex_Unlock(SecondaryBufferLock);
+    return pending;
 }

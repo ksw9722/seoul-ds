@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="two_player_menu">Same-phone 2P (experimental)</string>
+    <string name="two_player_switch">Switch player 1 / 2</string>
+    <string name="two_player_current">2P · Player %1$d · 1×</string>
+    <string name="two_player_warning">Run the same DS game twice on this phone and switch which player you control. Both games keep running. Local wireless and Pokémon trading are experimental and unverified.\n\nRequires DS mode and the software renderer. Speed stays at 1×. Save states, rewind, reset, cheats, settings and achievements are unavailable until you exit.\n\nPlayer 1 keeps using its normal save. Its current save is backed up before 2P starts. Import a different raw .sav for player 2, or create a new save. Imported originals are never changed. Player 2 uses a separate persistent app copy. New/import replaces that copy after backing it up. Older internal backups cannot be exported from this menu.\n\nSave inside BOTH games after trading, then export player 2 from this menu. The latest pre-2P player 1 backup can also be exported here. Private copies and backups are deleted if the app is uninstalled or its data is cleared. Keep your own external backups.</string>
+    <string name="two_player_continue">Continue</string>
+    <string name="two_player_resume_save">Continue saved player 2</string>
+    <string name="two_player_import_save">Import another player’s .sav (copy)</string>
+    <string name="two_player_new_save">Start player 2 with a new save</string>
+    <string name="two_player_export_save">Export player 2 save…</string>
+    <string name="two_player_export_primary_backup">Export pre-2P player 1 backup…</string>
+    <string name="two_player_working">Preparing save files…</string>
+    <string name="two_player_started">2P started. Use Pause → Switch player 1 / 2. Save inside both games, then export player 2.</string>
+    <string name="two_player_unsupported">2P requires DS mode and the software renderer. Exit the game, change these settings, and launch it again. DSi is not supported.</string>
+    <string name="two_player_same_save">Choose a different player’s save, not the save currently used by player 1.</string>
+    <string name="two_player_save_failed">Could not safely prepare or back up the saves. Check file access, free storage and that the selected file is a nonempty raw .sav (up to 64 MB). Player 1 is still available.</string>
+    <string name="two_player_start_failed">Could not start player 2. Player 1 is still available. The prepared second save and backup are retained.</string>
+    <string name="two_player_unavailable">This action is unavailable during experimental 2P. Use in-game saves.</string>
+    <string name="two_player_switch_failed">Could not switch players.</string>
+    <string name="two_player_export_success">Save exported. Keep this copy outside the app.</string>
+    <string name="two_player_export_failed">Could not export the save. The app copy is retained. Choose a new file and check storage access.</string>
+    <string name="two_player_picker_failed">No file picker is available. The game is unchanged.</string>
+    <string name="two_player_replace_title">Replace the existing player 2 save?</string>
+    <string name="two_player_replace_warning">Export your current player 2 save first so you can recover its progress. A new game or import replaces the current app copy. Older automatic internal backups are not directly available in this menu.
+
+Export first leaves the current save unchanged. Return to this menu after exporting if you still want to replace it.</string>
+    <string name="two_player_export_first">Export first</string>
+    <string name="two_player_replace_anyway">Replace anyway</string>
+</resources>

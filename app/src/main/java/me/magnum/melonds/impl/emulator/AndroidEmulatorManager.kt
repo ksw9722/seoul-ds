@@ -2,6 +2,9 @@ package me.magnum.melonds.impl.emulator
 
 import android.content.Context
 import android.net.Uri
+import android.provider.DocumentsContract
+import android.system.Os
+import android.system.ErrnoException
 import androidx.documentfile.provider.DocumentFile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -17,6 +20,12 @@ import me.magnum.melonds.domain.model.Cheat
 import me.magnum.melonds.domain.model.ConsoleType
 import me.magnum.melonds.domain.model.EmulatorConfiguration
 import me.magnum.melonds.domain.model.MicSource
+import me.magnum.melonds.domain.model.VideoRenderer
+import me.magnum.melonds.domain.model.twoplayer.TwoPlayerSaveInfo
+import me.magnum.melonds.domain.model.twoplayer.TwoPlayerStartResult
+import me.magnum.melonds.impl.emulator.twoplayer.TwoPlayerSaveFiles
+import java.io.File
+import java.io.IOException
 import me.magnum.melonds.domain.model.emulator.EmulatorEvent
 import me.magnum.melonds.domain.model.emulator.FirmwareLaunchResult
 import me.magnum.melonds.domain.model.emulator.RomLaunchResult
@@ -44,6 +53,11 @@ class AndroidEmulatorManager(
 
     // Native state transitions and teardown may wait for I/O/frame boundaries. Never block the UI.
     private val stateDispatcher = Dispatchers.IO.limitedParallelism(1)
+    private val twoPlayerSaves = TwoPlayerSaveFiles(File(context.filesDir, "two-player"))
+    private var loadedRomIdentity: Uri? = null
+    private var loadedRomUri: Uri? = null
+    private var loadedSaveUri: Uri? = null
+    private var loadedConfiguration: EmulatorConfiguration? = null
 
     private val _emulatorEvents = MutableSharedFlow<EmulatorEvent>(extraBufferCapacity = Int.MAX_VALUE)
     override val emulatorEvents: Flow<EmulatorEvent> = _emulatorEvents.asSharedFlow()
@@ -93,7 +107,8 @@ class AndroidEmulatorManager(
             val fileRomProcessor = romFileProcessorFactory.getFileRomProcessorForDocument(fileRomDocument)
             val romUri = fileRomProcessor?.getRealRomUri(rom) ?: return@withContext RomLaunchResult.LaunchFailedRomNotSupported
 
-            setupEmulator(getRomEmulatorConfiguration(rom))
+            val configuration = getRomEmulatorConfiguration(rom)
+            setupEmulator(configuration)
 
             val sram = try {
                 sramProvider.getSramForRom(rom)
@@ -121,12 +136,106 @@ class AndroidEmulatorManager(
                 MelonEmulator.stopEmulation()
                 RomLaunchResult.LaunchFailed(loadResult)
             } else {
+                loadedRomIdentity = rom.uri
+                loadedRomUri = romUri
+                loadedSaveUri = sram
+                loadedConfiguration = configuration
                 messageQueue.start()
                 MelonEmulator.setupCheats(cheats.toTypedArray())
                 MelonEmulator.startEmulation()
 
                 RomLaunchResult.LaunchSuccessful(loadResult != MelonEmulator.LoadResult.SUCCESS_GBA_FAILED)
             }
+        }
+    }
+
+    override suspend fun getTwoPlayerSaveInfo(rom: Rom) = withContext(stateDispatcher) {
+        TwoPlayerSaveInfo(twoPlayerSaves.playerTwo(rom.uri.toString()).isFile, twoPlayerSaves.primaryBackup(rom.uri.toString()).isFile)
+    }
+
+    override suspend fun startSecondPlayer(rom: Rom, importedSave: Uri?, createNew: Boolean): TwoPlayerStartResult = withContext(stateDispatcher) {
+        val romUri = loadedRomUri
+        val primarySave = loadedSaveUri
+        val configuration = loadedConfiguration
+        if (romUri == null || primarySave == null || loadedRomIdentity != rom.uri || MelonEmulator.isTwoPlayerActive()) {
+            return@withContext TwoPlayerStartResult.INVALID_SESSION
+        }
+        if (configuration == null || configuration.consoleType != ConsoleType.DS || configuration.rendererConfiguration.renderer != VideoRenderer.SOFTWARE || rom.isDsiWareTitle) {
+            return@withContext TwoPlayerStartResult.UNSUPPORTED_CONFIGURATION
+        }
+        try {
+            if (importedSave != null && sameDocument(importedSave, primarySave)) return@withContext TwoPlayerStartResult.SAME_SAVE
+            // Serialized with teardown; pause flushes SRAM before backing it up or exporting it.
+            MelonEmulator.pauseEmulation()
+            if (!MelonEmulator.flushSaveFiles()) return@withContext TwoPlayerStartResult.SAVE_ERROR
+            val primary = context.contentResolver.openInputStream(primarySave) ?: throw IOException("Cannot read primary save")
+            val secondary = primary.use {
+                val imported = importedSave?.let { uri -> context.contentResolver.openInputStream(uri) ?: throw IOException("Cannot read second save") }
+                imported.use { twoPlayerSaves.prepare(rom.uri.toString(), primary, imported, createNew) }
+            }
+            when (MelonEmulator.startSecondPlayer(romUri, Uri.fromFile(secondary))) {
+                0 -> TwoPlayerStartResult.SUCCESS
+                1 -> TwoPlayerStartResult.INVALID_SESSION
+                2 -> TwoPlayerStartResult.UNSUPPORTED_CONFIGURATION
+                3 -> TwoPlayerStartResult.SAVE_ERROR
+                else -> TwoPlayerStartResult.START_FAILED
+            }
+        } catch (_: IOException) {
+            TwoPlayerStartResult.SAVE_ERROR
+        } catch (_: SecurityException) {
+            TwoPlayerStartResult.SAVE_ERROR
+        }
+    }
+
+    override suspend fun selectPlayer(index: Int): Boolean = withContext(stateDispatcher) {
+        MelonEmulator.pauseEmulation()
+        MelonEmulator.selectPlayer(index)
+    }
+
+    override suspend fun exportTwoPlayerSave(rom: Rom, destination: Uri, primaryBackup: Boolean): Boolean = withContext(stateDispatcher) {
+        try {
+            // Reject known aliases of the live primary save and source ROM before opening output.
+            if (loadedSaveUri?.let { sameDocument(it, destination) } == true || loadedRomUri?.let { sameDocument(it, destination) } == true) return@withContext false
+            MelonEmulator.pauseEmulation()
+            if (!MelonEmulator.flushSaveFiles()) return@withContext false
+            val source = if (primaryBackup) twoPlayerSaves.primaryBackup(rom.uri.toString()) else twoPlayerSaves.playerTwo(rom.uri.toString())
+            if (!source.isFile || sameDocument(Uri.fromFile(source), destination)) return@withContext false
+            source.inputStream().use { input ->
+                (context.contentResolver.openOutputStream(destination, "wt") ?: throw IOException("Cannot export save")).use { output ->
+                    input.copyTo(output)
+                    output.flush()
+                }
+            }
+            true
+        } catch (_: IOException) {
+            false
+        } catch (_: SecurityException) {
+            false
+        }
+    }
+
+    private fun sameDocument(first: Uri, second: Uri): Boolean {
+        if (first.normalizeScheme() == second.normalizeScheme()) return true
+        if (first.scheme == "file" && second.scheme == "file") return File(first.path!!).canonicalFile == File(second.path!!).canonicalFile
+        if (first.authority == second.authority && DocumentsContract.isDocumentUri(context, first) && DocumentsContract.isDocumentUri(context, second)) {
+            if (DocumentsContract.getDocumentId(first) == DocumentsContract.getDocumentId(second)) return true
+        }
+        // URI aliases can cross SAF authorities (or file:// and content://). Compare the actual
+        // open file when providers expose one, without ever opening a candidate for writing.
+        return try {
+            context.contentResolver.openFileDescriptor(first, "r")?.use { firstDescriptor ->
+                context.contentResolver.openFileDescriptor(second, "r")?.use { secondDescriptor ->
+                    val firstStat = Os.fstat(firstDescriptor.fileDescriptor)
+                    val secondStat = Os.fstat(secondDescriptor.fileDescriptor)
+                    firstStat.st_dev == secondStat.st_dev && firstStat.st_ino == secondStat.st_ino
+                } ?: false
+            } ?: false
+        } catch (_: IOException) {
+            false
+        } catch (_: SecurityException) {
+            false
+        } catch (_: ErrnoException) {
+            false
         }
     }
 
@@ -146,12 +255,15 @@ class AndroidEmulatorManager(
         }
     }
 
-    override suspend fun updateRomEmulatorConfiguration(rom: Rom) {
+    override suspend fun updateRomEmulatorConfiguration(rom: Rom) = withContext(stateDispatcher) {
+        if (MelonEmulator.isTwoPlayerActive()) return@withContext
         val configuration = getRomEmulatorConfiguration(rom)
         MelonEmulator.updateEmulatorConfiguration(configuration)
+        // Changing a preference does not recreate the already booted DS/DSi hardware.
+        loadedConfiguration = configuration.copy(consoleType = loadedConfiguration?.consoleType ?: configuration.consoleType)
     }
 
-    override suspend fun updateFirmwareEmulatorConfiguration(consoleType: ConsoleType) {
+    override suspend fun updateFirmwareEmulatorConfiguration(consoleType: ConsoleType) = withContext(stateDispatcher) {
         val configuration = getFirmwareEmulatorConfiguration(consoleType)
         MelonEmulator.updateEmulatorConfiguration(configuration)
     }
@@ -176,11 +288,13 @@ class AndroidEmulatorManager(
         MelonEmulator.resetEmulation()
     }
 
-    override suspend fun updateCheats(cheats: List<Cheat>) {
+    override suspend fun updateCheats(cheats: List<Cheat>) = withContext(stateDispatcher) {
+        if (MelonEmulator.isTwoPlayerActive()) return@withContext
         MelonEmulator.setupCheats(cheats.toTypedArray())
     }
 
-    override suspend fun setupRetroAchievements(achievementData: GameAchievementData) {
+    override suspend fun setupRetroAchievements(achievementData: GameAchievementData) = withContext(stateDispatcher) {
+        if (MelonEmulator.isTwoPlayerActive()) return@withContext
         val richPresencePath = if (settingsRepository.isRetroAchievementsRichPresenceEnabled()) {
             achievementData.richPresencePatch
         } else {
@@ -194,7 +308,7 @@ class AndroidEmulatorManager(
         )
     }
 
-    override fun unloadRetroAchievementsData() {
+    override suspend fun unloadRetroAchievementsData() = withContext(stateDispatcher) {
         MelonEmulator.unloadRetroAchievementsData()
     }
 
@@ -216,6 +330,10 @@ class AndroidEmulatorManager(
 
     override suspend fun stopEmulator() = withContext(stateDispatcher) {
         MelonEmulator.stopEmulation()
+        loadedRomIdentity = null
+        loadedRomUri = null
+        loadedSaveUri = null
+        loadedConfiguration = null
         cameraManager.stopCurrentCameraSource()
         messageQueue.stop()
     }
@@ -276,6 +394,7 @@ class AndroidEmulatorManager(
 
     private fun getStopReason(internalReason: Int): EmulatorEvent.Stop.Reason? {
         return when (internalReason) {
+            Unknown -> EmulatorEvent.Stop.Reason.InternalError
             GBAModeNotSupported -> EmulatorEvent.Stop.Reason.GBAModeNotSupported
             BadExceptionRegion -> EmulatorEvent.Stop.Reason.BadExceptionRegion
             PowerOff -> EmulatorEvent.Stop.Reason.PowerOff
@@ -287,6 +406,7 @@ class AndroidEmulatorManager(
      * The values of the different stop reasons, as defined in the emulator's core (in `melonDS::Platform::StopReason`)
      */
     companion object InternalStopReason {
+        private const val Unknown = 0
         private const val GBAModeNotSupported = 2
         private const val BadExceptionRegion = 3
         private const val PowerOff = 4

@@ -4,6 +4,7 @@ import android.view.InputDevice
 import android.view.KeyEvent
 import android.view.MotionEvent
 import me.magnum.melonds.domain.model.ControllerConfiguration
+import me.magnum.melonds.domain.model.Input
 import me.magnum.melonds.domain.model.InputConfig
 import kotlin.math.absoluteValue
 
@@ -39,6 +40,9 @@ class InputProcessor(private val controllerConfiguration: ControllerConfiguratio
         } else {
             when (keyEvent.action) {
                 KeyEvent.ACTION_DOWN -> {
+                    // One physical press advances one step; Android key-repeat must not
+                    // race through the full speed cycle while the key is held down.
+                    if (input == Input.FAST_FORWARD && keyEvent.repeatCount > 0) return true
                     frontendInputListener.onKeyPress(input)
                     return true
                 }

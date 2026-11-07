@@ -15,6 +15,7 @@ public:
     [[nodiscard]] EGLContext GetContext() const { return glContext; }
 
 private:
+    bool ownsDisplay = true;
     EGLDisplay display = EGL_NO_DISPLAY;
     EGLSurface surface = EGL_NO_SURFACE;
     EGLContext glContext = EGL_NO_CONTEXT;

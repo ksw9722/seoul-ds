@@ -58,6 +58,7 @@ import me.magnum.melonds.domain.model.retroachievements.RASimpleAchievement
 import me.magnum.melonds.domain.model.retroachievements.RASimpleLeaderboard
 import me.magnum.melonds.domain.model.rom.Rom
 import me.magnum.melonds.domain.model.ui.Orientation
+import me.magnum.melonds.domain.model.twoplayer.TwoPlayerStartResult
 import me.magnum.melonds.domain.repositories.BackgroundRepository
 import me.magnum.melonds.domain.repositories.CheatsRepository
 import me.magnum.melonds.domain.repositories.LayoutsRepository
@@ -118,6 +119,21 @@ class EmulatorViewModel @Inject constructor(
     private val saveStateOperations = SaveStateOperationCoordinator()
     private var isStopping = false
     private var isActivityResumed = false
+    private var twoPlayerOperationRunning = false
+    private val _selectedPlayer = MutableStateFlow<Int?>(null)
+    val selectedPlayer = _selectedPlayer.asStateFlow()
+    private val _twoPlayerResult = MutableStateFlow<EmulatorUiEvent?>(null)
+    val twoPlayerResult = _twoPlayerResult.asStateFlow()
+    fun consumeTwoPlayerResult() { _twoPlayerResult.value = null }
+    fun isTwoPlayerOperationRunning(): Boolean = twoPlayerOperationRunning
+
+    fun isTwoPlayerActive(): Boolean = _selectedPlayer.value != null
+
+    private fun blockUnsupportedTwoPlayerOperation(): Boolean {
+        if (!isTwoPlayerActive() && !twoPlayerOperationRunning) return false
+        _toastEvent.tryEmit(ToastEvent.UnavailableInTwoPlayer)
+        return true
+    }
 
     private val _emulatorState = MutableStateFlow<EmulatorState>(EmulatorState.Uninitialized)
     val emulatorState = _emulatorState.asStateFlow()
@@ -326,6 +342,7 @@ class EmulatorViewModel @Inject constructor(
     }
 
     fun onSettingsChanged() {
+        if (isTwoPlayerActive()) return
         val currentState = _emulatorState.value
         sessionCoroutineScope.launch {
             val sessionUpdateActions = emulatorSession.updateRetroAchievementsSettings(
@@ -346,6 +363,7 @@ class EmulatorViewModel @Inject constructor(
     }
 
     fun onCheatsChanged() {
+        if (isTwoPlayerActive()) return
         val rom = (_emulatorState.value as? EmulatorState.RunningRom)?.rom ?: return
 
         getRomInfo(rom)?.let {
@@ -357,7 +375,7 @@ class EmulatorViewModel @Inject constructor(
     }
 
     // Main-thread input must stop before asynchronous native teardown begins.
-    fun canAcceptInput(): Boolean = !isStopping && _emulatorState.value.isRunning()
+    fun canAcceptInput(): Boolean = !isStopping && !twoPlayerOperationRunning && _emulatorState.value.isRunning()
 
     fun onActivityResumed(allowResume: Boolean) {
         isActivityResumed = true
@@ -404,7 +422,7 @@ class EmulatorViewModel @Inject constructor(
     }
 
     fun resumeEmulator() {
-        if (isStopping || !isActivityResumed) return
+        if (isStopping || !isActivityResumed || twoPlayerOperationRunning) return
         saveStateOperations.requestResume()
         if (!saveStateOperations.isRunning) {
             sessionCoroutineScope.launch {
@@ -414,6 +432,7 @@ class EmulatorViewModel @Inject constructor(
     }
 
     fun resetEmulator() {
+        if (blockUnsupportedTwoPlayerOperation()) return
         if (_emulatorState.value.isRunning() && isActivityResumed && !saveStateOperations.isRunning && !isStopping) {
             saveStateOperations.requestResume()
             sessionCoroutineScope.launch {
@@ -465,7 +484,13 @@ class EmulatorViewModel @Inject constructor(
     fun onPauseMenuOptionSelected(option: PauseMenuOption) {
         when (option) {
             is RomPauseMenuOption -> {
+                if (!filterRomPauseMenuOption(option) || twoPlayerOperationRunning) return
                 when (option) {
+                    RomPauseMenuOption.TWO_PLAYER -> sessionCoroutineScope.launch {
+                        val rom = (_emulatorState.value as? EmulatorState.RunningRom)?.rom ?: return@launch
+                        _uiEvent.emit(EmulatorUiEvent.ShowTwoPlayerMenu(emulatorManager.getTwoPlayerSaveInfo(rom)))
+                    }
+                    RomPauseMenuOption.SWITCH_PLAYER -> switchPlayer()
                     RomPauseMenuOption.SETTINGS -> _uiEvent.tryEmit(EmulatorUiEvent.OpenScreen.SettingsScreen)
                     RomPauseMenuOption.SAVE_STATE -> {
                         (_emulatorState.value as? EmulatorState.RunningRom)?.let {
@@ -508,6 +533,7 @@ class EmulatorViewModel @Inject constructor(
     }
 
     fun onOpenRewind() {
+        if (blockUnsupportedTwoPlayerOperation()) return
         if (saveStateOperations.isRunning || isStopping) return
         if (!settingsRepository.isRewindEnabled()) {
             _toastEvent.tryEmit(ToastEvent.RewindNotEnabled)
@@ -527,12 +553,14 @@ class EmulatorViewModel @Inject constructor(
     }
 
     fun rewindToState(rewindSaveState: RewindSaveState) {
+        if (blockUnsupportedTwoPlayerOperation()) return
         sessionCoroutineScope.launch {
             emulatorManager.loadRewindState(rewindSaveState)
         }
     }
 
     fun saveStateToSlot(slot: SaveStateSlot) {
+        if (blockUnsupportedTwoPlayerOperation()) return
         val currentState = _emulatorState.value as? EmulatorState.RunningRom ?: return
         if (isStopping || !isActivityResumed || saveStateOperations.isRunning) return
         // Picking a slot dismisses the pause UI, unless a later lifecycle event pauses again.
@@ -544,6 +572,7 @@ class EmulatorViewModel @Inject constructor(
     }
 
     fun loadStateFromSlot(slot: SaveStateSlot) {
+        if (blockUnsupportedTwoPlayerOperation()) return
         val currentState = _emulatorState.value as? EmulatorState.RunningRom ?: return
         if (isStopping || !isActivityResumed || saveStateOperations.isRunning) return
         if (!slot.exists) {
@@ -559,6 +588,7 @@ class EmulatorViewModel @Inject constructor(
     }
 
     fun doQuickSave() {
+        if (blockUnsupportedTwoPlayerOperation()) return
         if (isStopping || !isActivityResumed) return
         when (val currentState = _emulatorState.value) {
             is EmulatorState.RunningRom -> runStateOperation(
@@ -578,6 +608,7 @@ class EmulatorViewModel @Inject constructor(
     }
 
     fun doQuickLoad() {
+        if (blockUnsupportedTwoPlayerOperation()) return
         if (isStopping || !isActivityResumed) return
         when (val currentState = _emulatorState.value) {
             is EmulatorState.RunningRom -> {
@@ -691,6 +722,9 @@ class EmulatorViewModel @Inject constructor(
         sessionCoroutineScope.notifyNewSessionStarted()
         emulatorSession.reset()
         raSessionJob = null
+        _selectedPlayer.value = null
+        _twoPlayerResult.value = null
+        twoPlayerOperationRunning = false
         _currentFps.value = null
         _emulatorState.value = newState
         _mainScreenBackground.value = RuntimeBackground.None
@@ -707,6 +741,7 @@ class EmulatorViewModel @Inject constructor(
                     is EmulatorEvent.Stop -> {
                         when (it.reason) {
                             EmulatorEvent.Stop.Reason.GBAModeNotSupported -> _toastEvent.tryEmit(ToastEvent.GbaModeNotSupported)
+                            EmulatorEvent.Stop.Reason.InternalError,
                             EmulatorEvent.Stop.Reason.BadExceptionRegion -> _toastEvent.tryEmit(ToastEvent.InternalError)
                             EmulatorEvent.Stop.Reason.PowerOff -> { /* no-op */ }
                         }
@@ -973,7 +1008,8 @@ class EmulatorViewModel @Inject constructor(
     }
 
     private fun startRetroAchievementsSession(rom: Rom) {
-        sessionCoroutineScope.launch {
+        if (isTwoPlayerActive()) return
+        raSessionJob = sessionCoroutineScope.launch {
             val achievementData = getRomAchievementData(rom)
             emulatorSession.updateRetroAchievementsIntegrationStatus(achievementData.retroAchievementsIntegrationStatus)
             if (!achievementData.isRetroAchievementsIntegrationEnabled) {
@@ -984,7 +1020,7 @@ class EmulatorViewModel @Inject constructor(
                 return@launch
             }
 
-            raSessionJob = launch {
+            launch {
                 // Wait until the emulator has actually started
                 ensureEmulatorIsRunning().firstOrNull()
 
@@ -1013,7 +1049,7 @@ class EmulatorViewModel @Inject constructor(
                     delay(30.seconds)
                     while (isActive) {
                         // TODO: Should we pause the session if the app goes to background? If so, how?
-                        val richPresenceDescription = MelonEmulator.getRichPresenceStatus()
+                        val richPresenceDescription = withContext(Dispatchers.IO) { MelonEmulator.getRichPresenceStatus() }
                         retroAchievementsRepository.sendSessionHeartbeat(rom.retroAchievementsHash, isHardcoreModeEnabled, richPresenceDescription)
                         delay(2.minutes)
                     }
@@ -1032,12 +1068,78 @@ class EmulatorViewModel @Inject constructor(
     }
 
     private fun filterRomPauseMenuOption(option: RomPauseMenuOption): Boolean {
+        if (isTwoPlayerActive()) return option in setOf(RomPauseMenuOption.TWO_PLAYER, RomPauseMenuOption.SWITCH_PLAYER, RomPauseMenuOption.EXIT)
         return when (option) {
+            RomPauseMenuOption.SWITCH_PLAYER -> false
             RomPauseMenuOption.REWIND -> settingsRepository.isRewindEnabled() && emulatorSession.areSaveStateLoadsAllowed()
             RomPauseMenuOption.LOAD_STATE -> emulatorSession.areSaveStateLoadsAllowed()
             RomPauseMenuOption.CHEATS -> emulatorSession.areCheatsEnabled()
             RomPauseMenuOption.VIEW_ACHIEVEMENTS -> emulatorSession.areRetroAchievementsEnabled()
             else -> true
+        }
+    }
+
+    fun startSecondPlayer(importedSave: Uri? = null, createNew: Boolean = false) {
+        val rom = (_emulatorState.value as? EmulatorState.RunningRom)?.rom
+        if (rom == null || isStopping || twoPlayerOperationRunning || saveStateOperations.isRunning || isTwoPlayerActive()) {
+            _twoPlayerResult.value = EmulatorUiEvent.TwoPlayerStarted(TwoPlayerStartResult.INVALID_SESSION)
+            return
+        }
+        twoPlayerOperationRunning = true
+        saveStateOperations.requestPause()
+        sessionCoroutineScope.launch {
+            try {
+                emulatorManager.pauseEmulator()
+                val result = emulatorManager.startSecondPlayer(rom, importedSave, createNew)
+                if (result == TwoPlayerStartResult.SUCCESS) {
+                    _selectedPlayer.value = MelonEmulator.getSelectedPlayer()
+                    raSessionJob?.cancel()
+                    raSessionJob = null
+                    emulatorManager.unloadRetroAchievementsData()
+                    _achievementsEvent.emit(RAEventUi.Reset)
+                }
+                twoPlayerOperationRunning = false
+                _twoPlayerResult.value = EmulatorUiEvent.TwoPlayerStarted(result)
+            } finally {
+                twoPlayerOperationRunning = false
+            }
+        }
+    }
+
+    private fun switchPlayer() {
+        val currentPlayer = _selectedPlayer.value ?: return
+        if (isStopping || twoPlayerOperationRunning || saveStateOperations.isRunning) return
+        twoPlayerOperationRunning = true
+        sessionCoroutineScope.launch {
+            try {
+                if (emulatorManager.selectPlayer(1 - currentPlayer)) {
+                    _selectedPlayer.value = 1 - currentPlayer
+                } else {
+                    _toastEvent.emit(ToastEvent.TwoPlayerSwitchFailed)
+                }
+            } finally {
+                twoPlayerOperationRunning = false
+            }
+            resumeEmulator()
+        }
+    }
+
+    fun exportTwoPlayerSave(destination: Uri, primaryBackup: Boolean) {
+        val rom = (_emulatorState.value as? EmulatorState.RunningRom)?.rom
+        if (rom == null || isStopping || twoPlayerOperationRunning || saveStateOperations.isRunning) {
+            _twoPlayerResult.value = EmulatorUiEvent.TwoPlayerExported(false)
+            return
+        }
+        twoPlayerOperationRunning = true
+        saveStateOperations.requestPause()
+        sessionCoroutineScope.launch {
+            try {
+                val success = emulatorManager.exportTwoPlayerSave(rom, destination, primaryBackup)
+                twoPlayerOperationRunning = false
+                _twoPlayerResult.value = EmulatorUiEvent.TwoPlayerExported(success)
+            } finally {
+                twoPlayerOperationRunning = false
+            }
         }
     }
 
@@ -1055,7 +1157,7 @@ class EmulatorViewModel @Inject constructor(
         )
     }
 
-    private fun dispatchSessionUpdateActions(actions: List<EmulatorSessionUpdateAction>) {
+    private suspend fun dispatchSessionUpdateActions(actions: List<EmulatorSessionUpdateAction>) {
         actions.forEach {
             when (it) {
                 EmulatorSessionUpdateAction.DisableRetroAchievements -> {

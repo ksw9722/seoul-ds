@@ -153,7 +153,6 @@ class SharedPreferencesSettingsRepository(
             dsiFirmwareUri = dsiDirDocument?.findFile("firmware.bin")?.uri,
             dsiNandUri = dsiDirDocument?.findFile("nand.bin")?.uri,
             internalDirectory = context.filesDir.absolutePath,
-            fastForwardSpeedMultiplier = getFastForwardSpeedMultiplier(),
             rewindEnabled = isRewindEnabled(),
             rewindPeriodSeconds = getRewindPeriod(),
             rewindWindowSeconds = getRewindWindow(),
@@ -173,11 +172,6 @@ class SharedPreferencesSettingsRepository(
     override fun getTheme(): Theme {
         val themePreference = preferences.getString("theme", "light")!!
         return Theme.valueOf(themePreference.uppercase())
-    }
-
-    override fun getFastForwardSpeedMultiplier(): Float {
-        val speedMultiplierPreference = preferences.getString("fast_forward_speed_multiplier", "-1")!!
-        return speedMultiplierPreference.toFloat()
     }
 
     override fun isRewindEnabled(): Boolean {

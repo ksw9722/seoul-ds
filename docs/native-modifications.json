@@ -1,0 +1,102 @@
+{
+  "schema": 1,
+  "base_public_commit": "2718ef277f365757b7b80f573be105e84bb02a8a",
+  "files": [
+    {
+      "path": "melonDS-android-lib/src/android/Configuration.h",
+      "original_sha256": "54ba6863c45104d2f4527a76b93cc2fa1c81388289afcf0fec056b3df55cfed4",
+      "sha256": "47d9e88d7c7438f9f845dea29d34b9006740e80bb8f2b3a525ba9ca30b4af57d",
+      "reason": "Remove obsolete unlimited/8x speed configuration; live control is bounded to 1\u20135x."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/MelonDS.cpp",
+      "original_sha256": "3338af41c955b2787b5d5f4ab15c4c5794159cd8613e091ec1d9ed52a295f989",
+      "sha256": "7f6b6887e78bf96d63ea5fdeafa263a75ea1d1df45f8114827818f85313796dc",
+      "reason": "Experimental same-process two-player lifecycle, rendering, input, audio and save isolation."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/MelonDS.h",
+      "original_sha256": "b432d5a0bd1a29c8d6f896b56bfe0aadb73962665e12a91d87efb2b16db0c482",
+      "sha256": "3ec9a9137ddaaddc15cd6ffbf22c72adf941fea710297969d76f1b9ffb8699cb",
+      "reason": "Experimental same-process two-player lifecycle, rendering, input, audio and save isolation."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/MelonDSAudio.cpp",
+      "original_sha256": "f7e421d7b2e0ed38a6baffff3c1c73043e87baee39febc9cda785f761a41bc4c",
+      "sha256": "3180e09559557c6c02dfe32203a1b2f0368ccfe0db25622172373e9061c8e1a5",
+      "reason": "Experimental same-process two-player lifecycle, rendering, input, audio and save isolation."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/MelonInstance.cpp",
+      "original_sha256": "6193f0ee232c906b03d39d57039b684625fdb47b8e201a7412d68ee031ff2270",
+      "sha256": "7c6835dcc65f2db3b7eaf309f4c3faacffa647b7effe45c19a1a41fe3d4f281d",
+      "reason": "Experimental same-process two-player lifecycle, rendering, input, audio and save isolation."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/MelonInstance.h",
+      "original_sha256": "492a6f09d9689b2f916c05a4e3e79edbcd9975d3f3ddbfe3523ba31e944d93f3",
+      "sha256": "2df36102845a5bc74ff0759981641aa556eb6dc9bc0ede2a32c1199a7718963d",
+      "reason": "Experimental same-process two-player lifecycle, rendering, input, audio and save isolation."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/OboeCallback.cpp",
+      "original_sha256": "b9900b449297f9fb54ba9512aef69793c1b7a2ab750a0f6167c1e838b2a3fd71",
+      "sha256": "80086e33cadb5b1d3dd366d399139e92a941b8b07e03855d749b3568da24226d",
+      "reason": "Experimental same-process two-player lifecycle, rendering, input, audio and save isolation."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/OboeCallback.h",
+      "original_sha256": "9d16582146c93894b035a3ae59c6d41f30b2a2da0899da74829081d897ee0a50",
+      "sha256": "90ea60f03b2e46ec36b1c06ff077e37e93774f4a6e5935d6596ed29da92b2f5e",
+      "reason": "Experimental same-process two-player lifecycle, rendering, input, audio and save isolation."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/OpenGLContext.cpp",
+      "original_sha256": "f1ce708bc98f2e1a0c83affa482cbba20a4bad1a6e24e996c29cc6b5661f3444",
+      "sha256": "5a2f3da05682e21f40a4b3d927bd343c13201937793f51ba49168f754df51f32",
+      "reason": "Experimental same-process two-player lifecycle, rendering, input, audio and save isolation."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/OpenGLContext.h",
+      "original_sha256": "a21f3c10e473eb850cc5e91f46b7dde39cdb4df62ae6fa768cf99e38f018e019",
+      "sha256": "4da0da8a0941ca882fb3276777be3d7bc81e708d00597b40b91582895faac5d6",
+      "reason": "Experimental same-process two-player lifecycle, rendering, input, audio and save isolation."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/PlatformAndroid.cpp",
+      "original_sha256": "3dc161765f25f01f026fcc7143082ffa12d887b0f94f30bcf4999f5c428bae47",
+      "sha256": "d9732ff744c4570e02f03cc5c7b3758c11657d68e69fe6dc7433e86acfddf38f",
+      "reason": "Fix absolute pthread semaphore deadlines and release mutex on all wait outcomes."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/SaveManager.cpp",
+      "original_sha256": "950f5138f15be4631da56b2989cff09c2e0c9c4fcd6a4dcc3bc2f61537925f28",
+      "sha256": "8186fc778841c94ae4b2b5bba3788d858286c3d6fba7267466e8c7366055469c",
+      "reason": "Synchronous save flush reports errors and retains failed writes for retry before backup/export."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/SaveManager.h",
+      "original_sha256": "5f20cc65406337671504712c152a0a153c7dce7620bd4280d0591adec785d6d4",
+      "sha256": "40de59b2e975b46af40c5cb9e4ae7feca8a058077251821a67e290e007e8d15b",
+      "reason": "Synchronous save flush reports errors and retains failed writes for retry before backup/export."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/TimeoutDeadline.h",
+      "original_sha256": null,
+      "sha256": "5c519aa9b843243685ec10fddf84d9bed55eba910de54aa93efdaf4609dc3e9f",
+      "reason": "Fix absolute pthread semaphore deadlines and release mutex on all wait outcomes."
+    },
+    {
+      "path": "melonDS-android-lib/src/android/renderer/FrameQueue.cpp",
+      "original_sha256": "f61028118dcca915c853b4de881953d35f3ff4ccc5affe692cefc753d607d7df",
+      "sha256": "23bb6f19f36623fad795ce53b340bc52ff3d91064173ed49e7c44fa4cf4b90f1",
+      "reason": "Experimental same-process two-player lifecycle, rendering, input, audio and save isolation."
+    },
+    {
+      "path": "melonDS-android-lib/src/net/LocalMP.cpp",
+      "original_sha256": "4f8d93d75a9549231465a6dfcca7fb63a2643e052f7ac7ba3001f15e5364310b",
+      "sha256": "5ebc23b4127b98ab8c319b1dd28e156528888732d05dfb89cfa3e79d6c28d7a1",
+      "reason": "Synchronize shared host/connection status for concurrent local DS instances."
+    }
+  ]
+}

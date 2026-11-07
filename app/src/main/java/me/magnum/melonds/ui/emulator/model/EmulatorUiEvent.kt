@@ -2,6 +2,8 @@ package me.magnum.melonds.ui.emulator.model
 
 import me.magnum.melonds.domain.model.RomInfo
 import me.magnum.melonds.domain.model.SaveStateSlot
+import me.magnum.melonds.domain.model.twoplayer.TwoPlayerSaveInfo
+import me.magnum.melonds.domain.model.twoplayer.TwoPlayerStartResult
 import me.magnum.melonds.ui.emulator.rewind.model.RewindWindow
 
 sealed class EmulatorUiEvent {
@@ -19,5 +21,8 @@ sealed class EmulatorUiEvent {
     }
     data object ShowAchievementList : EmulatorUiEvent()
     data object ShowPendingSubmissionsDialog : EmulatorUiEvent()
+    data class ShowTwoPlayerMenu(val saves: TwoPlayerSaveInfo) : EmulatorUiEvent()
+    data class TwoPlayerStarted(val result: TwoPlayerStartResult) : EmulatorUiEvent()
+    data class TwoPlayerExported(val success: Boolean) : EmulatorUiEvent()
     data object CloseEmulator : EmulatorUiEvent()
 }

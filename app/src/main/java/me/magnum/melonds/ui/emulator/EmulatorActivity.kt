@@ -62,6 +62,8 @@ import me.magnum.melonds.domain.model.layout.LayoutComponent
 import me.magnum.melonds.domain.model.layout.ScreenFold
 import me.magnum.melonds.domain.model.rom.Rom
 import me.magnum.melonds.domain.model.ui.Orientation
+import me.magnum.melonds.domain.model.twoplayer.TwoPlayerSaveInfo
+import me.magnum.melonds.domain.model.twoplayer.TwoPlayerStartResult
 import me.magnum.melonds.extensions.insetsControllerCompat
 import me.magnum.melonds.extensions.setLayoutOrientation
 import me.magnum.melonds.impl.emulator.LifecycleOwnerProvider
@@ -190,9 +192,8 @@ class EmulatorActivity : AppCompatActivity() {
     private lateinit var mainScreenRenderer: DSRenderer
     private lateinit var melonTouchHandler: MelonTouchHandler
     private lateinit var nativeInputListener: INativeInputListener
+    private var speedToast: Toast? = null
     private val frontendInputHandler = object : FrontendInputHandler() {
-        var fastForwardEnabled = false
-            private set
         var microphoneEnabled = true
             private set
 
@@ -207,10 +208,11 @@ class EmulatorActivity : AppCompatActivity() {
 
         override fun onFastForwardPressed() {
             if (!viewModel.canAcceptInput()) return
-            fastForwardEnabled = !fastForwardEnabled
-            binding.viewLayoutControls.setLayoutComponentToggleState(LayoutComponent.BUTTON_FAST_FORWARD_TOGGLE, fastForwardEnabled)
-            presentation?.layoutView?.setLayoutComponentToggleState(LayoutComponent.BUTTON_FAST_FORWARD_TOGGLE, fastForwardEnabled)
-            MelonEmulator.setFastForwardEnabled(fastForwardEnabled)
+            val multiplier = MelonEmulator.cycleEmulationSpeed()
+            updateEmulationSpeedFeedback()
+            speedToast?.cancel()
+            speedToast = Toast.makeText(this@EmulatorActivity, getString(R.string.emulation_speed_status, multiplier), Toast.LENGTH_SHORT)
+            speedToast?.show()
         }
 
         override fun onMicrophonePressed() {
@@ -258,6 +260,28 @@ class EmulatorActivity : AppCompatActivity() {
             }
         }
     }
+    private var twoPlayerFlowPending = false
+    private var exportPrimaryBackup = false
+    private var twoPlayerPickerPending = false
+    private var twoPlayerBusyDialog: AlertDialog? = null
+    private val secondSavePicker = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
+        twoPlayerPickerPending = false
+        if (uri == null) {
+            finishTwoPlayerFlow()
+        } else {
+            showTwoPlayerBusy()
+            viewModel.startSecondPlayer(importedSave = uri)
+        }
+    }
+    private val twoPlayerSaveExporter = registerForActivityResult(ActivityResultContracts.CreateDocument("application/octet-stream")) { uri ->
+        twoPlayerPickerPending = false
+        if (uri == null) {
+            finishTwoPlayerFlow()
+        } else {
+            showTwoPlayerBusy()
+            viewModel.exportTwoPlayerSave(uri, exportPrimaryBackup)
+        }
+    }
     private val backPressedCallback = object : OnBackPressedCallback(false) {
         override fun handleOnBackPressed() {
             handleBackPressed()
@@ -289,6 +313,12 @@ class EmulatorActivity : AppCompatActivity() {
         binding = ActivityEmulatorBinding.inflate(layoutInflater)
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(binding.root)
+        twoPlayerPickerPending = savedInstanceState?.getBoolean("two_player_picker_pending") == true
+        // Ordinary dialogs may be dismissed by recreation. Only restore a pending picker or a
+        // retained operation/result; otherwise allow the game to resume rather than strand it.
+        twoPlayerFlowPending = twoPlayerPickerPending || viewModel.isTwoPlayerOperationRunning() || viewModel.twoPlayerResult.value != null
+        exportPrimaryBackup = savedInstanceState?.getBoolean("two_player_export_primary") == true
+        if (twoPlayerFlowPending) activeOverlays.addActiveOverlay(EmulatorOverlay.TWO_PLAYER_DIALOG)
         setupFullscreen()
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, windowInsets ->
             val insets = windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout())
@@ -450,6 +480,31 @@ class EmulatorActivity : AppCompatActivity() {
                 }
             }
         }
+        if (viewModel.isTwoPlayerOperationRunning()) showTwoPlayerBusy()
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.twoPlayerResult.collect { result ->
+                    when (result) {
+                        is EmulatorUiEvent.TwoPlayerStarted -> onTwoPlayerStarted(result.result)
+                        is EmulatorUiEvent.TwoPlayerExported -> {
+                            finishTwoPlayerFlow()
+                            Toast.makeText(this@EmulatorActivity, if (result.success) R.string.two_player_export_success else R.string.two_player_export_failed, Toast.LENGTH_LONG).show()
+                        }
+                        else -> Unit
+                    }
+                    if (result != null) viewModel.consumeTwoPlayerResult()
+                }
+            }
+        }
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.selectedPlayer.collectLatest { player ->
+                    binding.textTwoPlayer.isVisible = player != null
+                    binding.textTwoPlayer.text = player?.let { getString(R.string.two_player_current, it + 1) }
+                    updateEmulationSpeedFeedback()
+                }
+            }
+        }
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.currentFps.collectLatest {
@@ -465,6 +520,8 @@ class EmulatorActivity : AppCompatActivity() {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.toastEvent.collectLatest {
                     val (message, duration) = when (it) {
+                        ToastEvent.UnavailableInTwoPlayer -> R.string.two_player_unavailable to Toast.LENGTH_LONG
+                        ToastEvent.TwoPlayerSwitchFailed -> R.string.two_player_switch_failed to Toast.LENGTH_LONG
                         ToastEvent.GbaLoadFailed -> R.string.error_load_gba_rom to Toast.LENGTH_SHORT
                         ToastEvent.QuickSaveSuccessful -> R.string.saved to Toast.LENGTH_SHORT
                         ToastEvent.QuickLoadSuccessful -> R.string.loaded to Toast.LENGTH_SHORT
@@ -489,6 +546,12 @@ class EmulatorActivity : AppCompatActivity() {
             lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.uiEvent.collectLatest {
                     when (it) {
+                        is EmulatorUiEvent.ShowTwoPlayerMenu -> showTwoPlayerMenu(it.saves)
+                        is EmulatorUiEvent.TwoPlayerStarted -> onTwoPlayerStarted(it.result)
+                        is EmulatorUiEvent.TwoPlayerExported -> {
+                            finishTwoPlayerFlow()
+                            Toast.makeText(this@EmulatorActivity, if (it.success) R.string.two_player_export_success else R.string.two_player_export_failed, Toast.LENGTH_LONG).show()
+                        }
                         EmulatorUiEvent.CloseEmulator -> {
                             choreographerFrameRenderer.stopRendering()
                             presentation?.dismiss()
@@ -539,6 +602,7 @@ class EmulatorActivity : AppCompatActivity() {
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 viewModel.emulatorState.collectLatest {
+                    updateEmulationSpeedFeedback()
                     when (it) {
                         is EmulatorState.Uninitialized -> {
                             binding.viewLayoutControls.isInvisible = true
@@ -654,11 +718,12 @@ class EmulatorActivity : AppCompatActivity() {
                         updateLayout(it)
                     }
 
-                    setLayoutComponentToggleState(LayoutComponent.BUTTON_FAST_FORWARD_TOGGLE, frontendInputHandler.fastForwardEnabled)
+                    setLayoutComponentToggleState(LayoutComponent.BUTTON_FAST_FORWARD_TOGGLE, MelonEmulator.getEmulationSpeed() > 1)
                     setLayoutComponentToggleState(LayoutComponent.BUTTON_MICROPHONE_TOGGLE, frontendInputHandler.microphoneEnabled)
                     setConnectedControllersState(connectedControllerManager.controllersState.value)
                 }
 
+                showEmulationSpeed(MelonEmulator.getEmulationSpeed(), viewModel.emulatorState.value.isRunning())
                 updateRendererConfiguration(viewModel.runtimeRendererConfiguration.value)
                 updateBackground(viewModel.secondaryScreenBackground.value)
                 if (binding.viewLayoutControls.areScreensSwapped()) {
@@ -675,6 +740,7 @@ class EmulatorActivity : AppCompatActivity() {
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+        if (twoPlayerFlowPending) return
 
         val launchArgs = LaunchArgs.fromIntent(intent)
         // Invalid arguments. Ignore completely
@@ -772,12 +838,22 @@ class EmulatorActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateEmulationSpeedFeedback() {
+        val multiplier = MelonEmulator.getEmulationSpeed()
+        val running = viewModel.emulatorState.value.isRunning()
+        binding.viewLayoutControls.setLayoutComponentToggleState(LayoutComponent.BUTTON_FAST_FORWARD_TOGGLE, multiplier > 1)
+        presentation?.layoutView?.setLayoutComponentToggleState(LayoutComponent.BUTTON_FAST_FORWARD_TOGGLE, multiplier > 1)
+        binding.textEmulationSpeed.showSpeed(multiplier, running)
+        presentation?.showEmulationSpeed(multiplier, running)
+    }
+
     private fun setupSoftInput(layoutConfiguration: RuntimeInputLayoutConfiguration?) {
+        updateEmulationSpeedFeedback()
         if (layoutConfiguration != null) {
             setLayoutOrientation(layoutConfiguration.layoutOrientation)
             with(binding.viewLayoutControls) {
                 instantiateLayout(layoutConfiguration, LayoutTarget.MAIN_SCREEN)
-                setLayoutComponentToggleState(LayoutComponent.BUTTON_FAST_FORWARD_TOGGLE, frontendInputHandler.fastForwardEnabled)
+                setLayoutComponentToggleState(LayoutComponent.BUTTON_FAST_FORWARD_TOGGLE, MelonEmulator.getEmulationSpeed() > 1)
                 setLayoutComponentToggleState(LayoutComponent.BUTTON_MICROPHONE_TOGGLE, frontendInputHandler.microphoneEnabled)
             }
             handler.post {
@@ -786,7 +862,7 @@ class EmulatorActivity : AppCompatActivity() {
 
             presentation?.apply {
                 updateLayout(layoutConfiguration)
-                layoutView.setLayoutComponentToggleState(LayoutComponent.BUTTON_FAST_FORWARD_TOGGLE, frontendInputHandler.fastForwardEnabled)
+                layoutView.setLayoutComponentToggleState(LayoutComponent.BUTTON_FAST_FORWARD_TOGGLE, MelonEmulator.getEmulationSpeed() > 1)
                 layoutView.setLayoutComponentToggleState(LayoutComponent.BUTTON_MICROPHONE_TOGGLE, frontendInputHandler.microphoneEnabled)
             }
         } else {
@@ -851,6 +927,133 @@ class EmulatorActivity : AppCompatActivity() {
                     viewModel.resumeEmulator()
                 }
                 .show()
+    }
+
+    private fun showTwoPlayerMenu(saves: TwoPlayerSaveInfo) {
+        if (twoPlayerFlowPending) return
+        twoPlayerFlowPending = true
+        activeOverlays.addActiveOverlay(EmulatorOverlay.TWO_PLAYER_DIALOG)
+        if (viewModel.isTwoPlayerActive()) {
+            showTwoPlayerActions(saves)
+        } else {
+            AlertDialog.Builder(this)
+                .setTitle(R.string.two_player_menu)
+                .setMessage(R.string.two_player_warning)
+                .setPositiveButton(R.string.two_player_continue) { _, _ -> showTwoPlayerActions(saves) }
+                .setNegativeButton(R.string.cancel) { dialog, _ -> dialog.cancel() }
+                .setOnCancelListener { finishTwoPlayerFlow() }
+                .show()
+        }
+    }
+
+    private fun showTwoPlayerActions(saves: TwoPlayerSaveInfo) {
+        val actions = mutableListOf<Pair<Int, () -> Unit>>()
+        if (!viewModel.isTwoPlayerActive()) {
+            if (saves.hasPlayerTwoSave) actions += R.string.two_player_resume_save to {
+                showTwoPlayerBusy()
+                viewModel.startSecondPlayer()
+            }
+            actions += R.string.two_player_import_save to {
+                confirmTwoPlayerReplacement(saves.hasPlayerTwoSave) {
+                    try {
+                        twoPlayerPickerPending = true
+                        secondSavePicker.launch(arrayOf("*/*"))
+                    } catch (_: android.content.ActivityNotFoundException) {
+                        finishTwoPlayerFlow()
+                        Toast.makeText(this, R.string.two_player_picker_failed, Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+            actions += R.string.two_player_new_save to {
+                confirmTwoPlayerReplacement(saves.hasPlayerTwoSave) {
+                    showTwoPlayerBusy()
+                    viewModel.startSecondPlayer(createNew = true)
+                }
+            }
+        }
+        if (saves.hasPlayerTwoSave) actions += R.string.two_player_export_save to { launchTwoPlayerExport(false) }
+        if (saves.hasPrimaryBackup) actions += R.string.two_player_export_primary_backup to { launchTwoPlayerExport(true) }
+        AlertDialog.Builder(this)
+            .setTitle(R.string.two_player_menu)
+            .setItems(actions.map { getString(it.first) }.toTypedArray()) { _, which -> actions[which].second() }
+            .setNegativeButton(R.string.cancel) { dialog, _ -> dialog.cancel() }
+            .setOnCancelListener { finishTwoPlayerFlow() }
+            .show()
+    }
+
+    private fun confirmTwoPlayerReplacement(hasExistingSave: Boolean, onConfirmed: () -> Unit) {
+        if (!hasExistingSave) {
+            onConfirmed()
+            return
+        }
+        AlertDialog.Builder(this)
+            .setTitle(R.string.two_player_replace_title)
+            .setMessage(R.string.two_player_replace_warning)
+            // Export ends this flow without replacing anything; the user can return afterward.
+            .setPositiveButton(R.string.two_player_export_first) { _, _ -> launchTwoPlayerExport(false) }
+            .setNeutralButton(R.string.two_player_replace_anyway) { _, _ -> onConfirmed() }
+            .setNegativeButton(R.string.cancel) { dialog, _ -> dialog.cancel() }
+            .setOnCancelListener { finishTwoPlayerFlow() }
+            .show()
+    }
+
+    private fun launchTwoPlayerExport(primaryBackup: Boolean) {
+        exportPrimaryBackup = primaryBackup
+        val rom = (viewModel.emulatorState.value as? EmulatorState.RunningRom)?.rom
+        val name = (rom?.fileName ?: "game").substringBeforeLast('.')
+        try {
+            twoPlayerPickerPending = true
+            twoPlayerSaveExporter.launch(if (primaryBackup) "$name.p1-before-2p.sav" else "$name.p2.sav")
+        } catch (_: android.content.ActivityNotFoundException) {
+            finishTwoPlayerFlow()
+            Toast.makeText(this, R.string.two_player_picker_failed, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun showTwoPlayerBusy() {
+        twoPlayerBusyDialog?.dismiss()
+        twoPlayerBusyDialog = AlertDialog.Builder(this)
+            .setMessage(R.string.two_player_working)
+            .setCancelable(false)
+            .show()
+    }
+
+    private fun onTwoPlayerStarted(result: TwoPlayerStartResult) {
+        updateEmulationSpeedFeedback()
+        if (result == TwoPlayerStartResult.SUCCESS) {
+            finishTwoPlayerFlow()
+            Toast.makeText(this, R.string.two_player_started, Toast.LENGTH_LONG).show()
+            return
+        }
+        twoPlayerBusyDialog?.dismiss()
+        twoPlayerBusyDialog = null
+        val message = when (result) {
+            TwoPlayerStartResult.UNSUPPORTED_CONFIGURATION -> R.string.two_player_unsupported
+            TwoPlayerStartResult.SAME_SAVE -> R.string.two_player_same_save
+            TwoPlayerStartResult.SAVE_ERROR -> R.string.two_player_save_failed
+            else -> R.string.two_player_start_failed
+        }
+        AlertDialog.Builder(this)
+            .setTitle(R.string.two_player_menu)
+            .setMessage(message)
+            .setPositiveButton(R.string.ok) { _, _ -> finishTwoPlayerFlow() }
+            .setOnCancelListener { finishTwoPlayerFlow() }
+            .show()
+    }
+
+    private fun finishTwoPlayerFlow() {
+        twoPlayerBusyDialog?.dismiss()
+        twoPlayerBusyDialog = null
+        twoPlayerFlowPending = false
+        twoPlayerPickerPending = false
+        activeOverlays.removeActiveOverlay(EmulatorOverlay.TWO_PLAYER_DIALOG)
+        viewModel.resumeEmulator()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putBoolean("two_player_picker_pending", twoPlayerPickerPending)
+        outState.putBoolean("two_player_export_primary", exportPrimaryBackup)
+        super.onSaveInstanceState(outState)
     }
 
     private fun disableScreenTimeOut() {
@@ -1020,6 +1223,8 @@ class EmulatorActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        speedToast?.cancel()
+        twoPlayerBusyDialog?.dismiss()
         frameRenderCoordinator.stop()
         presentation?.dismiss()
     }

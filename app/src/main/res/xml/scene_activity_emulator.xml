@@ -24,6 +24,18 @@
                     app:visibilityMode="ignore" />
         </Constraint>
 
+        <Constraint android:id="@+id/textEmulationSpeed">
+            <PropertySet
+                    app:applyMotionScene="false"
+                    app:visibilityMode="ignore" />
+        </Constraint>
+
+        <Constraint android:id="@+id/text_two_player">
+            <PropertySet
+                    app:applyMotionScene="false"
+                    app:visibilityMode="ignore" />
+        </Constraint>
+
         <Constraint android:id="@+id/textLoading">
             <PropertySet
                     app:applyMotionScene="false"

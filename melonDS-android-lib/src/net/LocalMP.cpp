@@ -190,11 +190,12 @@ int LocalMP::SendPacketGeneric(int inst, u32 type, u8* packet, int len, u64 time
         MPStatus.MPReplyBitmask |= (1 << inst);
     }
 
+    const u16 hostInstance = MPStatus.MPHostinst;
     Mutex_Unlock(MPQueueLock);
 
     if (type == 2)
     {
-        Semaphore_Post(SemPool[16 +  MPStatus.MPHostinst]);
+        Semaphore_Post(SemPool[16 + hostInstance]);
     }
     else
     {
@@ -283,15 +284,11 @@ int LocalMP::SendAck(int inst, u8* packet, int len, u64 timestamp)
 
 int LocalMP::RecvHostPacket(int inst, u8* packet, u64* timestamp)
 {
-    if (LastHostID != -1)
-    {
-        // check if the host is still connected
-
-        u16 curinstmask = MPStatus.ConnectedBitmask;
-
-        if (!(curinstmask & (1 << LastHostID)))
-            return -1;
-    }
+    Mutex_Lock(MPQueueLock);
+    const bool hostDisconnected = LastHostID != -1 &&
+        !(MPStatus.ConnectedBitmask & (1 << LastHostID));
+    Mutex_Unlock(MPQueueLock);
+    if (hostDisconnected) return -1;
 
     return RecvPacketGeneric(inst, packet, true, timestamp);
 }
@@ -302,7 +299,9 @@ u16 LocalMP::RecvReplies(int inst, u8* packets, u64 timestamp, u16 aidmask)
     u16 myinstmask = (1 << inst);
     u16 curinstmask;
 
+    Mutex_Lock(MPQueueLock);
     curinstmask = MPStatus.ConnectedBitmask;
+    Mutex_Unlock(MPQueueLock);
 
     // if all clients have left: return early
     if ((myinstmask & curinstmask) == curinstmask)

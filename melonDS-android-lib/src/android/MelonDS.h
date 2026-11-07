@@ -54,6 +54,15 @@ namespace MelonDSAndroid {
      */
     extern int loadRom(std::string romPath, std::string sramPath, RomGbaSlotConfig* gbaSlotConfig);
     extern int bootFirmware();
+    // Experimental same-phone DS link. Caller must hold the JNI state-operation
+    // guard with the primary core paused at a frame boundary. No implicit resume.
+    // 0=ready, 1=invalid session/path, 2=unsupported config, 3=load failure, 4=start failure.
+    extern int startSecondPlayer(const std::string& romPath, const std::string& savePath);
+    extern bool selectPlayer(int player);
+    extern int getSelectedPlayer();
+    extern bool isTwoPlayerActive();
+    // Both cores must be paused; returns false on any save write/flush/close failure.
+    extern bool flushSaveFiles();
     extern void touchScreen(u16 x, u16 y);
     extern void releaseScreen();
     extern void pressKey(u32 key);

@@ -59,6 +59,7 @@ void logEglError()
 
 bool OpenGLContext::InitContext(long sharedGlContext)
 {
+    ownsDisplay = sharedGlContext == 0;
     display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
     if (display == EGL_NO_DISPLAY)
     {
@@ -225,7 +226,9 @@ void OpenGLContext::DeInit()
     if (glContext != EGL_NO_CONTEXT)
         eglDestroyContext(display, glContext);
 
-    eglTerminate(display);
+    // Shared worker contexts must not terminate the primary/UI display.
+    if (ownsDisplay)
+        eglTerminate(display);
 
     display = EGL_NO_DISPLAY;
     surface = EGL_NO_SURFACE;

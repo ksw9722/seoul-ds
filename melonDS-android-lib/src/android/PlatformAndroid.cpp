@@ -31,6 +31,7 @@
 #include "MelonDSAudio.h"
 #include "ROMManager.h"
 #include "PlatformAndroid.h"
+#include "TimeoutDeadline.h"
 #include "MelonInstance.h"
 #include "MelonLog.h"
 #include "net/MPInterface.h"
@@ -395,10 +396,9 @@ namespace Platform
         }
         else
         {
-            timespec timeout {
-                .tv_sec = 0,
-                .tv_nsec = timeout_ms * 1000000
-            };
+            timespec now{};
+            clock_gettime(CLOCK_REALTIME, &now);
+            const timespec timeout = AddMillisecondsToDeadline(now, timeout_ms);
 
             int waitResult = 0;
             while (semaphore->val == 0 && waitResult == 0)
@@ -415,6 +415,7 @@ namespace Platform
             }
         }
 
+        pthread_mutex_unlock(&semaphore->mutex);
         return result;
     }
 
@@ -573,16 +574,22 @@ namespace Platform
 
     void Mic_Start(void* userdata)
     {
+        if (MelonDSAndroid::isTwoPlayerActive()) return;
         MelonDSAndroid::enableMic();
     }
 
     void Mic_Stop(void* userdata)
     {
+        if (MelonDSAndroid::isTwoPlayerActive()) return;
         MelonDSAndroid::disableMic();
     }
 
     int Mic_ReadInput(s16* data, int maxlength, void* userdata)
     {
+        if (MelonDSAndroid::isTwoPlayerActive()) {
+            memset(data, 0, maxlength * sizeof(s16));
+            return maxlength;
+        }
         return MelonDSAndroid::readMic(data, maxlength);
     }
 

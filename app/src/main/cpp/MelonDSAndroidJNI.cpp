@@ -15,6 +15,7 @@
 #include <android/asset_manager_jni.h>
 #include "UriFileHandler.h"
 #include "PausedStateAccess.h"
+#include "EmulationSpeedController.h"
 #include "JniEnvHandler.h"
 #include "AndroidMelonEventMessenger.h"
 #include "MelonDSAndroidInterface.h"
@@ -48,17 +49,13 @@ bool paused;
 std::atomic_bool isThreadReallyPaused = false;
 int observedFrames = 0;
 float fps = 0;
-int targetFps;
-float fastForwardSpeedMultiplier;
-bool limitFps = true;
-bool isFastForwardEnabled = false;
+EmulationSpeedController emulationSpeed;
+// Held only for speed mutations, never while doing provider I/O or waiting for a frame.
+std::mutex emulationSpeedMutex;
 
 jobject globalCameraManager;
 MelonDSAndroidCameraHandler* androidCameraHandler;
 
-static const int64_t FRAME_DURATION_60FPS_NS = 16666666;
-static const int64_t FRAME_DURATION_1000FPS_NS = 1000000; // 1ms. Used as frame time when fast-forward is enabled
-ThreadSafePerformanceHintSession* performanceHintSession = nullptr;
 
 extern "C"
 {
@@ -67,7 +64,6 @@ Java_me_magnum_melonds_MelonEmulator_setupEmulator(JNIEnv* env, jobject thiz, jo
 {
     std::lock_guard<std::mutex> operationLock(stateOperationMutex);
     MelonDSAndroid::EmulatorConfiguration finalEmulatorConfiguration = MelonDSAndroidConfiguration::buildEmulatorConfiguration(env, emulatorConfiguration);
-    fastForwardSpeedMultiplier = finalEmulatorConfiguration.fastForwardSpeedMultiplier;
 
     globalCameraManager = env->NewGlobalRef(cameraManager);
 
@@ -250,9 +246,7 @@ Java_me_magnum_melonds_MelonEmulator_startEmulation(JNIEnv* env, jobject thiz)
     std::lock_guard<std::mutex> operationLock(stateOperationMutex);
     stop = false;
     isThreadReallyPaused = false;
-    limitFps = true;
-    targetFps = 60;
-    isFastForwardEnabled = false;
+    emulationSpeed.reset();
 
     pthread_mutex_init(&emuThreadMutex, NULL);
     pthread_cond_init(&emuThreadCond, NULL);
@@ -356,6 +350,7 @@ Java_me_magnum_melonds_MelonEmulator_resumeEmulation(JNIEnv* env, jobject thiz)
 
 JNIEXPORT void JNICALL
 Java_me_magnum_melonds_MelonEmulator_resetEmulation(JNIEnv* env, jobject thiz) {
+    if (MelonDSAndroid::isTwoPlayerActive()) return;
     pthread_mutex_lock(&emuThreadMutex);
     if (!stop) {
         if (paused) {
@@ -381,7 +376,7 @@ Java_me_magnum_melonds_MelonEmulator_saveStateInternal(JNIEnv* env, jobject thiz
     if (path == nullptr) return false;
     PausedStateAccess stateAccess(stateOperationMutex, emuThreadMutex, emuThreadCond,
                                   started, stop, paused, isThreadReallyPaused);
-    if (!stateAccess) return false;
+    if (!stateAccess || MelonDSAndroid::isTwoPlayerActive()) return false;
 
     const char* saveStatePath = env->GetStringUTFChars(path, nullptr);
     if (saveStatePath == nullptr) return false;
@@ -396,7 +391,7 @@ Java_me_magnum_melonds_MelonEmulator_loadStateInternal(JNIEnv* env, jobject thiz
     if (path == nullptr) return false;
     PausedStateAccess stateAccess(stateOperationMutex, emuThreadMutex, emuThreadCond,
                                   started, stop, paused, isThreadReallyPaused);
-    if (!stateAccess) return false;
+    if (!stateAccess || MelonDSAndroid::isTwoPlayerActive()) return false;
 
     const char* saveStatePath = env->GetStringUTFChars(path, nullptr);
     if (saveStatePath == nullptr) return false;
@@ -407,6 +402,7 @@ Java_me_magnum_melonds_MelonEmulator_loadStateInternal(JNIEnv* env, jobject thiz
 
 JNIEXPORT jboolean JNICALL
 Java_me_magnum_melonds_MelonEmulator_loadRewindState(JNIEnv* env, jobject thiz, jobject rewindSaveState) {
+    if (MelonDSAndroid::isTwoPlayerActive()) return false;
     bool result = true;
 
     pthread_mutex_lock(&emuThreadMutex);
@@ -500,6 +496,7 @@ Java_me_magnum_melonds_MelonEmulator_stopEmulation(JNIEnv* env, jobject thiz)
     }
 
     MelonDSAndroid::cleanup();
+    emulationSpeed.reset();
 
     env->DeleteGlobalRef(globalCameraManager);
 
@@ -533,36 +530,92 @@ Java_me_magnum_melonds_MelonEmulator_onKeyRelease(JNIEnv* env, jobject thiz, jin
     MelonDSAndroid::releaseKey(key);
 }
 
+JNIEXPORT jint JNICALL
+Java_me_magnum_melonds_MelonEmulator_startSecondPlayerInternal(JNIEnv* env, jobject thiz, jstring romPath, jstring savePath)
+{
+    if (romPath == nullptr || savePath == nullptr) return 1;
+    PausedStateAccess stateAccess(stateOperationMutex, emuThreadMutex, emuThreadCond,
+                                  started, stop, paused, isThreadReallyPaused);
+    if (!stateAccess) return 1;
+
+    const char* rom = env->GetStringUTFChars(romPath, nullptr);
+    if (rom == nullptr) return 3;
+    const char* save = env->GetStringUTFChars(savePath, nullptr);
+    if (save == nullptr) {
+        env->ReleaseStringUTFChars(romPath, rom);
+        return 3;
+    }
+
+    // PausedStateAccess acknowledges the primary frame boundary. The core pause also
+    // acknowledges the peer before changing its session or the presented player.
+    MelonDSAndroid::pause();
+    const int result = MelonDSAndroid::startSecondPlayer(rom, save);
+    env->ReleaseStringUTFChars(romPath, rom);
+    env->ReleaseStringUTFChars(savePath, save);
+    if (result == 0) {
+        std::lock_guard<std::mutex> speedLock(emulationSpeedMutex);
+        emulationSpeed.reset();
+    }
+    // Leave both consoles paused. Kotlin owns the activity/save-operation resume policy.
+    return result;
+}
+
+JNIEXPORT jboolean JNICALL
+Java_me_magnum_melonds_MelonEmulator_selectPlayer(JNIEnv* env, jobject thiz, jint index)
+{
+    if (index < 0 || index > 1) return false;
+    PausedStateAccess stateAccess(stateOperationMutex, emuThreadMutex, emuThreadCond,
+                                  started, stop, paused, isThreadReallyPaused);
+    if (!stateAccess) return false;
+    MelonDSAndroid::pause();
+    return MelonDSAndroid::selectPlayer(index);
+}
+
+JNIEXPORT jboolean JNICALL
+Java_me_magnum_melonds_MelonEmulator_flushSaveFiles(JNIEnv* env, jobject thiz)
+{
+    PausedStateAccess stateAccess(stateOperationMutex, emuThreadMutex, emuThreadCond,
+                                  started, stop, paused, isThreadReallyPaused);
+    if (!stateAccess) return false;
+    MelonDSAndroid::pause();
+    return MelonDSAndroid::flushSaveFiles();
+}
+
+JNIEXPORT jboolean JNICALL
+Java_me_magnum_melonds_MelonEmulator_isTwoPlayerActive(JNIEnv* env, jobject thiz)
+{
+    return MelonDSAndroid::isTwoPlayerActive();
+}
+
+JNIEXPORT jint JNICALL
+Java_me_magnum_melonds_MelonEmulator_getSelectedPlayer(JNIEnv* env, jobject thiz)
+{
+    return MelonDSAndroid::getSelectedPlayer();
+}
+
 JNIEXPORT jboolean JNICALL
 Java_me_magnum_melonds_MelonEmulator_takeScreenshot(JNIEnv* env, jobject thiz)
 {
     return MelonDSAndroid::takeScreenshot();
 }
 
-JNIEXPORT void JNICALL
-Java_me_magnum_melonds_MelonEmulator_setFastForwardEnabled(JNIEnv* env, jobject thiz, jboolean enabled)
+JNIEXPORT jint JNICALL
+Java_me_magnum_melonds_MelonEmulator_cycleEmulationSpeed(JNIEnv* env, jobject thiz)
 {
-    isFastForwardEnabled = enabled;
-    if (enabled) {
-        limitFps = fastForwardSpeedMultiplier > 0;
-        targetFps = 60 * fastForwardSpeedMultiplier;
-    } else {
-        limitFps = true;
-        targetFps = 60;
+    // Pair the active check/cycle with 2P startup's reset. This tiny lock avoids both
+    // missed speed presses and blocking the UI behind a slow save provider.
+    std::lock_guard<std::mutex> speedLock(emulationSpeedMutex);
+    if (MelonDSAndroid::isTwoPlayerActive()) {
+        emulationSpeed.reset();
+        return EmulationSpeedController::NORMAL_SPEED;
     }
+    return emulationSpeed.cycle();
+}
 
-    if (performanceHintSession != nullptr) {
-        if (enabled) {
-            if (fastForwardSpeedMultiplier > 0) {
-                auto frameDurationNs = static_cast<int64_t>(FRAME_DURATION_60FPS_NS / fastForwardSpeedMultiplier);
-                performanceHintSession->updateTargetWorkDuration(frameDurationNs);
-            } else {
-                performanceHintSession->updateTargetWorkDuration(FRAME_DURATION_1000FPS_NS);
-            }
-        } else {
-            performanceHintSession->updateTargetWorkDuration(FRAME_DURATION_60FPS_NS);
-        }
-    }
+JNIEXPORT jint JNICALL
+Java_me_magnum_melonds_MelonEmulator_getEmulationSpeed(JNIEnv* env, jobject thiz)
+{
+    return MelonDSAndroid::isTwoPlayerActive() ? EmulationSpeedController::NORMAL_SPEED : emulationSpeed.current();
 }
 
 JNIEXPORT void JNICALL
@@ -579,23 +632,7 @@ Java_me_magnum_melonds_MelonEmulator_updateEmulatorConfiguration(JNIEnv* env, jo
 {
     MelonDSAndroid::EmulatorConfiguration newConfiguration = MelonDSAndroidConfiguration::buildEmulatorConfiguration(env, emulatorConfiguration);
 
-    fastForwardSpeedMultiplier = newConfiguration.fastForwardSpeedMultiplier;
-
     MelonDSAndroid::updateEmulatorConfiguration(std::make_unique<MelonDSAndroid::EmulatorConfiguration>(std::move(newConfiguration)));
-
-    if (isFastForwardEnabled) {
-        limitFps = fastForwardSpeedMultiplier > 0;
-        targetFps = 60 * fastForwardSpeedMultiplier;
-
-        if (performanceHintSession != nullptr) {
-            if (fastForwardSpeedMultiplier > 0) {
-                auto frameDurationNs = static_cast<int64_t>(FRAME_DURATION_60FPS_NS / fastForwardSpeedMultiplier);
-                performanceHintSession->updateTargetWorkDuration(frameDurationNs);
-            } else {
-                performanceHintSession->updateTargetWorkDuration(FRAME_DURATION_1000FPS_NS);
-            }
-        }
-    }
 }
 }
 
@@ -639,10 +676,9 @@ void* emulate(void*)
     MelonDSAndroid::start();
 
     auto manager = PerformanceHintManagerFactory::create(jniEnvHandler);
-    performanceHintSession = new ThreadSafePerformanceHintSession(std::move(manager));
-    if (performanceHintSession != nullptr) {
-        performanceHintSession->createSession(gettid(), FRAME_DURATION_60FPS_NS);
-    }
+    ThreadSafePerformanceHintSession performanceHintSession(std::move(manager));
+    auto appliedTiming = emulationSpeed.timing();
+    performanceHintSession.createSession(gettid(), appliedTiming.targetWorkDurationNs);
 
     for (;;)
     {
@@ -666,23 +702,30 @@ void* emulate(void*)
 
         pthread_mutex_unlock(&emuThreadMutex);
 
+        const auto timing = emulationSpeed.timing();
+        if (timing.multiplier != appliedTiming.multiplier) {
+            performanceHintSession.updateTargetWorkDuration(timing.targetWorkDurationNs);
+            appliedTiming = timing;
+            // Do not carry accumulated timing debt across a speed change.
+            frameLimitError = 0;
+            lastTick = getCurrentMillis();
+        }
+
         auto frameStart = std::chrono::steady_clock::now();
 
         u32 nLines = MelonDSAndroid::loop();
 
         auto frameDuration = std::chrono::steady_clock::now() - frameStart;
-        if (performanceHintSession != nullptr)
-            performanceHintSession->reportActualWorkDuration(std::chrono::nanoseconds(frameDuration).count());
+        performanceHintSession.reportActualWorkDuration(std::chrono::nanoseconds(frameDuration).count());
 
         double currentTick = getCurrentMillis();
         double delay = currentTick - lastTick;
 
         // All times are in ms
-        double frameTimeStep = (double) nLines / ((float) targetFps * 263.0) * 1000.0;
+        double frameTimeStep = (double) nLines / ((float) timing.targetFps * 263.0) * 1000.0;
         if (frameTimeStep < 1)
             frameTimeStep = 1;
 
-        if (limitFps)
         {
             frameLimitError += frameTimeStep - delay;
             if (frameLimitError < -frameTimeStep)
@@ -703,9 +746,6 @@ void* emulate(void*)
             }
 
             lastTick = currentTick;
-        } else {
-            frameLimitError = 0;
-            lastTick = getCurrentMillis();
         }
 
         observedFrames++;
@@ -716,13 +756,8 @@ void* emulate(void*)
         }
     }
 
-    if (performanceHintSession != nullptr) {
-        performanceHintSession->destroySession();
-
-        delete performanceHintSession;
-        performanceHintSession = nullptr;
-    }
+    performanceHintSession.destroySession();
 
     MelonDSAndroid::stop();
-    pthread_exit(NULL);
+    return nullptr;
 }

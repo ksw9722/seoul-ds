@@ -59,6 +59,63 @@ class FlatProvenanceTests(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, 'provenance differs'):
             audit.verify_vendored_provenance(self.root, [self.source])
 
+    def record_change(self, path, original):
+        (self.root / 'docs/native-modifications.json').write_text(json.dumps({'schema': 1, 'files': [{
+            'path': path.relative_to(self.root).as_posix(), 'original_sha256': original,
+            'sha256': audit.sha256(path), 'reason': 'Local feature change'
+        }]}))
+
+    def test_explicit_local_modification_passes(self):
+        original = audit.sha256(self.source)
+        self.source.write_text('local feature change')
+        self.record_change(self.source, original)
+        audit.verify_vendored_provenance(self.root, [self.source])
+
+    def test_explicit_new_native_file_passes(self):
+        extra = self.root / 'vendor/helper.h'
+        extra.write_text('new helper')
+        self.record_change(extra, None)
+        audit.verify_vendored_provenance(self.root, [self.source, extra])
+
+    def test_stale_local_modification_fails(self):
+        original = audit.sha256(self.source)
+        self.source.write_text('local feature change')
+        self.record_change(self.source, original)
+        self.source.write_text('unrecorded change')
+        with self.assertRaisesRegex(AssertionError, 'hash mismatch'):
+            audit.verify_vendored_provenance(self.root, [self.source])
+
+    def test_incorrect_modification_origin_fails(self):
+        self.record_change(self.source, '0' * 64)
+        with self.assertRaisesRegex(AssertionError, 'original hash mismatch'):
+            audit.verify_vendored_provenance(self.root, [self.source])
+
+    def test_duplicate_modification_path_fails(self):
+        self.record_change(self.source, audit.sha256(self.source))
+        path = self.root / 'docs/native-modifications.json'
+        data = json.loads(path.read_text())
+        data['files'] *= 2
+        path.write_text(json.dumps(data))
+        with self.assertRaisesRegex(AssertionError, 'modification path'):
+            audit.verify_vendored_provenance(self.root, [self.source])
+
+    def test_modification_traversal_fails(self):
+        self.record_change(self.source, audit.sha256(self.source))
+        path = self.root / 'docs/native-modifications.json'
+        data = json.loads(path.read_text())
+        data['files'][0]['path'] = 'vendor/../outside'
+        path.write_text(json.dumps(data))
+        with self.assertRaisesRegex(AssertionError, 'modification path'):
+            audit.verify_vendored_provenance(self.root, [self.source])
+
+    def test_missing_declared_new_file_fails(self):
+        extra = self.root / 'vendor/helper.h'
+        extra.write_text('new helper')
+        self.record_change(extra, None)
+        extra.unlink()
+        with self.assertRaisesRegex(AssertionError, 'inventory differs'):
+            audit.verify_vendored_provenance(self.root, [self.source])
+
     def test_gitlink_in_flat_checkout_fails(self):
         (self.root / '.git').mkdir()
         with patch.object(audit, 'git', return_value='160000 abc 0\tvendor'):

@@ -10,6 +10,10 @@ python3 scripts/harness.py --mode android --abi arm64-v8a --optimized-native
 | harness-self-tests | 비밀 패턴을 값 없이 보고, 위험 경로·FreeBIOS 해시 예외, 상태 분류, 소스 패키징 경로 정책 | Python unittest 로그 |
 | source-audit | 버전/하위 모듈 pin, XML 문법, 독립 ID, DS 부팅 기본값, 금지 배포 경로·일부 고신뢰 비밀 패턴, CI 권한/정책 | source-audit.json |
 | native-host-tests | 같은 5개 동기화 사례를 -O0와 -O2/-DNDEBUG에서 각각 실행, 항상 켜진 CHECK 사용 | 호스트 g++17 두 프로필 로그(서로 다른 10개 사례라는 뜻 아님) |
+| local-mp-host-tests | 실제 LocalMP의 합성 패킷 전달·타임스탬프·자기 패킷 제외·FIFO 순환·병렬 응답·종료/재접속을 -O0 및 -O2/-DNDEBUG에서 검사; Android/게임 실행 아님 | 호스트 g++17 로그 |
+| android-semaphore-host-tests | Android 소스의 실제 pthread 세마포어 함수 추출·호스트 실행: 절대 시각 정규화, 양수 timeout, 잠금 해제, 신호 및 초기화; Android 실행 아님 | 호스트 g++17 로그 |
+| save-manager-host-tests | 실제 SaveManager와 합성 파일 오류: 열기/쓰기/flush/닫기 실패 유지 및 재시도, 부분 변경, 메모리 내보내기 | 호스트 g++17 로그 |
+| second-player-session-host-tests | 실제 P2 스레드 루프/중단 함수 추출 + 가짜 core/EGL: 1000회 재개/정지, 초기화 실패, 예외 시 렌더 자원 보존, 정상 종료 | 호스트 g++17 로그; 실제 EGL/게임 아님 |
 | jvm-unit-tests | 원작 버전 비교 + 새 시작/저장 정책의 Android JVM 테스트 | Gradle/JUnit XML·HTML |
 | android-lint | Android 정적 Lint | Gradle·Lint 보고서 |
 | debug-apk | 선택 ABI의 Debug APK 생성 | Gradle 로그·APK 크기·SHA-256 |

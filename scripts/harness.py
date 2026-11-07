@@ -98,7 +98,7 @@ def run_command(name: str, command: list[str], output: Path, env: dict[str, str]
                         os.killpg(proc.pid, signal.SIGKILL)
                         proc.wait(timeout=5)
                 raise
-        result.update(status=("PASS" if proc.returncode == 0 else "BLOCKED" if name == "native-host-tests" and proc.returncode == 2 else "FAIL"), exit_code=proc.returncode)
+        result.update(status=("PASS" if proc.returncode == 0 else "BLOCKED" if name in {"native-host-tests", "local-mp-host-tests", "android-semaphore-host-tests", "save-manager-host-tests", "second-player-session-host-tests"} and proc.returncode == 2 else "FAIL"), exit_code=proc.returncode)
     except subprocess.TimeoutExpired:
         result.update(status="FAIL", exit_code=None, timed_out=True, reason=f"Command exceeded explicit {timeout}s timeout; launched process group stopped; no pass inferred")
     except OSError as exc:
@@ -151,6 +151,10 @@ def main() -> int:
         ("harness-self-tests", [sys.executable, "-m", "unittest", "discover", "-s", "scripts/tests", "-v"]),
         ("source-audit", [sys.executable, "scripts/audit_source.py", "--json", str(output / "source-audit.json")]),
         ("native-host-tests", [sys.executable, "scripts/native_host_tests.py"]),
+        ("local-mp-host-tests", [sys.executable, "scripts/local_mp_host_tests.py"]),
+        ("android-semaphore-host-tests", [sys.executable, "scripts/android_semaphore_host_tests.py"]),
+        ("save-manager-host-tests", [sys.executable, "scripts/save_manager_host_tests.py"]),
+        ("second-player-session-host-tests", [sys.executable, "scripts/second_player_session_host_tests.py"]),
     ]
     report["checks"] = [{"name": name, "status": "PENDING"} for name, _ in static_tasks]
     report["checks"].extend({"name": name, "status": "PENDING" if args.mode == "android" else "NOT RUN", "reason": "Awaiting Android checks" if args.mode == "android" else "Static mode; select --mode android for SDK-backed checks"} for name, _ in ANDROID_TASKS)

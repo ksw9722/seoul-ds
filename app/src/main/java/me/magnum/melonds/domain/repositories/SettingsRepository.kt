@@ -14,7 +14,6 @@ interface SettingsRepository {
     suspend fun getEmulatorConfiguration(): EmulatorConfiguration
 
     fun getTheme(): Theme
-    fun getFastForwardSpeedMultiplier(): Float
     fun isRewindEnabled(): Boolean
     fun isSustainedPerformanceModeEnabled(): Boolean
 

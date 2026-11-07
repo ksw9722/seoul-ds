@@ -127,9 +127,28 @@ object MelonEmulator {
 
     private external fun onKeyRelease(key: Int)
 
+    /** The caller must pause emulation and serialize this with state/session operations. */
+    fun startSecondPlayer(romUri: Uri, sramUri: Uri): Int =
+        startSecondPlayerInternal(romUri.toString(), sramUri.toString())
+
+    private external fun startSecondPlayerInternal(romPath: String, savePath: String): Int
+
+    /** Selects player 0 or 1 while both consoles are paused. */
+    external fun selectPlayer(index: Int): Boolean
+
+    /** Durably flushes both game saves while the caller keeps emulation paused. */
+    external fun flushSaveFiles(): Boolean
+
+    external fun isTwoPlayerActive(): Boolean
+
+    external fun getSelectedPlayer(): Int
+
     external fun takeScreenshot(): Boolean
 
-    external fun setFastForwardEnabled(enabled: Boolean)
+    /** Advance through 1x, 2x, 3x, 4x, 5x, then 1x; returns the requested speed. */
+    external fun cycleEmulationSpeed(): Int
+
+    external fun getEmulationSpeed(): Int
 
     external fun setMicrophoneEnabled(enabled: Boolean)
 

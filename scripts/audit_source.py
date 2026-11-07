@@ -77,6 +77,26 @@ def verify_vendored_provenance(root: Path, files: list[Path]) -> None:
     def vendored(name):
         return any(name.startswith(module + "/") for module in lock["submodules"])
     expected = {record["path"]: record for record in original["files"] if vendored(record["path"])}
+    # Keep the upstream inventory immutable. Each local fork edit needs explicit old/new
+    # hashes and a human-readable reason; absent or stale records still fail closed.
+    modifications = root / "docs/native-modifications.json"
+    if modifications.exists():
+        changes = json.loads(modifications.read_text())
+        if changes.get("schema") != 1 or not isinstance(changes.get("files"), list):
+            raise AssertionError("Invalid native modification provenance")
+        seen = set()
+        for change in changes["files"]:
+            name = change.get("path", "")
+            if name in seen or not vendored(name) or ".." in Path(name).parts or Path(name).is_absolute():
+                raise AssertionError("Invalid native modification path")
+            seen.add(name)
+            old = expected.get(name)
+            if change.get("original_sha256") != (old["sha256"] if old else None):
+                raise AssertionError(f"Native modification original hash mismatch: {name}")
+            digest = change.get("sha256", "")
+            if not re.fullmatch(r"[0-9a-f]{64}", digest) or not change.get("reason", "").strip():
+                raise AssertionError("Native modification needs hash and reason")
+            expected[name] = {"path": name, "sha256": digest}
     actual = {p.relative_to(root).as_posix() for p in files if vendored(p.relative_to(root).as_posix())}
     if actual != set(expected):
         raise AssertionError("Vendored source inventory differs from original manifest")

@@ -1,6 +1,8 @@
 package me.magnum.melonds.ui.emulator.model
 
 sealed class ToastEvent {
+    data object UnavailableInTwoPlayer : ToastEvent()
+    data object TwoPlayerSwitchFailed : ToastEvent()
     data object GbaLoadFailed : ToastEvent()
     data object RewindNotEnabled : ToastEvent()
     data object RewindNotAvailableWhileRAHardcoreModeEnabled : ToastEvent()
